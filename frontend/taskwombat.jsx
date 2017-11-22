@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import * as sessionAPIUtil from './util/session_api_util';
 import configureStore from './store/store';
 import Root from './components/root';
-import { login } from './actions/session_actions';
+import { login, logout } from './actions/session_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.signup = sessionAPIUtil.signup;
-// window.login = sessionAPIUtil.login;
-// window.logout = sessionAPIUtil.logout;
 
 window.login = login;
+window.logout = logout;
