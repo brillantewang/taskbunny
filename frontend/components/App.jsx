@@ -2,6 +2,7 @@ import React from 'react';
 import NavBarContainer from './nav_bar_container';
 import LoginFormContainer from './login_form_container';
 import SignupFormContainer from './signup_form_container';
+import DashboardContainer from './dashboard_container';
 import { Route } from 'react-router-dom';
 
 const App = () => (
@@ -12,6 +13,7 @@ const App = () => (
 
     <Route path="/login" component={LoginFormContainer}/>
     <Route path="/signup" component={SignupFormContainer}/>
+    <Route path="/dashboard" component={DashboardContainer}/>
   </div>
 )
 
