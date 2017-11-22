@@ -1,0 +1,41 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :integer          not null, primary key
+#  email                  :string           not null
+#  password_digest        :string           not null
+#  session_token          :string           not null
+#  is_tasker              :boolean          not null
+#  num_of_reviews         :integer
+#  num_of_completed_tasks :integer
+#  percent_positive       :integer
+#  tasker_description     :string
+#  price_per_hour         :integer
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyString
+  password_digest: MyString
+  session_token: MyString
+  is_tasker: false
+  num_of_reviews: 1
+  num_of_completed_tasks: 1
+  percent_positive: 1
+  tasker_description: MyString
+  price_per_hour: 1
+
+two:
+  email: MyString
+  password_digest: MyString
+  session_token: MyString
+  is_tasker: false
+  num_of_reviews: 1
+  num_of_completed_tasks: 1
+  percent_positive: 1
+  tasker_description: MyString
+  price_per_hour: 1
