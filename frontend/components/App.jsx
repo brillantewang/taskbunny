@@ -1,12 +1,16 @@
 import React from 'react';
-import GreetingContainer from './greeting_container';
+import NavBarContainer from './nav_bar_container';
+import SessionFormContainer from './session_form_container';
+import { Route } from 'react-router-dom';
 
 const App = () => (
   <div>
     <header>
-      <h1>Welcome to TaskWombat</h1>
-      <GreetingContainer/>
+      <NavBarContainer/>
     </header>
+
+    <Route path="/login" component={SessionFormContainer}/>
+    <Route path="/signup" component={SessionFormContainer}/>
   </div>
 )
 
