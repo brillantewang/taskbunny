@@ -4,6 +4,7 @@ import LoginFormContainer from './login_form_container';
 import SignupFormContainer from './signup_form_container';
 import DashboardContainer from './dashboard_container';
 import { Route } from 'react-router-dom';
+import { AuthRoute } from '../util/route_util';
 
 const App = () => (
   <div>
@@ -11,8 +12,8 @@ const App = () => (
       <NavBarContainer/>
     </header>
 
-    <Route path="/login" component={LoginFormContainer}/>
-    <Route path="/signup" component={SignupFormContainer}/>
+    <AuthRoute path="/login" component={LoginFormContainer}/>
+    <AuthRoute path="/signup" component={SignupFormContainer}/>
     <Route path="/dashboard" component={DashboardContainer}/>
   </div>
 )
