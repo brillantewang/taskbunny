@@ -15,7 +15,7 @@ export const receiveErrors = errors => ({
 
 //thunk
 
-export login = user => dispatch => (
+export const login = user => dispatch => (
   sessionAPIUtil.login(user)
     .then(
       currentUser => dispatch(receiveCurrentUser(currentUser)),
@@ -23,7 +23,7 @@ export login = user => dispatch => (
     )
 )
 
-export logout = () => dispatch => (
+export const logout = () => dispatch => (
   sessionAPIUtil.logout()
     .then(
       res => dispatch(receiveCurrentUser(null)),
@@ -31,7 +31,7 @@ export logout = () => dispatch => (
     )
 )
 
-export signup = user => dispatch => (
+export const signup = user => dispatch => (
   sessionAPIUtil.signup(user)
     .then(
       currentUser => dispatch(receiveCurrentUser(currentUser)),
