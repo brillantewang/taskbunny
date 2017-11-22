@@ -4,7 +4,7 @@ import LoginFormContainer from './login_form_container';
 import SignupFormContainer from './signup_form_container';
 import DashboardContainer from './dashboard_container';
 import { Route } from 'react-router-dom';
-import { AuthRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
   <div>
@@ -14,7 +14,7 @@ const App = () => (
 
     <AuthRoute path="/login" component={LoginFormContainer}/>
     <AuthRoute path="/signup" component={SignupFormContainer}/>
-    <Route path="/dashboard" component={DashboardContainer}/>
+    <ProtectedRoute path="/dashboard" component={DashboardContainer}/>
   </div>
 )
 
