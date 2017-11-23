@@ -23,16 +23,16 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <label>
-            Email Address
+        <form onSubmit={this.handleSubmit.bind(this)} className="session-form">
+          <fieldset>
+            <label>Email Address</label>
             <input type="text" value={this.state.email} onChange={this.handleChange('email')}/>
-          </label>
-          <label>
-            Password
+          </fieldset>
+          <fieldset>
+            <label>Password</label>
             <input type="text" value={this.state.password} onChange={this.handleChange('password')}/>
-          </label>
-          <input type="submit" value="Log In"/>
+          </fieldset>
+          <button>Log in</button>
         </form>
         {this.props.errors}
       </div>

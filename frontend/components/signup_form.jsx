@@ -26,28 +26,28 @@ class SignupForm extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <label>
-            First Name
+        <form onSubmit={this.handleSubmit.bind(this)} className="session-form">
+          <fieldset>
+            <label>First Name</label>
             <input type="text" value={this.state.first_name} onChange={this.handleChange('first_name')}/>
-          </label>
-          <label>
-            Last Name
+          </fieldset>
+          <fieldset>
+            <label>Last Name</label>
             <input type="text" value={this.state.last_name} onChange={this.handleChange('last_name')}/>
-          </label>
-          <label>
-            Email Address
+          </fieldset>
+          <fieldset>
+            <label>Email Address</label>
             <input type="text" value={this.state.email} onChange={this.handleChange('email')}/>
-          </label>
-          <label>
-            Password
+          </fieldset>
+          <fieldset>
+            <label>Password</label>
             <input type="text" value={this.state.password} onChange={this.handleChange('password')}/>
-          </label>
-          <label>
-            Zip Code
+          </fieldset>
+          <fieldset>
+            <label>Zip Code</label>
             <input type="text" value={this.state.zip_code} onChange={this.handleChange('zip_code')}/>
-          </label>
-          <input type="submit" value="Create account"/>
+          </fieldset>
+          <button>Create account</button>
         </form>
         {this.props.errors}
       </div>
