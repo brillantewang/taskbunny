@@ -1,0 +1,14 @@
+.nav-bar {
+  border-bottom: 1px solid $light-gray;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.session-buttons {
+  margin-right: 30px;
+}
+
+  a {
+    margin-left: 20px;
+  }

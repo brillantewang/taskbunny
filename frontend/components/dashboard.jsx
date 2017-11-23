@@ -7,7 +7,7 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      <h1>Welcome back, {this.props.currentUser.first_name}</h1>
+      <h1>Welcome back, {this.props.currentUser.first_name}.</h1>
     )
   }
 }
