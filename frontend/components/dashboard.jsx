@@ -1,4 +1,5 @@
 import React from 'react';
+import NavBarContainer from './nav_bar_container';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -7,7 +8,10 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      <h1>Welcome back, {this.props.currentUser.first_name}.</h1>
+      <div>
+        <NavBarContainer/>
+        <h1>Welcome back, {this.props.currentUser.first_name}.</h1>
+      </div>
     )
   }
 }
