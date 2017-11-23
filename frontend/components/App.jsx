@@ -7,7 +7,7 @@ import { Route } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
-  <div>
+  <div className="page-content">
     <header>
       <Route exact path="/" component={NavBarContainer}/>
       <Route exact path="/dashboard" component={NavBarContainer}/>

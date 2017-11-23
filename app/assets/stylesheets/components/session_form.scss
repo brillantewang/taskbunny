@@ -1,8 +1,13 @@
-.session-form-container {
+.session-form-page {
+  background-image: url('session_bg.jpg');
+  background-size: 1500px 800px;
   display: flex;
   justify-content: center;
-  background-image: url('session_bg.jpg');
-  background-size: 1500px 900px;
+  height: 100%;
+}
+
+.session-form-container {
+  display: block;
 }
 
 .session-form {

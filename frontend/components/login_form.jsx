@@ -22,19 +22,21 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div className="session-form-container">
-        <form onSubmit={this.handleSubmit.bind(this)} className="session-form">
-          <fieldset>
-            <label>Email Address</label>
-            <input type="text" value={this.state.email} onChange={this.handleChange('email')}/>
-          </fieldset>
-          <fieldset>
-            <label>Password</label>
-            <input type="text" value={this.state.password} onChange={this.handleChange('password')}/>
-          </fieldset>
-          <button>Log in</button>
-        </form>
-        {this.props.errors}
+      <div className="session-form-page">
+        <div className="session-form-container">
+          <form onSubmit={this.handleSubmit.bind(this)} className="session-form">
+            <fieldset>
+              <label>Email Address</label>
+              <input type="text" value={this.state.email} onChange={this.handleChange('email')}/>
+            </fieldset>
+            <fieldset>
+              <label>Password</label>
+              <input type="text" value={this.state.password} onChange={this.handleChange('password')}/>
+            </fieldset>
+            <button>Log in</button>
+            {this.props.errors}
+          </form>
+        </div>
       </div>
     )
   }
