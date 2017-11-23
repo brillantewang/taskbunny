@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const NavBar = ({ currentUser, logout }) => {
   if (currentUser) {
     return (
-      <div>
+      <div className="nav-bar">
         <button onClick={() => logout(currentUser)}>Log Out</button>
       </div>
     )

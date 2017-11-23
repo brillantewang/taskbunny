@@ -14,7 +14,7 @@ class LoginForm extends React.Component {
     e.preventDefault();
     this.props.login(this.state)
       .then(() => this.props.history.push('/dashboard'));
-    $("input").addClass("error-input");
+    // $("input").addClass("error-input");
   }
 
   handleChange(type) {
@@ -30,6 +30,10 @@ class LoginForm extends React.Component {
   }
 
   render() {
+    if (this.props.errors[0]) {
+      $("input").addClass("error-input");
+    }
+
     return (
       <div className="session-form-page">
         <div className="session-form-container">
