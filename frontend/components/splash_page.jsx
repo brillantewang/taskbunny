@@ -9,6 +9,14 @@ export const SplashPage = () => {
       <div className="splash-head">
         <h1 className="main-header">The convenient & fast way <br/> to get things done around the house</h1>
         <h3 className="sub-header">Choose from over 50,000 carefully vetted and feedback rated Taskers to get quick help</h3>
+        <ul class="splash-head-buttons">
+          <button>General handyman</button>
+          <button>Moving & packing</button>
+          <button>Furniture assembly</button>
+          <button>Home improvement</button>
+          <button>Mounting & installation</button>
+          <button>Yard work</button>
+        </ul>
       </div>
       <div className="splash-body">
         body
