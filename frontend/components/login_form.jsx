@@ -52,7 +52,7 @@ class LoginForm extends React.Component {
             </fieldset>
             <button>Log in</button>
             <a className="demo-login" onClick={this.handleDemo.bind(this)}>Demo login</a>
-            <strong className="error-message hidden">{this.props.errors[0]}</strong>
+            <strong className="error-message">{this.props.errors[0]}</strong>
           </form>
         </div>
       </div>

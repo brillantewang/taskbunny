@@ -12,10 +12,13 @@ span, article, footer, time, small {
   font: inherit;
   color: inherit;
   text-align: inherit;
-  text-decoration: inherit;
   vertical-align: inherit;
   box-sizing: inherit;
   background: transparent;
+}
+
+a {
+  text-decoration: none;
 }
 
 ul {
@@ -33,7 +36,6 @@ span {
 }
 
 input[type="password"],
-input[type="email"],
 input[type="text"],
 input[type="submit"],
 textarea,
@@ -50,12 +52,4 @@ button {
 button,
 input[type="submit"] {
   cursor: pointer;
-}
-
-/* Clearfix */
-
-.group:after {
-  content: "";
-  display: block;
-  clear: both;
 }
