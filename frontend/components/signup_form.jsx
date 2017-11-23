@@ -16,7 +16,8 @@ class SignupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.signup(this.state)
-      .then(() => this.props.history.push('/dashboard'))
+      .then(() => this.props.history.push('/dashboard'));
+    $("input").addClass("error-input");
   }
 
   handleChange(type) {
@@ -31,25 +32,29 @@ class SignupForm extends React.Component {
             <fieldset>
               <label>First Name</label>
               <input type="text" value={this.state.first_name} onChange={this.handleChange('first_name')}/>
+              <strong className="error-message">{this.props.errors.filter(error => { return error.match(/First/) })[0]}</strong>
             </fieldset>
             <fieldset>
               <label>Last Name</label>
               <input type="text" value={this.state.last_name} onChange={this.handleChange('last_name')}/>
+              <strong className="error-message">{this.props.errors.filter(error => { return error.match(/Last/) })[0]}</strong>
             </fieldset>
             <fieldset>
               <label>Email Address</label>
               <input type="text" value={this.state.email} onChange={this.handleChange('email')}/>
+              <strong className="error-message">{this.props.errors.filter(error => { return error.match(/Email/) })[0]}</strong>
             </fieldset>
             <fieldset>
               <label>Password</label>
               <input type="text" value={this.state.password} onChange={this.handleChange('password')}/>
+              <strong className="error-message">{this.props.errors.filter(error => { return error.match(/Password/) })[0]}</strong>
             </fieldset>
             <fieldset>
               <label>Zip Code</label>
               <input type="text" value={this.state.zip_code} onChange={this.handleChange('zip_code')}/>
+              <strong className="error-message">{this.props.errors.filter(error => { return error.match(/Zip/) })[0]}</strong>
             </fieldset>
             <button>Create account</button>
-            {this.props.errors}
           </form>
         </div>
       </div>

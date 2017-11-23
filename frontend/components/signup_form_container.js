@@ -3,7 +3,7 @@ import SignupForm from './signup_form';
 import { signup } from '../actions/session_actions';
 
 const mapStateToProps = state => ({
-  errors: state.errors.session,
+  errors: state.errors.signup,
 })
 
 const mapDispatchToProps = dispatch => ({

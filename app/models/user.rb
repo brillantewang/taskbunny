@@ -17,8 +17,9 @@
 #
 
 class User < ApplicationRecord
-  validates :email, :first_name, :last_name, :zip_code, :password_digest, :session_token, presence: true
+  validates :first_name, :last_name, :zip_code, :password_digest, :session_token, presence: true
   validates :email, :session_token, uniqueness: true
+  validates_format_of :email, :with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/ # found on https://stackoverflow.com/questions/4776907/what-is-the-best-easy-way-to-validate-an-email-address-in-ruby
   validates :password, length: { minimum: 6 }, allow_nil: true
 
   after_initialize :ensure_session_token

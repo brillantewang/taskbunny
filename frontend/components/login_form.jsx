@@ -13,7 +13,8 @@ class LoginForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.login(this.state)
-      .then(() => this.props.history.push('/dashboard'))
+      .then(() => this.props.history.push('/dashboard'));
+    $("input").addClass("error-input");
   }
 
   handleChange(type) {
@@ -28,13 +29,14 @@ class LoginForm extends React.Component {
             <fieldset>
               <label>Email Address</label>
               <input type="text" value={this.state.email} onChange={this.handleChange('email')}/>
+
             </fieldset>
             <fieldset>
               <label>Password</label>
               <input type="text" value={this.state.password} onChange={this.handleChange('password')}/>
             </fieldset>
             <button>Log in</button>
-            {this.props.errors}
+            <strong className="error-message">{this.props.errors[0]}</strong>
           </form>
         </div>
       </div>
