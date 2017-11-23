@@ -21,6 +21,14 @@ class LoginForm extends React.Component {
     return e => this.setState({ [type]: e.target.value })
   }
 
+  handleDemo(e) {
+    e.preventDefault();
+    this.setState(
+      { email: "demo@demo.com", password: "demo123" },
+      () => this.handleSubmit(e)
+    )
+  }
+
   render() {
     return (
       <div className="session-form-page">
@@ -29,13 +37,13 @@ class LoginForm extends React.Component {
             <fieldset>
               <label>Email Address</label>
               <input type="text" value={this.state.email} onChange={this.handleChange('email')}/>
-
             </fieldset>
             <fieldset>
               <label>Password</label>
-              <input type="text" value={this.state.password} onChange={this.handleChange('password')}/>
+              <input type="password" value={this.state.password} onChange={this.handleChange('password')}/>
             </fieldset>
             <button>Log in</button>
+            <a className="demo-login" onClick={this.handleDemo.bind(this)}>Demo login</a>
             <strong className="error-message">{this.props.errors[0]}</strong>
           </form>
         </div>

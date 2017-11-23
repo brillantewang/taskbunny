@@ -46,7 +46,7 @@ class SignupForm extends React.Component {
             </fieldset>
             <fieldset>
               <label>Password</label>
-              <input type="text" value={this.state.password} onChange={this.handleChange('password')}/>
+              <input type="password" value={this.state.password} onChange={this.handleChange('password')}/>
               <strong className="error-message">{this.props.errors.filter(error => { return error.match(/Password/) })[0]}</strong>
             </fieldset>
             <fieldset>
