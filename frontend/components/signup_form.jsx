@@ -49,9 +49,9 @@ class SignupForm extends React.Component {
               <input type="text" value={this.state.zip_code} onChange={this.handleChange('zip_code')}/>
             </fieldset>
             <button>Create account</button>
+            {this.props.errors}
           </form>
         </div>
-        {this.props.errors}
       </div>
     )
   }
