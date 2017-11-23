@@ -1,4 +1,4 @@
-import { RECEIVE_SIGNUP_ERRORS, RECEIVE_CURRENT_USER } from '../actions/session_actions';
+import { RECEIVE_SIGNUP_ERRORS, RECEIVE_CURRENT_USER, REMOVE_ERRORS } from '../actions/session_actions';
 import merge from 'lodash/merge';
 
 const signupErrorsReducer = (state = [], action) => {
@@ -8,6 +8,8 @@ const signupErrorsReducer = (state = [], action) => {
     case RECEIVE_SIGNUP_ERRORS:
       return action.errors;
     case RECEIVE_CURRENT_USER:
+      return [];
+    case REMOVE_ERRORS:
       return [];
     default:
       return state;

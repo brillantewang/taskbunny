@@ -23,6 +23,10 @@ class SignupForm extends React.Component {
     return e => this.setState({ [type]: e.target.value })
   }
 
+  componentWillMount() {
+    this.props.removeErrors();
+  }
+
   render() {
     if (this.props.errors[0]) {
       $("input").addClass("error-input");
