@@ -47,9 +47,20 @@ export const TaskCategories = ({ text }) => {
       </div>
     )
   } else {
+    const regex = new RegExp(text, 'i');
+    const matchedCategories = taskCategories.filter(taskCategory => {
+      return regex.test(taskCategory);
+    })
+
     return (
       <div className="task-categories hidden">
-        filtered
+        {matchedCategories.slice(0, 4).map(taskCategory => {
+          return (
+            <li key={taskCategory} className="task-category">
+              {taskCategory}
+            </li>
+          )
+        })}
       </div>
     )
   }

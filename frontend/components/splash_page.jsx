@@ -73,10 +73,6 @@ class SplashPage extends React.Component {
             <input className="task-search" type="text" value={this.state.text} onChange={this.handleChange} placeholder="Need something different?"/>
             <i className="fa fa-times-circle hidden" aria-hidden="true"></i>
             <TaskCategories text={this.state.text}/>
-            {/* <ul className="task-categories hidden">
-              <li className="task-category"><Link to="/link">Option1</Link></li>
-              <li className="task-category">Option2</li>
-            </ul> */}
           </div>
         </div>
         <div className="splash-body">
