@@ -47,27 +47,27 @@ class SignupForm extends React.Component {
           <form onSubmit={this.handleSubmit.bind(this)} className="session-form">
             <fieldset>
               <label>First Name</label>
-              <input type="text" value={this.state.first_name} onChange={this.handleChange('first_name')} className="First"/>
+              <input type="text" value={this.state.first_name} onChange={this.handleChange('first_name')} className="First session-input"/>
               {this.handleErrorInput("First")}
             </fieldset>
             <fieldset>
               <label>Last Name</label>
-              <input type="text" value={this.state.last_name} onChange={this.handleChange('last_name')} className="Last"/>
+              <input type="text" value={this.state.last_name} onChange={this.handleChange('last_name')} className="Last session-input"/>
               {this.handleErrorInput("Last")}
             </fieldset>
             <fieldset>
               <label>Email Address</label>
-              <input type="text" value={this.state.email} onChange={this.handleChange('email')} className="Email"/>
+              <input type="text" value={this.state.email} onChange={this.handleChange('email')} className="Email session-input"/>
               {this.handleErrorInput("Email")}
             </fieldset>
             <fieldset>
               <label>Password</label>
-              <input type="password" value={this.state.password} onChange={this.handleChange('password')} className="Password"/>
+              <input type="password" value={this.state.password} onChange={this.handleChange('password')} className="Password session-input"/>
               {this.handleErrorInput("Password")}
             </fieldset>
             <fieldset>
               <label>Zip Code</label>
-              <input type="text" value={this.state.zip_code} onChange={this.handleChange('zip_code')} className="Zip"/>
+              <input type="text" value={this.state.zip_code} onChange={this.handleChange('zip_code')} className="Zip session-input"/>
               {this.handleErrorInput("Zip")}
             </fieldset>
             <button>Create account</button>

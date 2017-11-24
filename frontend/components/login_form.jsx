@@ -45,11 +45,11 @@ class LoginForm extends React.Component {
           <form onSubmit={this.handleSubmit.bind(this)} className="session-form">
             <fieldset>
               <label>Email Address</label>
-              <input type="text" value={this.state.email} onChange={this.handleChange('email')}/>
+              <input className="session-input" type="text" value={this.state.email} onChange={this.handleChange('email')}/>
             </fieldset>
             <fieldset>
               <label>Password</label>
-              <input type="password" value={this.state.password} onChange={this.handleChange('password')}/>
+              <input className="session-input" type="password" value={this.state.password} onChange={this.handleChange('password')}/>
             </fieldset>
             <button>Log in</button>
             <a className="demo-login" onClick={this.handleDemo.bind(this)}>Demo login</a>

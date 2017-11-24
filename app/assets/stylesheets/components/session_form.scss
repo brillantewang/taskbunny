@@ -60,3 +60,7 @@
 .demo-login {
   margin-bottom: 10px;
 }
+
+.session-input:focus {
+  border-color: $green;
+}
