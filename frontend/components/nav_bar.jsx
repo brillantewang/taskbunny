@@ -5,9 +5,7 @@ const NavBar = ({ currentUser, logout }) => {
   if (currentUser) {
     return (
       <div className="nav-bar">
-        <div className="session-buttons">
-          <button onClick={() => logout(currentUser)}>Log Out</button>
-        </div>
+        <button className="logout-button" onClick={() => logout(currentUser)}>Log Out</button>
       </div>
     )
   } else {

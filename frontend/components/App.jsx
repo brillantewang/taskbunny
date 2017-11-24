@@ -3,7 +3,7 @@ import NavBarContainer from './nav_bar_container';
 import LoginFormContainer from './login_form_container';
 import SignupFormContainer from './signup_form_container';
 import DashboardContainer from './dashboard_container';
-import { SplashPage } from './splash_page';
+import SplashPage from './splash_page';
 import { Route, Switch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
