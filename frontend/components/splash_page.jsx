@@ -17,6 +17,10 @@ export const SplashPage = () => {
           <button>Mounting & installation</button>
           <button>Yard work</button>
         </ul>
+        <div className="task-search-container">
+          <i class="fa fa-search" aria-hidden="true"></i>
+          <input className="task-search" type="search" results placeholder="Need something different?"/>
+        </div>
       </div>
       <div className="splash-body">
         body

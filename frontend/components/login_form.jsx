@@ -30,6 +30,7 @@ class LoginForm extends React.Component {
   }
 
   componentWillMount() {
+    console.log('component will mount');
     this.props.removeErrors();
   }
 

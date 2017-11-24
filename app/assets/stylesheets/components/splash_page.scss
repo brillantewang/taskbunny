@@ -13,10 +13,34 @@
 }
 
 .splash-head-buttons {
-  width: 40%;
-  height: 100px;
+  margin-top: 25px;
+  width: 41%;
+  height: 110px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   align-content: space-between;
+  min-width: 600px;
+}
+
+.task-search {
+  margin-top: 18px;
+  padding: 12.5px;
+  padding-left: 50px;
+  line-height: 30px;
+  width: 580px;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.task-search-container {
+  position: relative;
+}
+
+.fa-search {
+  position: absolute;
+  top: 36px;
+  left: 15px;
+  color: $green;
+  font-size: 18px;
 }

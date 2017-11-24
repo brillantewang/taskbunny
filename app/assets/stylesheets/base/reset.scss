@@ -38,6 +38,7 @@ span {
 input[type="password"],
 input[type="text"],
 input[type="submit"],
+input[type="search"],
 textarea,
 button {
   /*
@@ -50,6 +51,7 @@ button {
 }
 
 button,
-input[type="submit"] {
+input[type="submit"],
+input[type="search"]::-webkit-search-cancel-button:hover {
   cursor: pointer;
 }

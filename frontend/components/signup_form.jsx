@@ -28,7 +28,7 @@ class SignupForm extends React.Component {
   }
 
   handleErrorInput(type) {
-    const regex = new RegExp(type);
+    const regex = new RegExp(type); /First/
     const error = this.props.errors.filter(error => { return error.match(regex) })[0];
     if (error) {
       $(`.${type}`).addClass("error-input");
@@ -41,10 +41,6 @@ class SignupForm extends React.Component {
   }
 
   render() {
-    // if (this.props.errors[0]) {
-    //   $("input").addClass("error-input");
-    // }
-
     return (
       <div className="session-form-page">
         <div className="session-form-container">
