@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FooterNav } from './footer_nav';
+import { TaskCategories } from './task_categories';
 import NavBarContainer from './nav_bar_container';
 
 class SplashPage extends React.Component {
@@ -32,6 +33,7 @@ class SplashPage extends React.Component {
 
   handleClick(e) {
     const node = $(e.target);
+    console.log(node.attr('class'));
     switch(node.attr('class')) {
       case "task-search":
         $(".task-categories").removeClass("hidden");
@@ -70,10 +72,11 @@ class SplashPage extends React.Component {
             <i className="fa fa-search" aria-hidden="true"></i>
             <input className="task-search" type="text" value={this.state.text} onChange={this.handleChange} placeholder="Need something different?"/>
             <i className="fa fa-times-circle hidden" aria-hidden="true"></i>
-            <ul className="task-categories hidden">
+            <TaskCategories text={this.state.text}/>
+            {/* <ul className="task-categories hidden">
               <li className="task-category"><Link to="/link">Option1</Link></li>
               <li className="task-category">Option2</li>
-            </ul>
+            </ul> */}
           </div>
         </div>
         <div className="splash-body">
