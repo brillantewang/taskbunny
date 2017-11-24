@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const TaskCategories = ({ text }) => {
   const taskCategories = [
@@ -31,7 +32,11 @@ export const TaskCategories = ({ text }) => {
     "Deep Clean",
     "Pick Up & Delivery",
     "Automotive Help",
-    "General Handyman"
+    "General Handyman",
+    "Moving & Packing",
+    "Furniture assembly",
+    "Home improvement",
+    "Yard work"
   ]
 
   if (text === "" ) {
@@ -39,9 +44,9 @@ export const TaskCategories = ({ text }) => {
       <div className="task-categories hidden">
         {taskCategories.slice(0, 4).map(taskCategory => {
           return (
-            <li key={taskCategory} className="task-category">
+            <Link to="link" key={taskCategory} className="task-category">
               {taskCategory}
-            </li>
+            </Link>
           )
         })}
       </div>
@@ -56,9 +61,9 @@ export const TaskCategories = ({ text }) => {
       <div className="task-categories hidden">
         {matchedCategories.slice(0, 4).map(taskCategory => {
           return (
-            <li key={taskCategory} className="task-category">
+            <Link to="/link" key={taskCategory} className="task-category">
               {taskCategory}
-            </li>
+            </Link>
           )
         })}
       </div>
