@@ -9,10 +9,25 @@ class SplashPage extends React.Component {
     this.state = {
       text: ""
     }
+
+    this.toggleInputCanceler = this.toggleInputCanceler.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  toggleInputCanceler() {
+    if (this.state.text === "" ) {
+      $(".fa-times-circle").addClass("hidden");
+    } else {
+      $(".fa-times-circle").removeClass("hidden");
+    }
   }
 
   handleChange(e) {
-    this.setState({ text: e.target.value });
+    this.setState(
+      { text: e.target.value },
+      this.toggleInputCanceler
+    );
   }
 
   handleClick(e) {
@@ -25,7 +40,10 @@ class SplashPage extends React.Component {
         $(".task-categories").removeClass("hidden");
         break;
       case "fa fa-times-circle":
-        this.setState({ text: "" });
+        this.setState(
+          { text: "" },
+          this.toggleInputCanceler
+        );
         $(".task-categories").addClass("hidden");
         break;
       default:
@@ -35,7 +53,7 @@ class SplashPage extends React.Component {
 
   render() {
     return (
-      <div onClick={this.handleClick.bind(this)} className="splash-page">
+      <div onClick={this.handleClick} className="splash-page">
         <NavBarContainer/>
         <div className="splash-head">
           <h1 className="main-header">The convenient & fast way <br/> to get things done around the house</h1>
@@ -50,8 +68,8 @@ class SplashPage extends React.Component {
           </ul>
           <div className="task-search-container">
             <i className="fa fa-search" aria-hidden="true"></i>
-            <input className="task-search" type="text" value={this.state.text} onChange={this.handleChange.bind(this)} placeholder="Need something different?"/>
-            <i className="fa fa-times-circle" aria-hidden="true"></i>
+            <input className="task-search" type="text" value={this.state.text} onChange={this.handleChange} placeholder="Need something different?"/>
+            <i className="fa fa-times-circle hidden" aria-hidden="true"></i>
             <ul className="task-categories hidden">
               <li className="task-category"><Link to="/link">Option1</Link></li>
               <li className="task-category">Option2</li>
