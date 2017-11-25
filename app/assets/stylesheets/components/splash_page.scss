@@ -1,5 +1,5 @@
 .splash-head {
-  background-image: url("splash_head_bg.jpg");
+  background-image: url("http://res.cloudinary.com/dezmnl5mf/image/upload/v1511559914/splash_head_bg_u7fyvi.jpg");
   background-size: 1500px 1000px;
   height: 1000px;
   display: flex;
@@ -28,7 +28,7 @@
   padding: 12.5px;
   padding-left: 50px;
   line-height: 30px;
-  width: 580px;
+  width: 530px;
   font-size: 18px;
   font-weight: 300;
 }
@@ -47,6 +47,18 @@
   display: block;
   padding: 12px 22px;
   color: $green;
+  vertical-align: middle;
+}
+
+.task-category:hover {
+  background-color: #f9fafb;
+}
+
+.task-category-img {
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+  margin-right: 25px;
 }
 
 .fa-search {
