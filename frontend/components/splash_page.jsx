@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FooterNav } from './footer_nav';
 import { TaskCategories } from './task_categories';
 import { SplashHead } from './splash_head';
+import { SplashBody } from './splash_body';
 import NavBarContainer from './nav_bar_container';
 
 class SplashPage extends React.Component {
@@ -42,6 +43,12 @@ class SplashPage extends React.Component {
       case "task-category":
         $(".task-categories").removeClass("hidden");
         break;
+      case "task-category-img":
+        $(".task-categories").removeClass("hidden");
+        break;
+      case "task-category-title":
+        $(".task-categories").removeClass("hidden");
+        break;
       case "fa fa-times-circle":
         this.setState(
           { text: "" },
@@ -59,9 +66,7 @@ class SplashPage extends React.Component {
       <div onClick={this.handleClick} className="splash-page">
         <NavBarContainer/>
         <SplashHead text={this.state.text} handleChange={this.handleChange}/>
-        <div className="splash-body">
-          body
-        </div>
+        <SplashBody/>
         <FooterNav/>
       </div>
     )
