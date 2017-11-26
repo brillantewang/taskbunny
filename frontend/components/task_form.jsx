@@ -1,4 +1,5 @@
 import React from 'react';
+import { TrustIcon } from './trust_icon';
 
 export const TaskForm = () => {
   return (
@@ -8,6 +9,12 @@ export const TaskForm = () => {
         <li>2. View Taskers & Prices</li>
         <li>3. Confirm & Book</li>
       </ul>
+      <div className="trust-banner">
+        <TrustIcon/>
+        <p>
+          <strong>Trust & Safety Guarantee:</strong> $1MM insurance guarantee on every task.
+        </p>
+      </div>
     </div>
   )
 }
