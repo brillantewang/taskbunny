@@ -1,0 +1,24 @@
+.footer-nav {
+  background-color: $darkest-gray;
+  width: 100%;
+  display: flex;
+
+  p {
+    font-size: 14px;
+    color: $off-white;
+  }
+
+  strong {
+    color: #ADB4BF;
+    font-size: 16px;
+  }
+
+  a {
+    color: $off-white;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+  }
+}
