@@ -21,9 +21,9 @@ export const FooterNav = () => {
       </nav>
       <div>
         <strong>Download our app</strong>
-        <p>Tackle your to-do list whenever you are with our mobile app.</p>
-        <button><img/></button>
-        <button><img/></button>
+        <p>Tackle your to-do list whenever you are with our mobile <br/> app.</p>
+        <a><img className="apple-btn" src="http://res.cloudinary.com/dezmnl5mf/image/upload/v1511656899/apple_store_p88mul.svg"/></a>
+        <a><img className="google-btn" src="http://res.cloudinary.com/dezmnl5mf/image/upload/v1511656896/google_play_badge_tbnnu4.svg"/></a>
       </div>
     </div>
   )
