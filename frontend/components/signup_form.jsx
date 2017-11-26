@@ -70,7 +70,7 @@ class SignupForm extends React.Component {
               <input type="text" value={this.state.zip_code} onChange={this.handleChange('zip_code')} className="Zip session-input"/>
               {this.handleErrorInput("Zip")}
             </fieldset>
-            <button>Create account</button>
+            <button className="btn-green">Create account</button>
           </form>
         </div>
       </div>

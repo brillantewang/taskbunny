@@ -1,0 +1,87 @@
+.splash-head {
+  background-image: url("http://res.cloudinary.com/dezmnl5mf/image/upload/v1511559914/splash_head_bg_u7fyvi.jpg");
+  background-size: 1500px 1000px;
+  height: 700px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+
+  h3 {
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+}
+
+.main-header {
+  text-align: center;
+}
+
+.splash-head-buttons {
+  margin-top: 25px;
+  width: 41%;
+  height: 110px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-between;
+  min-width: 600px;
+}
+
+.task-search {
+  margin-top: 18px;
+  padding: 12.5px;
+  padding-left: 50px;
+  line-height: 30px;
+  width: 530px;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.task-search-container {
+  position: relative;
+}
+
+.task-categories {
+  position: absolute;
+  width: 100%;
+  box-shadow: 1px 1px 6px $light-gray, -1px 1px 6px $light-gray;
+  background-color: white;
+  z-index: 1;
+}
+
+.task-category {
+  display: block;
+  padding: 12px 22px;
+  color: $green;
+  vertical-align: middle;
+}
+
+.task-category:hover {
+  background-color: #f9fafb;
+}
+
+.task-category-img {
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+  margin-right: 25px;
+}
+
+.fa-search {
+  position: absolute;
+  top: 36px;
+  left: 15px;
+  color: $green;
+  font-size: 18px;
+}
+
+.fa-times-circle {
+  position: absolute;
+  top: 36px;
+  right: 15px;
+  font-size: 20px;
+  color: $gray;
+  cursor: pointer;
+}

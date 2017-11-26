@@ -1,5 +1,6 @@
 import React from 'react';
 import { TrustIcon } from './trust_icon';
+import TaskDetailsForm from './task_details_form';
 
 export const TaskForm = () => {
   return (
@@ -11,10 +12,9 @@ export const TaskForm = () => {
       </ul>
       <div className="trust-banner">
         <TrustIcon/>
-        <p>
-          <strong>Trust & Safety Guarantee:</strong> $1MM insurance guarantee on every task.
-        </p>
+        <p><strong>Trust & Safety Guarantee:</strong> $1MM insurance guarantee on every task.</p>
       </div>
+      <TaskDetailsForm/>
     </div>
   )
 }

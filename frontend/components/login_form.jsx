@@ -51,7 +51,7 @@ class LoginForm extends React.Component {
               <label>Password</label>
               <input className="session-input" type="password" value={this.state.password} onChange={this.handleChange('password')}/>
             </fieldset>
-            <button>Log in</button>
+            <button className="btn-green">Log in</button>
             <a className="demo-login" onClick={this.handleDemo.bind(this)}>Demo login</a>
             <strong className="error-message">{this.props.errors[0]}</strong>
           </form>

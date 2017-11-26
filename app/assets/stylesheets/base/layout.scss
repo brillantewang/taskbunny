@@ -31,6 +31,15 @@ button:hover {
   color: white;
 }
 
+.btn-green {
+  color: white;
+  background-color: $green;
+}
+
+.btn-green:hover {
+  background-color: $dark-green;
+}
+
 a {
   color: $green;
 }
@@ -51,6 +60,10 @@ a:hover {
 h1 {
 	font-size: 46px;
 	font-style: normal;
+}
+
+h2 {
+  font-size: 32px;
 }
 
 h3 {
