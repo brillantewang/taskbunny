@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export const TaskCategories = ({ text }) => {
   const taskCategories = [
     { title: "Minor Repairs", img_url: "http://res.cloudinary.com/dezmnl5mf/image/upload/v1511562978/minor_repairs_bozruc.jpg" },
-    { title: "Mounting", img_url: "http://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_751,w_824,x_548,y_177/v1511562978/mounting_gcgft2.jpg" },
+    { title: "Mounting", img_url: "http://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_618,w_637,x_0,y_22/v1511572825/splash_body_img2_q8ekt9.jpg" },
     { title: "Assembly", img_url: "http://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_565,w_647/v1511562965/assemble_ikea_furniture_iidk4g.jpg" },
     { title: "Help Moving", img_url: "http://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_1125,w_1169,x_777/v1511562976/moving_ycbwmw.jpg" },
     { title: "Wait in Line", img_url: "http://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_720,w_756/v1511562987/wait_in_line_p6jeak.webp" },
