@@ -53,6 +53,15 @@ a:hover {
 	display: none;
 }
 
+.error-input {
+  border: 1px solid $orange;
+}
+
+.error-message {
+  font-size: 14px;
+  color: $orange;
+}
+
 /*
 	Font Elements
 */

@@ -7,7 +7,7 @@ import TaskDetailsForm from './task_details_form';
 class TaskForm extends React.Component {
   constructor(props) {
     super(props)
-    console.log(props);
+    console.log(props, 'props');
 
     this.location = {
       address: "",
@@ -28,6 +28,10 @@ class TaskForm extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleErrorInput = this.props.handleErrorInput.bind(this);
+    // console.log(this);
+    // console.log(this.props.handleErrorInput.bind(this));
+    // this.handleErrorInput('hey')
   }
 
   handleChange(type) {
@@ -46,17 +50,30 @@ class TaskForm extends React.Component {
     this.props.createTask(this.state);
   }
 
+  handleErrorInput(type) {
+    const regex = new RegExp(type);
+    const error = this.props.errors.filter(error => { return error.match(regex) })[0];
+    if (error) {
+      $(`.${type}`).addClass("error-input");
+      return (
+        <strong className="error-message">{error}</strong>
+      );
+    } else {
+      $(`.${type}`).removeClass("error-input");
+    }
+  }
+
   render() {
-    console.log(this.state);
     const MyTaskDetailsForm = (props) => {
       return (
         <TaskDetailsForm
           state={this.state}
-          address={this.location.address}
+          // address={this.location.address}
           unit={this.location.unit}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           errors={this.props.errors}
+          handleErrorInput={this.handleErrorInput.bind(this)}
           {...props}
         />
       );

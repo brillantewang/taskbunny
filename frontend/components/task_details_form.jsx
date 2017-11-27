@@ -14,10 +14,10 @@ class TaskDetailsForm extends React.Component {
         <form onSubmit={this.props.handleSubmit} className="location-details-form">
           <strong>YOUR TASK LOCATION</strong>
           <div className="location-details-form-inputs">
-            <input value={this.props.address} onChange={this.props.handleChange('address')} className="location-details-form-input1" type="text" placeholder="Enter street address"/>
+            <input value={this.props.address} onChange={this.props.handleChange('address')} className="location-details-form-input1 Location" type="text" placeholder="Enter street address"/>
             <input value={this.props.unit} onChange={this.props.handleChange('unit')} className="location-details-form-input2" type="text" placeholder="Unit or Apt #"/>
           </div>
-          {this.props.errors}
+          {this.props.handleErrorInput('Location')}
           <div className="save-button-container">
             <button className="btn-green">Continue</button>
           </div>
