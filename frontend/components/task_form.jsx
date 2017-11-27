@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import { TrustIcon } from './trust_icon';
 import { StatusBarWithRouter } from './status_bar';
 import TaskDetailsForm from './task_details_form';
+import { handleErrorInput } from '../util/errors_util';
 
 class TaskForm extends React.Component {
   constructor(props) {
@@ -28,10 +29,7 @@ class TaskForm extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.handleErrorInput = this.props.handleErrorInput.bind(this);
-    // console.log(this);
-    // console.log(this.props.handleErrorInput.bind(this));
-    // this.handleErrorInput('hey')
+    this.handleErrorInput = handleErrorInput.bind(this);
   }
 
   handleChange(type) {
@@ -50,19 +48,6 @@ class TaskForm extends React.Component {
     this.props.createTask(this.state);
   }
 
-  handleErrorInput(type) {
-    const regex = new RegExp(type);
-    const error = this.props.errors.filter(error => { return error.match(regex) })[0];
-    if (error) {
-      $(`.${type}`).addClass("error-input");
-      return (
-        <strong className="error-message">{error}</strong>
-      );
-    } else {
-      $(`.${type}`).removeClass("error-input");
-    }
-  }
-
   render() {
     const MyTaskDetailsForm = (props) => {
       return (
@@ -73,7 +58,7 @@ class TaskForm extends React.Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           errors={this.props.errors}
-          handleErrorInput={this.handleErrorInput.bind(this)}
+          handleErrorInput={this.handleErrorInput}
           {...props}
         />
       );

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { handleErrorInput } from '../util/errors_util';
+import classNames from 'classnames';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -8,13 +10,16 @@ class LoginForm extends React.Component {
       email: "",
       password: ""
     };
+
+    this.handleErrorInput = handleErrorInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemo = this.handleDemo.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
     this.props.login(this.state)
       .then(() => this.props.history.push('/dashboard'));
-    // $("input").addClass("error-input");
   }
 
   handleChange(type) {
@@ -30,30 +35,33 @@ class LoginForm extends React.Component {
   }
 
   componentWillMount() {
-    console.log('component will mount');
     this.props.removeErrors();
   }
 
   render() {
-    if (this.props.errors[0]) {
-      $("input").addClass("error-input");
-    }
+    const errorModalClassName = classNames({
+      hidden: this.props.errors.length === 0 || this.props.errors.length > 0 && !this.props.errors[0].includes("Incorrect")
+    })
 
     return (
       <div className="session-form-page">
+        <div id="error-modal" className={errorModalClassName} onClick={this.props.removeErrors}>
+          <strong>{this.props.errors}</strong>
+        </div>
         <div className="session-form-container">
-          <form onSubmit={this.handleSubmit.bind(this)} className="session-form">
+          <form onSubmit={this.handleSubmit} className="session-form">
             <fieldset>
               <label>Email Address</label>
-              <input className="session-input" type="text" value={this.state.email} onChange={this.handleChange('email')}/>
+              <input className="Email session-input" type="text" value={this.state.email} onChange={this.handleChange('email')}/>
+              {this.handleErrorInput("Email")}
             </fieldset>
             <fieldset>
               <label>Password</label>
-              <input className="session-input" type="password" value={this.state.password} onChange={this.handleChange('password')}/>
+              <input className="Password session-input" type="password" value={this.state.password} onChange={this.handleChange('password')}/>
+              {this.handleErrorInput("Password")}
             </fieldset>
             <button className="btn-green">Log in</button>
-            <a className="demo-login" onClick={this.handleDemo.bind(this)}>Demo login</a>
-            <strong className="error-message">{this.props.errors[0]}</strong>
+            <a className="demo-login" onClick={this.handleDemo}>Demo login</a>
           </form>
         </div>
       </div>

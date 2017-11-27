@@ -1,5 +1,11 @@
 class Api::SessionsController < ApplicationController
   def create
+    # invalid email or password
+
+    # Email can't be blank
+    # Password can't be blank
+    errors = []
+
     @user = User.find_by_credentials(
       params[:user][:email],
       params[:user][:password]
@@ -9,7 +15,10 @@ class Api::SessionsController < ApplicationController
       log_in!(@user)
       render :show
     else
-      render json: ["Invalid credentials"], status: 404
+      errors << "Email can't be blank" if params[:user][:email].empty?
+      errors << "Password can't be blank" if params[:user][:password].empty?
+      errors = ["Incorrect email or password"] if errors.empty?
+      render json: errors, status: 404
     end
   end
 

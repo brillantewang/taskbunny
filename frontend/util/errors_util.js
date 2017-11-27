@@ -1,4 +1,6 @@
-export const handleErrorInput = type => {
+import React from 'react';
+
+export const handleErrorInput = function (type) {
   const regex = new RegExp(type);
   console.log(this);
   const error = this.props.errors.filter(error => { return error.match(regex) })[0];
