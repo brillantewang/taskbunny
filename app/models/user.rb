@@ -6,7 +6,7 @@
 #  email                  :string           not null
 #  password_digest        :string           not null
 #  session_token          :string           not null
-#  is_tasker              :boolean          not null
+#  is_tasker              :boolean          default(FALSE), not null
 #  num_of_reviews         :integer
 #  num_of_completed_tasks :integer
 #  percent_positive       :integer
@@ -14,6 +14,9 @@
 #  price_per_hour         :integer
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  first_name             :string           not null
+#  last_name              :string           not null
+#  zip_code               :integer          not null
 #
 
 class User < ApplicationRecord
@@ -23,6 +26,16 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }, allow_nil: true
 
   after_initialize :ensure_session_token
+
+  has_many :user_tasks,
+    class_name: :Task,
+    primary_key: :id,
+    foreign_key: :user_id
+
+  has_many :tasker_tasks,
+    class_name: :Task,
+    primary_key: :id,
+    foreign_key: :tasker_id
 
   attr_reader :password
 
