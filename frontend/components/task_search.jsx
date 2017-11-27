@@ -37,6 +37,7 @@ class TaskSearch extends React.Component {
   }
 
   render() {
+    console.log('task-search rendering');
     return (
       <div className="task-search-container">
         <i className="fa fa-search" aria-hidden="true"></i>

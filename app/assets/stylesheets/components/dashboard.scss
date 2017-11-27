@@ -1,0 +1,31 @@
+.dashboard {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ background-color: $lightest-gray;
+}
+
+.dashboard-head {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+
+  h2 {
+    font-weight: 400;
+  }
+
+  .task-search {
+    width: 730px;
+    line-height: 24px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .fa-search {
+    top: 32px;
+  }
+
+  .fa-times-circle {
+    top: 32px;
+  }
+}
