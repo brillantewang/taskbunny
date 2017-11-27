@@ -1,6 +1,6 @@
 import React from 'react';
 import { TaskCategories } from './task_categories';
-import TaskSearch from './task_search';
+import TaskSearchWithRouter from './task_search';
 
 export const SplashHead = ({ text, handleChange }) => {
   return (
@@ -15,7 +15,7 @@ export const SplashHead = ({ text, handleChange }) => {
         <button>Mounting & installation</button>
         <button>Yard work</button>
       </ul>
-      <TaskSearch/>
+      <TaskSearchWithRouter/>
     </div>
   )
 }

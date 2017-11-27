@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBarContainer from './nav_bar_container';
-import TaskSearch from './task_search';
+import TaskSearchWithRouter from './task_search';
 import classNames from 'classnames';
 
 class Dashboard extends React.Component {
@@ -28,7 +28,7 @@ class Dashboard extends React.Component {
         <NavBarContainer/>
         <div className="dashboard-head">
           <h2>Welcome back, {this.props.currentUser.first_name}.</h2>
-          <TaskSearch/>
+          <TaskSearchWithRouter/>
         </div>
       </div>
     )

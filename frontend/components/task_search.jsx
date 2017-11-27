@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { TaskCategories } from './task_categories';
 
 class TaskSearch extends React.Component {
@@ -41,7 +42,13 @@ class TaskSearch extends React.Component {
     return (
       <div className="task-search-container">
         <i className="fa fa-search" aria-hidden="true"></i>
-        <input className="task-search search" type="text" value={this.state.text} onChange={this.handleChange} placeholder="Need something different?"/>
+        <input
+          className="task-search search"
+          type="text"
+          value={this.state.text}
+          onChange={this.handleChange}
+          placeholder="Need something different?"
+        />
         <i onClick={this.resetState} id="input-canceler" className="fa fa-times-circle hidden" aria-hidden="true"></i>
         <TaskCategories text={this.state.text}/>
       </div>
@@ -49,4 +56,6 @@ class TaskSearch extends React.Component {
   }
 }
 
-export default TaskSearch;
+const TaskSearchWithRouter = withRouter(TaskSearch);
+
+export default TaskSearchWithRouter;
