@@ -3,33 +3,30 @@ import React from 'react';
 class TaskDetailsForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      address: "",
-      unit: ""
-    }
+    console.log(props);
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-
-    const location = `${this.state.address} ${this.state.unit}`;
-    this.props.createTask({ location });
-  }
-
-  handleChange(type) {
-    return e => { this.setState({ [type]: e.target.value }) }
-  }
+  // handleSubmit(e) {
+  //   e.preventDefault();
+  //
+  //   const location = `${this.state.address} ${this.state.unit}`;
+  //   this.props.createTask({ location });
+  // }
+  //
+  // handleChange(type) {
+  //   return e => { this.setState({ [type]: e.target.value }) }
+  // }
 
   render() {
     return (
       <div className="task-details-form">
         <h2>Describe Your Task</h2>
         <h3>We need these inputs to show only qualified and available Taskers for the job.</h3>
-        <form className="location-details-form">
+        <form onSubmit={this.props.handleSubmit} className="location-details-form">
           <strong>YOUR TASK LOCATION</strong>
           <div className="location-details-form-inputs">
-            <input className="location-details-form-input1" type="text" placeholder="Enter street address"/>
-            <input className="location-details-form-input2" type="text" placeholder="Unit or Apt #"/>
+            <input value={this.props.address} onChange={this.props.handleChange('address')} className="location-details-form-input1" type="text" placeholder="Enter street address"/>
+            <input value={this.props.unit} onChange={this.props.handleChange('unit')} className="location-details-form-input2" type="text" placeholder="Unit or Apt #"/>
           </div>
           {this.props.errors}
           <div className="save-button-container">
