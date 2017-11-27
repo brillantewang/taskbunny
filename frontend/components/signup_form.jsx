@@ -72,6 +72,9 @@ class SignupForm extends React.Component {
               {this.handleErrorInput("Zip")}
             </fieldset>
             <button className="btn-green">Create account</button>
+            <div className="extras signup-extras">
+              <p>Already have an account? <Link to="/login">Log in</Link></p>
+            </div>
           </form>
         </div>
       </div>

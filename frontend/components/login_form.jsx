@@ -63,7 +63,10 @@ class LoginForm extends React.Component {
               {this.handleErrorInput("Password")}
             </fieldset>
             <button className="btn-green">Log in</button>
-            <a className="demo-login" onClick={this.handleDemo}>Demo login</a>
+            <div className="extras login-extras">
+              <a className="demo-login" onClick={this.handleDemo}>Demo login</a>
+              <p>Don't have an account? <Link to="/signup">Sign up</Link></p>
+            </div>
           </form>
         </div>
       </div>
