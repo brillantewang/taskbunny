@@ -48,7 +48,7 @@ class LoginForm extends React.Component {
       <div className="session-form-page">
         <div id="error-modal" className={errorModalClassName} onClick={this.props.removeErrors}>
           <strong>{this.props.errors}</strong>
-          <i class="fa fa-times" aria-hidden="true"></i>
+          <i className="fa fa-times" aria-hidden="true"></i>
         </div>
         <div className="session-form-container">
           <form onSubmit={this.handleSubmit} className="session-form">
