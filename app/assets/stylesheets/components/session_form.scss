@@ -45,14 +45,14 @@
   }
 }
 
-.demo-login {
-  margin-bottom: 10px;
-}
-
 .extras {
   width: 100%;
   display: flex;
   color: $dark-gray;
+
+  a {
+    color: $dark-green;
+  }
 }
 
 .login-extras {
