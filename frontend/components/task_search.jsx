@@ -38,7 +38,7 @@ class TaskSearch extends React.Component {
   }
 
   render() {
-    console.log('task-search rendering');
+    console.log(this.props);
     return (
       <div className="task-search-container">
         <i className="fa fa-search" aria-hidden="true"></i>
@@ -47,7 +47,7 @@ class TaskSearch extends React.Component {
           type="text"
           value={this.state.text}
           onChange={this.handleChange}
-          placeholder="Need something different?"
+          placeholder={this.props.location.pathname === "/dashboard" ? "What do you need help with?" : "Need something different?" }
         />
         <i onClick={this.resetState} id="input-canceler" className="fa fa-times-circle hidden" aria-hidden="true"></i>
         <TaskCategories text={this.state.text}/>
