@@ -3,10 +3,15 @@
   justify-content: space-around;
   font-weight: 400;
   padding: 16px 112px;
+  color: $gray;
 
   li {
     text-align: center;
   }
+}
+
+.current-page {
+  color: black;
 }
 
 .trust-banner {

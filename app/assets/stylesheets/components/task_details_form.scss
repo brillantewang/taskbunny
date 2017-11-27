@@ -22,6 +22,7 @@
   display: flex;
   flex-direction: column;
   padding: 25px;
+  box-shadow: 1px 1px 6px $light-gray, -1px 1px 6px $light-gray;
 
   button {
     font-size: 20px;

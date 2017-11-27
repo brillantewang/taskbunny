@@ -32,12 +32,12 @@ export const TaskCategories = ({ text }) => {
 
   if (text === "" ) {
     return (
-      <div className="task-categories hidden">
+      <div id="task-categories" className="hidden">
         {taskCategories.slice(0, 4).map(taskCategory => {
           return (
-            <Link to="link" key={taskCategory.title} className="task-category">
-              <img className="task-category-img" src={taskCategory.img_url}/>
-              <strong className="task-category-title">{taskCategory.title}</strong>
+            <Link to="link" key={taskCategory.title} className="task-category search">
+              <img className="task-category-img search" src={taskCategory.img_url}/>
+              <strong className="task-category-title search">{taskCategory.title}</strong>
             </Link>
           )
         })}
@@ -50,12 +50,12 @@ export const TaskCategories = ({ text }) => {
     })
 
     return (
-      <div className="task-categories hidden">
+      <div id="task-categories" className="hidden">
         {matchedCategories.slice(0, 4).map(taskCategory => {
           return (
-            <Link to="/link" key={taskCategory.title} className="task-category">
-              <img className="task-category-img" src={taskCategory.img_url}/>
-              <strong className="task-category-title">{taskCategory.title}</strong>
+            <Link to="/link" key={taskCategory.title} className="task-category search">
+              <img className="task-category-img search" src={taskCategory.img_url}/>
+              <strong className="task-category-title search">{taskCategory.title}</strong>
             </Link>
           )
         })}

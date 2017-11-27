@@ -5,6 +5,7 @@ import { TaskCategories } from './task_categories';
 import { SplashHead } from './splash_head';
 import { SplashBody } from './splash_body';
 import NavBarContainer from './nav_bar_container';
+import classNames from 'classnames';
 
 class SplashPage extends React.Component {
   constructor(props) {
@@ -19,10 +20,11 @@ class SplashPage extends React.Component {
   }
 
   toggleInputCanceler() {
-    if (this.state.text === "" ) {
-      $(".fa-times-circle").addClass("hidden");
+    const inputCanceler = document.getElementById("input-canceler");
+    if (this.state.text === "") {
+      inputCanceler.classList.add("hidden");
     } else {
-      $(".fa-times-circle").removeClass("hidden");
+      inputCanceler.classList.remove("hidden");
     }
   }
 
@@ -33,32 +35,22 @@ class SplashPage extends React.Component {
     );
   }
 
+  resetState() {
+    this.setState(
+      { text: "" },
+      this.toggleInputCanceler
+    )
+  }
+
   handleClick(e) {
-    const node = $(e.target);
-    console.log(node.attr('class'));
-    switch(node.attr('class')) {
-      case "task-search":
-        $(".task-categories").removeClass("hidden");
-        break;
-      case "task-category":
-        $(".task-categories").removeClass("hidden");
-        break;
-      case "task-category-img":
-        $(".task-categories").removeClass("hidden");
-        break;
-      case "task-category-title":
-        $(".task-categories").removeClass("hidden");
-        break;
-      case "fa fa-times-circle":
-        this.setState(
-          { text: "" },
-          this.toggleInputCanceler
-        );
-        $(".task-categories").addClass("hidden");
-        break;
-      default:
-        $(".task-categories").addClass("hidden");
-    }
+    const nodeClasses= e.target.classList;
+    console.log(nodeClasses);
+    if (nodeClasses.contains("fa-times-circle")) this.resetState();
+    const taskCategoriesClass = classNames({
+      'hidden': !nodeClasses.contains("search")
+    })
+
+    document.getElementById('task-categories').className = taskCategoriesClass;
   }
 
   render() {
