@@ -7,6 +7,7 @@ import TaskDetailsForm from './task_details_form';
 class TaskForm extends React.Component {
   constructor(props) {
     super(props)
+    console.log(props);
 
     this.location = {
       address: "",
@@ -55,6 +56,7 @@ class TaskForm extends React.Component {
           unit={this.location.unit}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
+          errors={this.props.errors}
           {...props}
         />
       );

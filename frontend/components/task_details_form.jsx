@@ -6,17 +6,6 @@ class TaskDetailsForm extends React.Component {
     console.log(props);
   }
 
-  // handleSubmit(e) {
-  //   e.preventDefault();
-  //
-  //   const location = `${this.state.address} ${this.state.unit}`;
-  //   this.props.createTask({ location });
-  // }
-  //
-  // handleChange(type) {
-  //   return e => { this.setState({ [type]: e.target.value }) }
-  // }
-
   render() {
     return (
       <div className="task-details-form">

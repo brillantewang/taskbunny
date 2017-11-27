@@ -9,4 +9,13 @@ class Api::TasksController < ApplicationController
       render json: @task.errors.full_messages, status: 422
     end
   end
+
+  private
+
+  def task_params
+    params.require(:task).permit(
+      :type, :date, :time, :location, :description, :vehicle_needed,
+      :user_id, :tasker_id, :complete
+    )
+  end
 end

@@ -19,6 +19,9 @@ export const createTask = task => dispatch => (
   taskFormAPIUtil.createTask(task)
     .then(
       taskRes => dispatch(receiveTask(taskRes)),
-      errors => dispatch(receiveTaskErrors(errors))
+      errors => {
+        console.log(errors);
+        dispatch(receiveTaskErrors(errors.responseJSON))
+      }
     )
 )
