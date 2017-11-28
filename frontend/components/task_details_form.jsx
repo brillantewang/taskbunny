@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class TaskDetailsForm extends React.Component {
   constructor(props) {
@@ -73,7 +74,7 @@ class TaskDetailsForm extends React.Component {
 
   render() {
     return (
-      <div className="task-details-form">
+      <div className="task-details-form task-form-subform">
         <h2>Describe Your Task</h2>
         <h3>We need these inputs to show only qualified and available Taskers for the job.</h3>
         <form onClick={this.handleClick("Location")} className="task-details-subform location-details-form">
@@ -157,7 +158,7 @@ class TaskDetailsForm extends React.Component {
               {/* {this.props.handleErrorInput('Description')} */}
               <p>If you need two or more Taskers, please post additional tasks for each Tasker needed.</p>
               <div className="save-button-container">
-                <button disabled="true" id="details-final-submit" onClick={this.handleSubFormSubmit("Description")} className="btn-green">See Taskers & Prices</button>
+                <Link to="/task-form/taskers"><button disabled="true" id="details-final-submit" onClick={this.handleSubFormSubmit("Description")} className="btn-green">See Taskers & Prices</button></Link>
               </div>
             </div>
           </div>
