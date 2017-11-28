@@ -27,10 +27,22 @@ button {
 	transition: background-color 0.2s;
 }
 
-button:hover {
+button:hover:enabled {
 	background-color: $dark-green;
   border-color: $dark-green;
   color: white;
+}
+
+button:disabled {
+  cursor: default;
+  background-color: $gray;
+  border: 1px solid $gray;
+}
+
+button:hover:disabled {
+  cursor: default;
+  background-color: $gray;
+  border: 1px solid $gray;
 }
 
 .btn-green {

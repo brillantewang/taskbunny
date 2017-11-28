@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { createTask } from '../actions/task_form_actions';
 import TaskForm from './task_form';
 import { handleErrorInput } from '../util/errors_util.js';
+import { removeErrors } from '../actions/session_actions';
 
 const mapStateToProps = state => ({
   errors: state.errors.task
@@ -9,6 +10,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   createTask: task => dispatch(createTask(task)),
+  removeErrors: () => dispatch(removeErrors()),
   // handleErrorInput: handleErrorInput
 })
 

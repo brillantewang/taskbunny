@@ -60,6 +60,7 @@ class TaskForm extends React.Component {
           handleSubmit={this.handleSubmit}
           errors={this.props.errors}
           handleErrorInput={this.handleErrorInput}
+          removeErrors={this.props.removeErrors}
           {...props}
         />
       );

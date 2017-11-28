@@ -5,6 +5,7 @@ class TaskDetailsForm extends React.Component {
     super(props);
 
     this.handleSubFormSubmit = this.handleSubFormSubmit.bind(this);
+    // this.props.removeErrors = this.props.removeErrors.bind(this);
   }
 
   collapse(subFormId, nextSubFormId) {
@@ -14,16 +15,34 @@ class TaskDetailsForm extends React.Component {
     // console.log(subForm, 'subform');
     // console.log(nextSubFormId, 'nextsubform-id');
     // console.log(nextSubForm, 'nextsubform');
-    if (this.props.handleErrorInput(subFormId) === undefined) {
-      subForm.classList.add("hidden");
-      nextSubForm.classList.remove("hidden")
-    }
+
+    return new Promise((resolve, reject) => {
+      if (this.props.handleErrorInput(subFormId) === undefined) {
+        subForm.classList.add("hidden");
+        nextSubForm.classList.remove("hidden");
+        resolve();
+      } else {
+        reject();
+      }
+    })
   }
 
   handleSubFormSubmit(subFormId, nextSubFormId) {
     return e => {
       this.props.handleSubmit(e)
-        .then(null, () => this.collapse(subFormId, nextSubFormId))
+        .then(null, () => {
+          this.collapse(subFormId, nextSubFormId)
+            .then(() => this.props.removeErrors())
+        })
+    }
+  }
+
+  componentDidUpdate() {
+    const finalBtn = document.getElementById("details-final-submit");
+    if (this.props.state.location === " " || this.props.state.description === "") {
+      finalBtn.disabled = true;
+    } else {
+      finalBtn.disabled = false;
     }
   }
 
@@ -127,7 +146,7 @@ class TaskDetailsForm extends React.Component {
               {this.props.handleErrorInput('Description')}
               <p>If you need two or more Taskers, please post additional tasks for each Tasker needed.</p>
               <div className="save-button-container">
-                <button onClick={this.handleSubFormSubmit("Description")} className="btn-green">See Taskers & Prices</button>
+                <button disabled="true" id="details-final-submit" onClick={this.handleSubFormSubmit("Description")} className="btn-green">See Taskers & Prices</button>
               </div>
             </div>
           </div>
@@ -137,4 +156,6 @@ class TaskDetailsForm extends React.Component {
   }
 }
 
+// disabled={`${ this.props.state.location === "" || this.props.state.description === "" }`}
+// {this.props.state.location !== "" && this.props.state.description !== "" ? "disabled" : "" }
 export default TaskDetailsForm;
