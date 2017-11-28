@@ -35,18 +35,20 @@ class TaskDetailsForm extends React.Component {
         </form>
         <form className="task-details-subform vehicle-details-form">
           <strong>VEHICLE REQUIREMENTS</strong>
-          <span className="vehicle-option">
-            <input type="radio"/>
-            <label><strong>Not needed</strong> for task</label>
-          </span>
-          <span className="vehicle-option">
-            <input type="radio"/>
-            <label>Task requires a <strong>car</strong></label>
-          </span>
-          <span className="vehicle-option">
-            <input type="radio"/>
-            <label>Task requires a <strong>truck</strong></label>
-          </span>
+          <div className="vehicle-details-form-inputs">
+            <span className="vehicle-option">
+              <input type="radio"/>
+              <label><strong>Not needed</strong> for task</label>
+            </span>
+            <span className="vehicle-option">
+              <input type="radio"/>
+              <label>Task requires a <strong>car</strong></label>
+            </span>
+            <span className="vehicle-option">
+              <input type="radio"/>
+              <label>Task requires a <strong>truck</strong></label>
+            </span>
+          </div>
         </form>
       </div>
     )

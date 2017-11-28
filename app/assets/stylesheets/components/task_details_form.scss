@@ -63,16 +63,24 @@
   margin-top: 25px
 }
 
-.vehicle-details-form {
+.vehicle-details-form-inputs {
+  display: flex;
+  flex-direction: column;
+  margin-top: 27px;
+
   input {
     width: 14px;
     margin-right: 8px;
+    margin-bottom: 5px;
   }
 
-}
-
-.vehicle-option {
   strong {
     font-weight: 400;
   }
 }
+
+// .vehicle-option {
+//   strong {
+//     font-weight: 400;
+//   }
+// }
