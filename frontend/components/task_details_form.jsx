@@ -44,6 +44,15 @@ class TaskDetailsForm extends React.Component {
     } else {
       finalBtn.disabled = false;
     }
+
+    // const locationSubForm = document.getElementById("Location");
+    // const locationText = document.getElementById("location-text")
+    // console.log(locationText, 'text');
+    // console.log(locationSubForm, 'subform');
+    // console.log(locationSubForm.classList.contains("hidden"));
+    // if (locationSubForm.classList.contains("hidden")) {
+    //   locationText.classList.remove("hidden")
+    // }
   }
 
   handleClick(subFormId) {
@@ -69,6 +78,7 @@ class TaskDetailsForm extends React.Component {
         <h3>We need these inputs to show only qualified and available Taskers for the job.</h3>
         <form onClick={this.handleClick("Location")} className="task-details-subform location-details-form">
           <strong className="task-subform-header">YOUR TASK LOCATION</strong>
+          <p id="location-text" className="hidden">{`${this.props.state.location}` || "Location can't be blank"}</p>
           <div id="Location">
             <div className="location-details-form-inputs">
               <input
@@ -94,14 +104,15 @@ class TaskDetailsForm extends React.Component {
         </form>
         <form onClick={this.handleClick("Vehicle")} className="task-details-subform vehicle-details-form">
           <strong className="task-subform-header">VEHICLE REQUIREMENTS</strong>
+          <p className="hidden">{`${this.props.state.vehicle_requirements}`}</p>
           <div id="Vehicle" className="hidden">
             <div className="vehicle-details-form-inputs">
               <span className="vehicle-option">
                 <input
                   id="no-vehicle"
                   type="radio"
-                  value=""
-                  checked={this.props.state.vehicle_requirements === ""}
+                  value="No vehicle needed"
+                  checked={this.props.state.vehicle_requirements === "No vehicle needed"}
                   onChange={this.props.handleChange("vehicle_requirements")}
                 />
                 <label htmlFor="no-vehicle"><strong>Not needed</strong> for task</label>

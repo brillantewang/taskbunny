@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import { TrustIcon } from './trust_icon';
 import { StatusBarWithRouter } from './status_bar';
 import TaskDetailsForm from './task_details_form';
+import PickTaskerForm from './pick_tasker_form';
 import { handleErrorInput } from '../util/errors_util';
 
 class TaskForm extends React.Component {
@@ -67,6 +68,23 @@ class TaskForm extends React.Component {
       );
     }
 
+    const MyPickTaskerForm = (props) => {
+      return (
+        <PickTaskerForm
+          state={this.state}
+          // address={this.location.address}
+          // unit={this.location.unit}
+          // location={this.state.location}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          errors={this.props.errors}
+          handleErrorInput={this.handleErrorInput}
+          removeErrors={this.props.removeErrors}
+          {...props}
+        />
+      );
+    }
+
     return (
       <div>
         <StatusBarWithRouter/>
@@ -75,6 +93,7 @@ class TaskForm extends React.Component {
           <p><strong>Trust & Safety Guarantee:</strong> $1MM insurance guarantee on every task.</p>
         </div>
         <Route path="/task-form/details" render={MyTaskDetailsForm}/>
+        <Route path="/task-form/taskers" render={MyPickTaskerForm}/>
       </div>
     )
   }
