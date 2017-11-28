@@ -69,7 +69,6 @@ class TaskDetailsForm extends React.Component {
         <h3>We need these inputs to show only qualified and available Taskers for the job.</h3>
         <form onClick={this.handleClick("Location")} className="task-details-subform location-details-form">
           <strong className="task-subform-header">YOUR TASK LOCATION</strong>
-          <p>Can't be blank</p>
           <div id="Location">
             <div className="location-details-form-inputs">
               <input
@@ -89,7 +88,7 @@ class TaskDetailsForm extends React.Component {
             </div>
             {this.props.handleErrorInput('Location')}
             <div className="save-button-container">
-              <button onClick={this.handleSubFormSubmit("Location", "Vehicle")} className="btn-green">Continue</button>
+              <button onClick={this.handleSubFormSubmit("Location", "Vehicle")} className="btn-green">Save</button>
             </div>
           </div>
         </form>
@@ -129,7 +128,7 @@ class TaskDetailsForm extends React.Component {
               </span>
             </div>
             <div className="save-button-container">
-              <button onClick={this.handleSubFormSubmit("Vehicle", "Description")} className="btn-green">Continue</button>
+              <button onClick={this.handleSubFormSubmit("Vehicle", "Description")} className="btn-green">Save</button>
             </div>
           </div>
         </form>
