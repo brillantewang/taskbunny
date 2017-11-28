@@ -1,0 +1,30 @@
+.pick-tasker-form-content {
+  display: flex;
+
+  strong {
+    font-weight: 400;
+    vertical-align: middle;
+  }
+
+  div {
+    background-color: white;
+    border: 1px solid $gray;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+  }
+}
+
+.date-time-picker {
+  margin-right: 40px;
+
+  select {
+    margin-top: 15px;
+    margin-bottom: 30px;
+  }
+}
+
+.fa-clock-o {
+  font-size: 25px;
+  margin-right: 5px;
+}
