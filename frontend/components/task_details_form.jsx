@@ -10,10 +10,10 @@ class TaskDetailsForm extends React.Component {
   collapse(subFormId, nextSubFormId) {
     const subForm = document.getElementById(subFormId);
     const nextSubForm = document.getElementById(nextSubFormId);
-    console.log(subFormId, 'subform-id');
-    console.log(subForm, 'subform');
-    console.log(nextSubFormId, 'nextsubform-id');
-    console.log(nextSubForm, 'nextsubform');
+    // console.log(subFormId, 'subform-id');
+    // console.log(subForm, 'subform');
+    // console.log(nextSubFormId, 'nextsubform-id');
+    // console.log(nextSubForm, 'nextsubform');
     if (this.props.handleErrorInput(subFormId) === undefined) {
       subForm.classList.add("hidden");
       nextSubForm.classList.remove("hidden")
@@ -27,12 +27,28 @@ class TaskDetailsForm extends React.Component {
     }
   }
 
+  handleClick(subFormId) {
+    const subFormIds = ["Location", "Vehicle", "Description"];
+
+    return e => {
+      const clickedSubForm = document.getElementById(subFormId);
+      const otherSubForms = subFormIds.filter(subId => {
+        return subId !== subFormId
+      }).map(subId => document.getElementById(subId))
+
+      clickedSubForm.classList.remove("hidden");
+      otherSubForms.forEach(subForm => {
+        subForm.classList.add("hidden")
+      })
+    }
+  }
+
   render() {
     return (
       <div className="task-details-form">
         <h2>Describe Your Task</h2>
         <h3>We need these inputs to show only qualified and available Taskers for the job.</h3>
-        <form className="task-details-subform location-details-form">
+        <form onClick={this.handleClick("Location")} className="task-details-subform location-details-form">
           <strong>YOUR TASK LOCATION</strong>
           <div id="Location">
             <div className="location-details-form-inputs">
@@ -57,7 +73,7 @@ class TaskDetailsForm extends React.Component {
             </div>
           </div>
         </form>
-        <form className="task-details-subform vehicle-details-form">
+        <form onClick={this.handleClick("Vehicle")} className="task-details-subform vehicle-details-form">
           <strong>VEHICLE REQUIREMENTS</strong>
           <div id="Vehicle" className="hidden">
             <div className="vehicle-details-form-inputs">
@@ -97,20 +113,22 @@ class TaskDetailsForm extends React.Component {
             </div>
           </div>
         </form>
-        <form onSubmit={this.props.handleSubmit} className="task-details-subform description-details-form">
+        <form onClick={this.handleClick("Description")} onSubmit={this.props.handleSubmit} className="task-details-subform description-details-form">
           <strong>TELL US ABOUT YOUR TASK</strong>
           <div id="Description" className="hidden">
-            <p>Tell us what you need done, plus any requirements or questions that you may have. You can edit this later.</p>
-            <textarea
-              value={this.props.state.description}
-              onChange={this.props.handleChange('description')}
-              className="description-details-form-textarea Description"
-              placeholder="EXAMPLE: I rented a moving van, but need help moving my stuff in and out of it. I have: queen bed with frame, medium couch, loveseat, entertainment center, large TV, armchair, 2 bookcases, dining room table with 4 chairs, desk and chair, and about 50 boxes.">
-            </textarea>
-            {this.props.handleErrorInput('Description')}
-            <p>If you need two or more Taskers, please post additional tasks for each Tasker needed.</p>
-            <div className="save-button-container">
-              <button onClick={this.handleSubFormSubmit("Description")} className="btn-green">See Taskers & Prices</button>
+            <div className="description-details-form-content">
+              <p>Tell us what you need done, plus any requirements or questions that you may have. You can edit this later.</p>
+              <textarea
+                value={this.props.state.description}
+                onChange={this.props.handleChange('description')}
+                className="description-details-form-textarea Description"
+                placeholder="EXAMPLE: I rented a moving van, but need help moving my stuff in and out of it. I have: queen bed with frame, medium couch, loveseat, entertainment center, large TV, armchair, 2 bookcases, dining room table with 4 chairs, desk and chair, and about 50 boxes.">
+              </textarea>
+              {this.props.handleErrorInput('Description')}
+              <p>If you need two or more Taskers, please post additional tasks for each Tasker needed.</p>
+              <div className="save-button-container">
+                <button onClick={this.handleSubFormSubmit("Description")} className="btn-green">See Taskers & Prices</button>
+              </div>
             </div>
           </div>
         </form>
