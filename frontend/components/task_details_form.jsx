@@ -37,17 +37,35 @@ class TaskDetailsForm extends React.Component {
           <strong>VEHICLE REQUIREMENTS</strong>
           <div className="vehicle-details-form-inputs">
             <span className="vehicle-option">
-              <input type="radio"/>
+              <input
+                type="radio"
+                value=""
+                checked={this.props.state.vehicle_requirements === ""}
+                onChange={this.props.handleChange("vehicle_requirements")}
+              />
               <label><strong>Not needed</strong> for task</label>
             </span>
             <span className="vehicle-option">
-              <input type="radio"/>
+              <input
+                type="radio"
+                value="A car is needed"
+                checked={this.props.state.vehicle_requirements === "A car is needed"}
+                onChange={this.props.handleChange("vehicle_requirements")}
+              />
               <label>Task requires a <strong>car</strong></label>
             </span>
             <span className="vehicle-option">
-              <input type="radio"/>
+              <input
+                type="radio"
+                value="A truck is needed"
+                checked={this.props.state.vehicle_requirements === "A truck is needed"}
+                onChange={this.props.handleChange("vehicle_requirements")}
+              />
               <label>Task requires a <strong>truck</strong></label>
             </span>
+          </div>
+          <div className="save-button-container">
+            <button className="btn-green">Continue</button>
           </div>
         </form>
       </div>

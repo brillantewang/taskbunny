@@ -8,7 +8,6 @@ import { handleErrorInput } from '../util/errors_util';
 class TaskForm extends React.Component {
   constructor(props) {
     super(props)
-    console.log(props, 'props');
 
     this.location = {
       address: "",
@@ -21,7 +20,7 @@ class TaskForm extends React.Component {
       time: "",
       location: "",
       description: "",
-      vehicle_needed: "",
+      vehicle_requirements: "",
       user_id: "",
       tasker_id: "",
       complete: ""
@@ -49,6 +48,8 @@ class TaskForm extends React.Component {
   }
 
   render() {
+    console.log(this.state);
+
     const MyTaskDetailsForm = (props) => {
       return (
         <TaskDetailsForm
