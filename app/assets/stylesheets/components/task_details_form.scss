@@ -28,6 +28,11 @@
     font-size: 20px;
     color: $off-white;
   }
+
+  strong {
+    color: $dark-gray;
+    font-weight: 400;
+  }
 }
 
 .location-details-form-inputs {
@@ -79,8 +84,21 @@
   }
 }
 
-// .vehicle-option {
-//   strong {
-//     font-weight: 400;
-//   }
-// }
+.description-details-form-textarea {
+  height: 150px;
+  border: 1px solid $gray;
+  padding: 6px 12px;
+  border-radius: 3px;
+  line-height: 1.5em;
+}
+
+.description-details-form-textarea::-webkit-input-placeholder {
+  font-size: 16px;
+}
+
+.description-details-form {
+  p {
+    margin-top: 15px;
+    margin-bottom: 20px;
+  }
+}
