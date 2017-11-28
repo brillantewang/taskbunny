@@ -1,7 +1,7 @@
 .status-bar {
   display: flex;
   justify-content: space-around;
-  font-weight: 400;
+  font-weight: 300;
   padding: 16px 112px;
   color: $gray;
 
@@ -12,6 +12,7 @@
 
 .current-page {
   color: black;
+  font-weight: 400;
 }
 
 .trust-banner {

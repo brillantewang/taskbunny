@@ -44,7 +44,7 @@ class TaskForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createTask(this.state);
+    return this.props.createTask(this.state)
   }
 
   render() {
