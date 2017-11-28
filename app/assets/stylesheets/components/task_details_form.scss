@@ -30,16 +30,27 @@
     color: $off-white;
   }
 
-  strong {
-    color: $dark-gray;
-    font-weight: 400;
-  }
+  // strong {
+  //   color: $dark-gray;
+  //   font-weight: 400;
+  // }
+  //
+  // .error-message {
+  //   font-size: 14px;
+  //   color: $orange;
+  //   font-weight: 300;
+  // }
+}
+
+.task-subform-header {
+  color: $dark-gray;
+  font-weight: 400;
 }
 
 .location-details-form-inputs {
   display: flex;
   margin-top: 27px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 
   input {
     width: 100%;
@@ -66,6 +77,7 @@
 .save-button-container {
   display: flex;
   justify-content: center;
+  margin-top: 40px;
 }
 
 .vehicle-details-form-inputs {
@@ -92,6 +104,7 @@
   padding: 6px 12px;
   border-radius: 3px;
   line-height: 1.5em;
+  margin-top: 20px;
 }
 
 .description-details-form-textarea:focus {
@@ -105,7 +118,6 @@
 .description-details-form {
   p {
     margin-top: 20px;
-    margin-bottom: 25px;
   }
 }
 

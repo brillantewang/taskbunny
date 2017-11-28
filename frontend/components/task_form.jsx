@@ -9,10 +9,10 @@ class TaskForm extends React.Component {
   constructor(props) {
     super(props)
 
-    this.location = {
-      address: "",
-      unit: ""
-    }
+    // this.location = {
+    //   address: "",
+    //   unit: ""
+    // }
 
     this.state = {
       type: "",
@@ -33,12 +33,12 @@ class TaskForm extends React.Component {
 
   handleChange(type) {
     return e => {
-      if (type === 'address' || type === 'unit') {
-        this.location[type] = e.target.value;
-        this.setState({ location: `${this.location.address} ${this.location.unit}` })
-      } else {
+      // if (type === 'address' || type === 'unit') {
+      //   this.location[type] = e.target.value;
+      //   this.setState({ location: `${this.location.address} ${this.location.unit}` })
+      // } else {
         this.setState({ [type]: e.target.value })
-      }
+      // }
     }
   }
 
@@ -55,7 +55,8 @@ class TaskForm extends React.Component {
         <TaskDetailsForm
           state={this.state}
           // address={this.location.address}
-          unit={this.location.unit}
+          // unit={this.location.unit}
+          location={this.state.location}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           errors={this.props.errors}

@@ -32,14 +32,14 @@ class TaskDetailsForm extends React.Component {
       this.props.handleSubmit(e)
         .then(null, () => {
           this.collapse(subFormId, nextSubFormId)
-            .then(() => this.props.removeErrors())
+            // .then(() => this.props.removeErrors())
         })
     }
   }
 
   componentDidUpdate() {
     const finalBtn = document.getElementById("details-final-submit");
-    if (this.props.state.location === " " || this.props.state.description === "") {
+    if (this.props.state.location === "" || this.props.state.description === "") {
       finalBtn.disabled = true;
     } else {
       finalBtn.disabled = false;
@@ -68,19 +68,20 @@ class TaskDetailsForm extends React.Component {
         <h2>Describe Your Task</h2>
         <h3>We need these inputs to show only qualified and available Taskers for the job.</h3>
         <form onClick={this.handleClick("Location")} className="task-details-subform location-details-form">
-          <strong>YOUR TASK LOCATION</strong>
+          <strong className="task-subform-header">YOUR TASK LOCATION</strong>
+          <p>Can't be blank</p>
           <div id="Location">
             <div className="location-details-form-inputs">
               <input
                 value={this.props.address}
-                onChange={this.props.handleChange('address')}
+                onChange={this.props.handleChange('location')}
                 className="location-details-form-input1 Location"
                 type="text"
                 placeholder="Enter street address"
               />
               <input
-                value={this.props.unit}
-                onChange={this.props.handleChange('unit')}
+                // value={this.props.unit}
+                // onChange={this.props.handleChange('unit')}
                 className="location-details-form-input2"
                 type="text"
                 placeholder="Unit or Apt #"
@@ -93,7 +94,7 @@ class TaskDetailsForm extends React.Component {
           </div>
         </form>
         <form onClick={this.handleClick("Vehicle")} className="task-details-subform vehicle-details-form">
-          <strong>VEHICLE REQUIREMENTS</strong>
+          <strong className="task-subform-header">VEHICLE REQUIREMENTS</strong>
           <div id="Vehicle" className="hidden">
             <div className="vehicle-details-form-inputs">
               <span className="vehicle-option">
@@ -133,7 +134,7 @@ class TaskDetailsForm extends React.Component {
           </div>
         </form>
         <form onClick={this.handleClick("Description")} onSubmit={this.props.handleSubmit} className="task-details-subform description-details-form">
-          <strong>TELL US ABOUT YOUR TASK</strong>
+          <strong className="task-subform-header">TELL US ABOUT YOUR TASK</strong>
           <div id="Description" className="hidden">
             <div className="description-details-form-content">
               <p>Tell us what you need done, plus any requirements or questions that you may have. You can edit this later.</p>
@@ -143,7 +144,7 @@ class TaskDetailsForm extends React.Component {
                 className="description-details-form-textarea Description"
                 placeholder="EXAMPLE: I rented a moving van, but need help moving my stuff in and out of it. I have: queen bed with frame, medium couch, loveseat, entertainment center, large TV, armchair, 2 bookcases, dining room table with 4 chairs, desk and chair, and about 50 boxes.">
               </textarea>
-              {this.props.handleErrorInput('Description')}
+              {/* {this.props.handleErrorInput('Description')} */}
               <p>If you need two or more Taskers, please post additional tasks for each Tasker needed.</p>
               <div className="save-button-container">
                 <button disabled="true" id="details-final-submit" onClick={this.handleSubFormSubmit("Description")} className="btn-green">See Taskers & Prices</button>
