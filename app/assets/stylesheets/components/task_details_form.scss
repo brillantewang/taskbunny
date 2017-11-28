@@ -15,7 +15,7 @@
   }
 }
 
-.location-details-form {
+.task-details-subform {
   margin-top: 40px;
   background: white;
   width: 65%;
@@ -32,8 +32,8 @@
 
 .location-details-form-inputs {
   display: flex;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  margin-top: 27px;
+  margin-bottom: 20px;
 
   input {
     width: 100%;
@@ -61,4 +61,18 @@
   display: flex;
   justify-content: center;
   margin-top: 25px
+}
+
+.vehicle-details-form {
+  input {
+    width: 14px;
+    margin-right: 8px;
+  }
+
+}
+
+.vehicle-option {
+  strong {
+    font-weight: 400;
+  }
 }

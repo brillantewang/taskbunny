@@ -31,7 +31,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "webpack"
+    "postinstall": "webpack",
+    "build": "rimraf dist && cross-env NODE_ENV=production webpack",
+    "dev": "cross-env NODE_ENV=development node webpack-dev-server.js"
   },
   "repository": {
     "type": "git",
