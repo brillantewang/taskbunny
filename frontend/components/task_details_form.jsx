@@ -99,8 +99,8 @@ class TaskDetailsForm extends React.Component {
         </form>
         <form onSubmit={this.props.handleSubmit} className="task-details-subform description-details-form">
           <strong>TELL US ABOUT YOUR TASK</strong>
-          <p>Tell us what you need done, plus any requirements or questions that you may have. You can edit this later.</p>
-          <div id="Description">
+          <div id="Description" className="hidden">
+            <p>Tell us what you need done, plus any requirements or questions that you may have. You can edit this later.</p>
             <textarea
               value={this.props.state.description}
               onChange={this.props.handleChange('description')}
@@ -110,7 +110,7 @@ class TaskDetailsForm extends React.Component {
             {this.props.handleErrorInput('Description')}
             <p>If you need two or more Taskers, please post additional tasks for each Tasker needed.</p>
             <div className="save-button-container">
-              <button className="btn-green">See Taskers & Prices</button>
+              <button onClick={this.handleSubFormSubmit("Description")} className="btn-green">See Taskers & Prices</button>
             </div>
           </div>
         </form>
