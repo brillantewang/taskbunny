@@ -1,6 +1,6 @@
 .splash-head {
   background-image: url("https://res.cloudinary.com/dezmnl5mf/image/upload/v1511559914/splash_head_bg_u7fyvi.jpg");
-  background-size: 1500px 1000px;
+  background-size: cover;
   height: 700px;
   width: 100%;
   display: flex;
@@ -12,7 +12,9 @@
     margin-top: 25px;
     margin-bottom: 25px;
   }
+}
 
+.splash-head-buttons {
   a:hover {
     color: white;
   }
@@ -24,11 +26,10 @@
 
 .splash-head-buttons {
   margin-top: 25px;
-  width: 41%;
+  width: 600px;
   height: 110px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-content: space-between;
-  min-width: 600px;
 }
