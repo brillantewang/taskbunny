@@ -33,9 +33,9 @@ class TaskForm extends React.Component {
     // console.log(this.props);
   }
 
-  // componentDidMount() {
-  //   this.setState({ user_id: this.props.currentUser.id })
-  // }
+  componentDidMount() {
+    this.setState({ user_id: this.props.currentUser.id })
+  }
 
   handleChange(type) {
     return e => {
