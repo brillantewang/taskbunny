@@ -3,6 +3,8 @@ import * as taskFormAPIUtil from '../util/task_form_api_util';
 export const RECEIVE_TASK = 'RECEIVE_TASK';
 export const RECEIVE_TASK_ERRORS = 'RECEIVE_TASK_ERRORS';
 export const RECEIVE_TASK_TYPE = 'RECEIVE_TASK_TYPE';
+export const RECEIVE_TASK_TIME = 'RECEIVE_TASK_TIME';
+export const RECEIVE_TASK_DATE = 'RECEIVE_TASK_DATE';
 
 export const receiveTask = task => ({
   type: RECEIVE_TASK,
@@ -17,6 +19,16 @@ export const receiveTaskErrors = errors => ({
 export const receiveTaskType = taskType => ({
   type: RECEIVE_TASK_TYPE,
   task_type: taskType
+})
+
+export const receiveTaskTime = taskTime => ({
+  type: RECEIVE_TASK_TIME,
+  task_time: taskTime
+})
+
+export const receiveTaskDate = taskDate => ({
+  type: RECEIVE_TASK_DATE,
+  task_date: taskDate
 })
 
 //thunk action creators

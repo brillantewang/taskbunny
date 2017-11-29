@@ -43,6 +43,7 @@ class TaskForm extends React.Component {
       //   this.location[type] = e.target.value;
       //   this.setState({ location: `${this.location.address} ${this.location.unit}` })
       // } else {
+      console.log('handling change');
         this.setState({ [type]: e.target.value })
       // }
     }
@@ -88,6 +89,9 @@ class TaskForm extends React.Component {
           handleErrorInput={this.handleErrorInput}
           removeErrors={this.props.removeErrors}
           setState={this.setState.bind(this)}
+          availableTaskers={this.props.availableTaskers}
+          setTaskDate={this.props.setTaskDate}
+          setTaskTime={this.props.setTaskTime}
           {...props}
         />
       );

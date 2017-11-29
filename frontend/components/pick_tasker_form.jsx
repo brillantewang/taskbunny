@@ -6,9 +6,17 @@ class PickTaskerForm extends React.Component {
     super(props)
   }
 
-  // onChange() {
-  //
-  // }
+  onChange(type) {
+    return e => {
+      if (type === 'date') {
+        this.props.handleChange('date')(e);
+        this.props.setTaskDate(e.target.value);
+      } else if (type === 'time') {
+        this.props.handleChange('time')(e);
+        this.props.setTaskTime(e.target.value);
+      }
+    }
+  }
 
   render() {
     return (
@@ -32,8 +40,8 @@ class PickTaskerForm extends React.Component {
                 TASK DATE & TIME:
               </strong>
               {/* <DatePicker /> */}
-              <input className="calendar-input" type="date" value={this.props.state.date} onChange={this.props.handleChange("date")}/>
-              <select value={this.props.state.time} onChange={this.props.handleChange("time")}>
+              <input className="calendar-input" type="date" value={this.props.state.date} onChange={this.onChange('date')}/>
+              <select value={this.props.state.time} onChange={this.onChange('time')}>
                 <option value="I'm Flexible">I'm Flexible</option>
                 <option value="8:00am">8:00am</option>
                 <option value="8:30am">8:30am</option>
@@ -65,7 +73,13 @@ class PickTaskerForm extends React.Component {
             </div>
           </div>
           <div className="reviews">
-            Review
+            {/* {this.props.availableTaskers.map(tasker => {
+              return (
+                <div className="tasker">
+                  {tasker.first_name}
+                </div>
+              )
+            })} */}
           </div>
         </div>
       </div>
