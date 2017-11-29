@@ -1,8 +1,8 @@
-import selectedTaskReducer from './selected_task_reducer';
+import selectedTaskTypeReducer from './selected_task_type_reducer';
 import { combineReducers } from 'redux';
 
 const currentTaskReducer = combineReducers({
-  selected_task: selectedTaskReducer
+  selected_task_type: selectedTaskTypeReducer
 })
 
 export default currentTaskReducer;

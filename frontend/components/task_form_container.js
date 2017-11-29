@@ -6,6 +6,7 @@ import { removeErrors } from '../actions/session_actions';
 
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser,
+  currentTask: state.session.currentTask,
   errors: state.errors.task
 })
 

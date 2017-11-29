@@ -16,7 +16,7 @@ class TaskForm extends React.Component {
     // }
 
     this.state = {
-      task_type: "general_handyman",
+      task_type: "",
       date: "",
       time: "",
       location: "",
@@ -62,6 +62,7 @@ class TaskForm extends React.Component {
           state={this.state}
           // address={this.location.address}
           // unit={this.location.unit}
+          selectedTaskType={this.props.currentTask.selected_task_type}
           location={this.state.location}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
@@ -99,7 +100,7 @@ class TaskForm extends React.Component {
           <TrustIcon/>
           <p><strong>Trust & Safety Guarantee:</strong> $1MM insurance guarantee on every task.</p>
         </div>
-        <Route path="/task-form/details/:task_type" render={MyTaskDetailsForm}/>
+        <Route path="/task-form/details" render={MyTaskDetailsForm}/>
         <Route path="/task-form/taskers" render={MyPickTaskerForm}/>
       </div>
     )
