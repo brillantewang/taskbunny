@@ -2,6 +2,7 @@ import React from 'react';
 import NavBarContainer from './nav_bar_container';
 import TaskSearchWithRouter from './task_search';
 import classNames from 'classnames';
+import { Route } from 'react-router-dom';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class Dashboard extends React.Component {
     console.log('dashboard rendering');
     return (
       <div className="dashboard" onClick={this.handleClick}>
-        <NavBarContainer/>
+        <Route path="/dashboard" component={NavBarContainer}/>
         <div className="dashboard-head">
           <h2>Welcome back, {this.props.currentUser.first_name}.</h2>
           <TaskSearchWithRouter/>
