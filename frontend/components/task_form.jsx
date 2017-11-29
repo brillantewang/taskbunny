@@ -99,7 +99,7 @@ class TaskForm extends React.Component {
           <TrustIcon/>
           <p><strong>Trust & Safety Guarantee:</strong> $1MM insurance guarantee on every task.</p>
         </div>
-        <Route path="/task-form/details/" render={MyTaskDetailsForm}/>
+        <Route path="/task-form/details/:task_type" render={MyTaskDetailsForm}/>
         <Route path="/task-form/taskers" render={MyPickTaskerForm}/>
       </div>
     )

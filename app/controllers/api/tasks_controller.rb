@@ -1,7 +1,5 @@
 class Api::TasksController < ApplicationController
   def create
-    p params
-    p task_params
     @task = Task.new(task_params)
 
     if @task.valid?

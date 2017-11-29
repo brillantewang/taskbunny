@@ -9,9 +9,9 @@ class TaskDetailsForm extends React.Component {
     console.log(this.props);
   }
 
-  // componentDidMount() {
-  //   this.props.setState({ type: this.props.match.params.type })
-  // }
+  componentDidMount() {
+    this.props.setState({ type: this.props.match.params.task_type })
+  }
 
   collapse(subFormId, nextSubFormId) {
     const subForm = document.getElementById(subFormId);

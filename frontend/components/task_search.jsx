@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { TaskCategories } from './task_categories';
+import TaskCategoriesContainer from './task_categories_container';
 
 class TaskSearch extends React.Component {
   constructor(props) {
@@ -50,7 +50,7 @@ class TaskSearch extends React.Component {
           placeholder={this.props.location.pathname === "/dashboard" ? "What do you need help with?" : "Need something different?" }
         />
         <i onClick={this.resetState} id="input-canceler" className="fa fa-times-circle hidden" aria-hidden="true"></i>
-        <TaskCategories text={this.state.text}/>
+        <TaskCategoriesContainer text={this.state.text}/>
       </div>
     )
   }

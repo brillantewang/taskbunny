@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export const TaskCategories = ({ text }) => {
+export const TaskCategories = ({ text, setTaskType }) => {
   const taskCategories = [
     { title: "Minor Repairs", img_url: "https://res.cloudinary.com/dezmnl5mf/image/upload/v1511562978/minor_repairs_bozruc.jpg" },
     { title: "Mounting", img_url: "https://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_618,w_637,x_0,y_22/v1511572825/splash_body_img2_q8ekt9.jpg" },
@@ -35,7 +35,7 @@ export const TaskCategories = ({ text }) => {
       <div id="task-categories" className="hidden">
         {taskCategories.slice(0, 4).map(taskCategory => {
           return (
-            <Link to="/task-form/details" key={taskCategory.title} className="task-category search">
+            <Link to="/task-form/details" key={taskCategory.title} className="task-category search" onClick={() => setTaskType(taskCategory.title)}>
               <img className="task-category-img search" src={taskCategory.img_url}/>
               <strong className="task-category-title search">{taskCategory.title}</strong>
             </Link>
@@ -53,7 +53,7 @@ export const TaskCategories = ({ text }) => {
       <div id="task-categories" className="hidden">
         {matchedCategories.slice(0, 4).map(taskCategory => {
           return (
-            <Link to="/login" key={taskCategory.title} className="task-category search">
+            <Link to="/task-form/details" key={taskCategory.title} className="task-category search" onClick={() => setTaskType(taskCategory.title)}>
               <img className="task-category-img search" src={taskCategory.img_url}/>
               <strong className="task-category-title search">{taskCategory.title}</strong>
             </Link>
