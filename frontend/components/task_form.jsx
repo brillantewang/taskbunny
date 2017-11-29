@@ -16,21 +16,26 @@ class TaskForm extends React.Component {
     // }
 
     this.state = {
-      type: "",
+      task_type: "general_handyman",
       date: "",
       time: "",
       location: "",
       description: "",
       vehicle_requirements: "",
       user_id: "",
-      tasker_id: "",
-      complete: ""
+      tasker_id: ""
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleErrorInput = handleErrorInput.bind(this);
+
+    // console.log(this.props);
   }
+
+  // componentDidMount() {
+  //   this.setState({ user_id: this.props.currentUser.id })
+  // }
 
   handleChange(type) {
     return e => {
@@ -63,6 +68,7 @@ class TaskForm extends React.Component {
           errors={this.props.errors}
           handleErrorInput={this.handleErrorInput}
           removeErrors={this.props.removeErrors}
+          setState={this.setState.bind(this)}
           {...props}
         />
       );
@@ -80,6 +86,7 @@ class TaskForm extends React.Component {
           errors={this.props.errors}
           handleErrorInput={this.handleErrorInput}
           removeErrors={this.props.removeErrors}
+          setState={this.setState.bind(this)}
           {...props}
         />
       );
@@ -92,7 +99,7 @@ class TaskForm extends React.Component {
           <TrustIcon/>
           <p><strong>Trust & Safety Guarantee:</strong> $1MM insurance guarantee on every task.</p>
         </div>
-        <Route path="/task-form/details" render={MyTaskDetailsForm}/>
+        <Route path="/task-form/details/" render={MyTaskDetailsForm}/>
         <Route path="/task-form/taskers" render={MyPickTaskerForm}/>
       </div>
     )

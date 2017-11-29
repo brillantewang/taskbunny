@@ -13,7 +13,7 @@ class PickTaskerForm extends React.Component {
         <h3>After booking, you can chat with your Tasker, agree on an exact time, or go over any requirements or questions, if necessary.</h3>
         <div className="pick-tasker-form-content">
           <div className="date-time-picker-container">
-            <div classNAme="date-time-picker">
+            <div className="date-time-picker">
               <strong>SORTED BY:</strong>
               <select>
                 <option value="Recommended">Recommended</option>
@@ -28,8 +28,8 @@ class PickTaskerForm extends React.Component {
                 TASK DATE & TIME:
               </strong>
               {/* <DatePicker /> */}
-              <input className="calendar-input" type="date"/>
-              <select>
+              <input className="calendar-input" type="date" value={this.props.state.date} onChange={this.props.handleChange("date")}/>
+              <select value={this.props.state.time} onChange={this.props.handleChange("time")}>
                 <option value="I'm Flexible">I'm Flexible</option>
                 <option value="8:00am">8:00am</option>
                 <option value="8:30am">8:30am</option>

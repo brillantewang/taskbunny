@@ -5,6 +5,7 @@ import { handleErrorInput } from '../util/errors_util.js';
 import { removeErrors } from '../actions/session_actions';
 
 const mapStateToProps = state => ({
+  currentUser: state.session.currentUser,
   errors: state.errors.task
 })
 

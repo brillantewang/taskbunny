@@ -1,5 +1,7 @@
 class Api::TasksController < ApplicationController
   def create
+    p params
+    p task_params
     @task = Task.new(task_params)
 
     if @task.valid?
@@ -13,9 +15,6 @@ class Api::TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(
-      :type, :date, :time, :location, :description, :vehicle_requirements,
-      :user_id, :tasker_id, :complete
-    )
+    params.require(:task).permit(:task_type, :date, :time, :location, :description, :vehicle_requirements, :user_id, :tasker_id, :complete)
   end
 end

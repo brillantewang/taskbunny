@@ -8,10 +8,6 @@
   }
 }
 
-.date-time-picker {
-  // display: inline;
-}
-
 .date-time-picker-container {
   background-color: white;
   border: 1px solid $gray;
@@ -21,11 +17,16 @@
   margin-right: 40px;
   width: 440px;
   align-items: center;
+  border-radius: 5px;
 
   select {
     margin-top: 15px;
     margin-bottom: 30px;
     width: 100%;
+  }
+
+  p {
+    color: $dark-gray;
   }
 }
 

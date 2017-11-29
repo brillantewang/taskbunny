@@ -19,7 +19,14 @@ class Api::UsersController < ApplicationController
       :password,
       :first_name,
       :last_name,
-      :zip_code
+      :zip_code,
+      :is_tasker,
+      :num_of_reviews,
+      :num_of_completed_tasks,
+      :percent_positive,
+      :tasker_description,
+      :price_per_hour,
+      :unavailable_tasker_times
     )
   end
 end
