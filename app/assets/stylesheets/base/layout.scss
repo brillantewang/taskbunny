@@ -104,6 +104,10 @@ select {
   width: 310px;
 }
 
+select:hover {
+  cursor: pointer;
+}
+
 input {
   border: 1px solid $gray;
   padding: 10px 16px;
@@ -123,4 +127,8 @@ input {
   font-weight: 300;
   word-spacing: .6px;
   letter-spacing: .3px;
+}
+
+::-webkit-inner-spin-button {
+  display: none;
 }
