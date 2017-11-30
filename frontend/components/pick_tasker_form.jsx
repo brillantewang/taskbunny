@@ -104,6 +104,16 @@ class PickTaskerForm extends React.Component {
     }
   }
 
+  handleClick(taskerId) {
+    return e => {
+      e.preventDefault();
+      this.props.setState({
+        tasker_id: taskerId
+      })
+      // this.props.history.push('/task-form/confirm')
+    }
+  }
+
   render() {
     // console.log(this.props, 'pick tasker form props');
     // console.log(this.state, 'pick tasker form state');
@@ -144,7 +154,7 @@ class PickTaskerForm extends React.Component {
                 <div className="tasker">
                   <div className="tasker-profile">
                     <img className="tasker-profile-image" src={tasker.image_url}/>
-                    <button className="btn-green">Select & Continue</button>
+                    <button onClick={this.handleClick(tasker.id)} className="btn-green">Select & Continue</button>
                   </div>
                   <div className="tasker-main">
                     <div className="tasker-header">

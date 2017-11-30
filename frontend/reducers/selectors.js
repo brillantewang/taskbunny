@@ -2,7 +2,7 @@ import values from 'lodash/values';
 
 export const selectAvailableTaskers = state => {
   const allTaskers = values(state.entities.users).filter(user => user.is_tasker);
-  console.log(allTaskers, 'alltaskers');
+  // console.log(allTaskers, 'alltaskers');
 
   const availableTaskers = allTaskers.filter(tasker => {
     let parts = state.session.currentTask.selected_date.split('-').map(part => parseInt(part));
@@ -17,7 +17,7 @@ export const selectAvailableTaskers = state => {
       tasker.available_task_type === state.session.currentTask.selected_type
     )
   })
-  console.log(availableTaskers, 'availabletaskers');
+  // console.log(availableTaskers, 'availabletaskers');
   return availableTaskers;
 }
 
@@ -28,30 +28,30 @@ export const availableTaskersByHighestRating = state => {
 
 export const availableTaskersByLowestPrice = state => {
   const availableTaskers = selectAvailableTaskers(state);
-  console.log(availableTaskers.sort((taskerA, taskerB) => taskerA.price_per_hour - taskerB.price_per_hour), 'sortedbylowestprice');
+  // console.log(availableTaskers.sort((taskerA, taskerB) => taskerA.price_per_hour - taskerB.price_per_hour), 'sortedbylowestprice');
   return availableTaskers.sort((taskerA, taskerB) => taskerA.price_per_hour - taskerB.price_per_hour);
 }
 
 export const availableTaskersByHighestPrice = state => {
   const availableTaskers = selectAvailableTaskers(state);
-  console.log(availableTaskers.sort((taskerA, taskerB) => taskerB.price_per_hour - taskerA.price_per_hour), 'sortedbyhighestprice');
+  // console.log(availableTaskers.sort((taskerA, taskerB) => taskerB.price_per_hour - taskerA.price_per_hour), 'sortedbyhighestprice');
   return availableTaskers.sort((taskerA, taskerB) => taskerB.price_per_hour - taskerA.price_per_hour);
 }
 
 export const availableTaskersByMostReviews = state => {
   const availableTaskers = selectAvailableTaskers(state);
-  console.log(availableTaskers.sort((taskerA, taskerB) => taskerB.num_of_reviews - taskerA.num_of_reviews), 'sortedbymostreviews');
+  // console.log(availableTaskers.sort((taskerA, taskerB) => taskerB.num_of_reviews - taskerA.num_of_reviews), 'sortedbymostreviews');
   return availableTaskers.sort((taskerA, taskerB) => taskerB.num_of_reviews - taskerA.num_of_reviews);
 }
 
 export const availableTaskersByMostTasks = state => {
   const availableTaskers = selectAvailableTaskers(state);
-  console.log(availableTaskers.sort((taskerA, taskerB) => taskerB.num_of_completed_tasks - taskerA.num_of_completed_tasks), 'sortedbymosttasks');
+  // console.log(availableTaskers.sort((taskerA, taskerB) => taskerB.num_of_completed_tasks - taskerA.num_of_completed_tasks), 'sortedbymosttasks');
   return availableTaskers.sort((taskerA, taskerB) => taskerB.num_of_completed_tasks - taskerA.num_of_completed_tasks);
 }
 
 export const availableTaskersByRecommended = state => {
   const sortedByMostTasks = availableTaskersByMostTasks(state);
-  console.log(sortedByMostTasks.sort((taskerA, taskerB) => taskerB.percent_positive - taskerA.percent_positive), 'sortedbyrecommended');
+  // console.log(sortedByMostTasks.sort((taskerA, taskerB) => taskerB.percent_positive - taskerA.percent_positive), 'sortedbyrecommended');
   return sortedByMostTasks.sort((taskerA, taskerB) => taskerB.percent_positive - taskerA.percent_positive);
 }

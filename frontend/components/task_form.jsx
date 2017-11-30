@@ -37,6 +37,7 @@ class TaskForm extends React.Component {
   componentDidMount() {
     this.setState({ user_id: this.props.currentUser.id })
     this.setState({ date: todaysDateString })
+    this.setState({ time: "I'm Flexible"})
     console.log('task form mounting');
     // this.props.fetchAllUsers();
   }
