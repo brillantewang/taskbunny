@@ -1,6 +1,12 @@
 import { RECEIVE_TASK_DATE } from '../actions/task_form_actions';
+import todaysDateString from '../util/todays_date_util';
 
-const selectedTaskDateReducer = (state = "2017-11-17", action) => {
+// const today = new Date();
+// const day = today.getDate();
+// const month = today.getMonth() +1;
+// const year = today.getFullYear();
+
+const selectedTaskDateReducer = (state = todaysDateString, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_TASK_DATE:

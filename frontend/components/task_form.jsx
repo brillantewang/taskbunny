@@ -5,6 +5,7 @@ import { StatusBarWithRouter } from './status_bar';
 import TaskDetailsForm from './task_details_form';
 import PickTaskerFormContainer from './pick_tasker_form_container';
 import { handleErrorInput } from '../util/errors_util';
+import todaysDateString from '../util/todays_date_util';
 
 class TaskForm extends React.Component {
   constructor(props) {
@@ -35,6 +36,7 @@ class TaskForm extends React.Component {
 
   componentDidMount() {
     this.setState({ user_id: this.props.currentUser.id })
+    this.setState({ date: todaysDateString })
     this.props.fetchAllUsers();
   }
 

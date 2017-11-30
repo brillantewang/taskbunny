@@ -9,15 +9,10 @@ class PickTaskerForm extends React.Component {
   // componentDidMount() {
   //   this.props.fetchAllUsers();
   // }
-  // componentDidMount() {
-  //   Date.prototype.toDateInputValue = (function() {
-  //       var local = new Date(this);
-  //       local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
-  //       return local.toJSON().slice(0,10);
-  //   });
-  //
-  //   document.getElementById('datePicker').value = new Date().toDateInputValue();
-  // }
+  componentDidMount() { //borrowed from https://stackoverflow.com/questions/6982692/html5-input-type-date-default-value-to-today
+    document.getElementById('datePicker').valueAsDate = new Date();
+    console.log(document.getElementById('datePicker').value, 'date value');
+  }
 
   onChange(type) {
     return e => {
@@ -55,7 +50,6 @@ class PickTaskerForm extends React.Component {
               {/* <DatePicker /> */}
               <input id="datePicker" className="calendar-input" type="date" value={this.props.state.date} onChange={this.onChange('date')}/>
               <select value={this.props.state.time} onChange={this.onChange('time')}>
-                <option disabled value="">--Select a Time--</option>
                 <option value="I'm Flexible">I'm Flexible</option>
                 <option value="Morning 8AM - 12PM">Morning 8AM - 12PM</option>
                 <option value="Afternoon 12PM - 4PM">Afternoon 12PM - 4PM</option>
