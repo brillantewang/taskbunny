@@ -1,6 +1,6 @@
 import { RECEIVE_TASK_TYPE } from '../actions/task_form_actions';
 
-const selectedTaskTypeReducer = (state = "", action) => {
+const selectedTaskTypeReducer = (state = "Minor Repairs", action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_TASK_TYPE:

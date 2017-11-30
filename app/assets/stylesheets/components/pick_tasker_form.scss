@@ -1,6 +1,5 @@
 .pick-tasker-form-content {
   display: flex;
-  box-sizing: border-box;
 
   strong {
     font-weight: 400;
@@ -9,13 +8,15 @@
 }
 
 .date-time-picker-container {
+  box-sizing: border-box;
   background-color: white;
-  border: 1px solid $gray;
+  border: 1px solid $light-gray;
   display: flex;
   flex-direction: column;
   padding: 40px;
   margin-right: 40px;
   width: 440px;
+  height: 400px;
   align-items: center;
   border-radius: 5px;
 
@@ -38,4 +39,77 @@
 .calendar-input {
   margin-top: 10px;
   width: 100%;
+}
+
+.tasker {
+  display: flex;
+  background-color: white;
+  width: 850px;
+  margin-bottom: 30px;
+  border: 1px solid $light-gray;
+  border-radius: 5px;
+  padding: 40px;
+}
+
+.tasker-main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.tasker-header {
+  display: flex;
+  justify-content: space-between;
+
+  h3 {
+    font-weight: 700;
+    font-size: 1.5em;
+    color: black;
+    margin-right: 20px;
+  }
+}
+
+.tasker-name {
+  font-weight: 700;
+}
+
+.tasker-subheader {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid $light-gray;
+  padding-bottom: 15px;
+
+  strong {
+    font-weight: 300;
+    margin-bottom: 8px;
+  }
+}
+
+.tasker-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  button {
+    margin-top: 15px;
+    font-size: 20px;
+    width: 210px;
+    box-sizing: border-box;
+  }
+}
+
+.tasker-profile-image {
+  width: 210px;
+  height: 230px;
+  border-radius: 5px;
+  margin-right: 25px;
+}
+
+.tasker-description {
+  margin-top: 20px;
+
+  strong {
+    font-weight: 700;
+    // margin-bottom: 20px;
+  }
 }

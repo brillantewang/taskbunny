@@ -9,6 +9,15 @@ class PickTaskerForm extends React.Component {
   // componentDidMount() {
   //   this.props.fetchAllUsers();
   // }
+  // componentDidMount() {
+  //   Date.prototype.toDateInputValue = (function() {
+  //       var local = new Date(this);
+  //       local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+  //       return local.toJSON().slice(0,10);
+  //   });
+  //
+  //   document.getElementById('datePicker').value = new Date().toDateInputValue();
+  // }
 
   onChange(type) {
     return e => {
@@ -44,43 +53,60 @@ class PickTaskerForm extends React.Component {
                 TASK DATE & TIME:
               </strong>
               {/* <DatePicker /> */}
-              <input className="calendar-input" type="date" value={this.props.state.date} onChange={this.onChange('date')}/>
+              <input id="datePicker" className="calendar-input" type="date" value={this.props.state.date} onChange={this.onChange('date')}/>
               <select value={this.props.state.time} onChange={this.onChange('time')}>
-                <option value="I'm Flexible">I'm Flexible</option>
+                <option disabled value="">--Select a Time--</option>
                 <option value="8:00am">8:00am</option>
-                <option value="8:30am">8:30am</option>
+                {/* <option value="8:30am">8:30am</option> */}
                 <option value="9:00am">9:00am</option>
-                <option value="9:30am">9:30am</option>
+                {/* <option value="9:30am">9:30am</option> */}
                 <option value="10:00am">10:00am</option>
-                <option value="10:30am">10:30am</option>
+                {/* <option value="10:30am">10:30am</option> */}
                 <option value="11:00am">11:00am</option>
-                <option value="11:30am">11:30am</option>
+                {/* <option value="11:30am">11:30am</option> */}
                 <option value="12:00pm">12:00pm</option>
-                <option value="12:30pm">12:30pm</option>
+                {/* <option value="12:30pm">12:30pm</option> */}
                 <option value="1:00pm">1:00pm</option>
-                <option value="1:30pm">1:30pm</option>
+                {/* <option value="1:30pm">1:30pm</option> */}
                 <option value="2:00pm">2:00pm</option>
-                <option value="2:30pm">2:30pm</option>
+                {/* <option value="2:30pm">2:30pm</option> */}
                 <option value="3:00pm">3:00pm</option>
-                <option value="3:30pm">3:30pm</option>
+                {/* <option value="3:30pm">3:30pm</option> */}
                 <option value="4:00pm">4:00pm</option>
-                <option value="4:30pm">4:30pm</option>
+                {/* <option value="4:30pm">4:30pm</option> */}
                 <option value="5:00pm">5:00pm</option>
-                <option value="5:30pm">5:30pm</option>
+                {/* <option value="5:30pm">5:30pm</option> */}
                 <option value="6:00pm">6:00pm</option>
-                <option value="6:30pm">6:30pm</option>
+                {/* <option value="6:30pm">6:30pm</option> */}
                 <option value="7:00pm">7:00pm</option>
-                <option value="7:30pm">7:30pm</option>
+                {/* <option value="7:30pm">7:30pm</option> */}
                 <option value="8:00pm">8:00pm</option>
               </select>
               <p>You can agree later on exact start time with your selected Tasker.</p>
             </div>
           </div>
-          <div className="reviews">
+          <div className="taskers">
             {this.props.availableTaskers.map(tasker => {
               return (
                 <div className="tasker">
-                  {tasker.first_name}
+                  <div className="tasker-profile">
+                    <img className="tasker-profile-image" src={tasker.image_url}/>
+                    <button className="btn-green">Select & Continue</button>
+                  </div>
+                  <div className="tasker-main">
+                    <div className="tasker-header">
+                      <h2 className="tasker-name">{tasker.first_name} {tasker.last_name[0]}.</h2>
+                      <h3>${tasker.price_per_hour}/hr</h3>
+                    </div>
+                    <div className="tasker-subheader">
+                      <strong>{tasker.num_of_completed_tasks} Completed {this.props.state.task_type} Tasks</strong>
+                      <strong>{tasker.num_of_reviews} {this.props.state.task_type} Reviews: {tasker.percent_positive}% Positive</strong>
+                    </div>
+                    <div className="tasker-description">
+                      <strong>How I can help:</strong>
+                      <p>{tasker.tasker_description}</p>
+                    </div>
+                  </div>
                 </div>
               )
             })}

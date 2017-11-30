@@ -12,8 +12,8 @@
       :first_name,
       :last_name,
       :zip_code,
-      :unavailable_tasker_times,
-      :unavailable_task_types,
+      :available_tasker_time,
+      :available_task_type,
       :image_url
     )
     json.tasker_tasks user.tasker_tasks.pluck(:id)
