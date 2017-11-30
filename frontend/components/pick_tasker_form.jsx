@@ -171,8 +171,8 @@ class PickTaskerForm extends React.Component {
                         <h3>${tasker.price_per_hour}/hr</h3>
                       </div>
                       <div className="tasker-subheader">
-                        <strong>{tasker.num_of_completed_tasks} Completed {this.props.state.task_type} Tasks</strong>
-                        <strong>{tasker.num_of_reviews} {this.props.state.task_type} Reviews: {tasker.percent_positive}% Positive</strong>
+                        <strong><i className="fa fa-check" aria-hidden="true"></i> {tasker.num_of_completed_tasks} Completed {this.props.state.task_type} Tasks</strong>
+                        <strong><i className="fa fa-thumbs-o-up" aria-hidden="true"></i> {tasker.num_of_reviews} {this.props.state.task_type} Reviews: {tasker.percent_positive}% Positive</strong>
                       </div>
                       <div className="tasker-description">
                         <strong>How I can help:</strong>

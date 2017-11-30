@@ -77,11 +77,19 @@
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid $light-gray;
-  padding-bottom: 15px;
+  padding-bottom: 12px;
 
   strong {
     font-weight: 300;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
+    color: $dark-gray;
+  }
+
+  i {
+    vertical-align: middle;
+    margin-bottom: 3px;
+    font-size: 19px;
+    color: black;
   }
 }
 
@@ -100,17 +108,23 @@
 
 .tasker-profile-image {
   width: 210px;
-  height: 230px;
+  height: 220px;
   border-radius: 5px;
   margin-right: 25px;
 }
 
 .tasker-description {
-  margin-top: 20px;
+  margin-top: 16px;
 
   strong {
     font-weight: 700;
     // margin-bottom: 20px;
+  }
+
+  p {
+    margin-top: 8px;
+    color: $dark-gray;
+    line-height: 150%;
   }
 }
 
