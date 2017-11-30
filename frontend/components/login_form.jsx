@@ -29,7 +29,7 @@ class LoginForm extends React.Component {
   handleDemo(e) {
     e.preventDefault();
     this.setState(
-      { email: "demo@demo.com", password: "demo123" },
+      { email: "demo@gmail.com", password: "helloworld" },
       () => this.handleSubmit(e)
     )
   }

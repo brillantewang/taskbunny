@@ -14,6 +14,7 @@
       :zip_code,
       :available_tasker_time,
       :available_task_type,
+      :unavailable_tasker_weekday,
       :image_url
     )
     json.tasker_tasks user.tasker_tasks.pluck(:id)

@@ -30,7 +30,7 @@ csv.each do |row|
   t.save
 end
 
-# demo = User.create(email: "demo@gmail.com", password: "helloworld", first_name: "demo", last_name: "user", zip_code: "12345")
-# brill = User.create(email: "brill@gmail.com", password: "helloworld", first_name: "brill", last_name: "wang", zip_code: "12345")
+demo = User.create(email: "demo@gmail.com", password: "helloworld", first_name: "demo", last_name: "user", zip_code: "12345")
+brill = User.create(email: "brill@gmail.com", password: "helloworld", first_name: "brill", last_name: "wang", zip_code: "12345")
 
 puts "There are now #{User.count} rows in the transactions table"
