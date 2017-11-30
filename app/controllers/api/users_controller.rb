@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.all.includes(:tasker_tasks)
     render :index
   end
 
