@@ -6,6 +6,7 @@ import TaskDetailsForm from './task_details_form';
 import PickTaskerFormContainer from './pick_tasker_form_container';
 import { handleErrorInput } from '../util/errors_util';
 import todaysDateString from '../util/todays_date_util';
+import ConfirmTaskForm from './confirm_task_form';
 
 class TaskForm extends React.Component {
   constructor(props) {
@@ -102,6 +103,28 @@ class TaskForm extends React.Component {
       );
     }
 
+    const MyConfirmTaskForm = (props) => {
+      return (
+        <ConfirmTaskForm
+          state={this.state}
+          // address={this.location.address}
+          // unit={this.location.unit}
+          // location={this.state.location}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          errors={this.props.errors}
+          handleErrorInput={this.handleErrorInput}
+          removeErrors={this.props.removeErrors}
+          setState={this.setState.bind(this)}
+          // availableTaskers={this.props.availableTaskers}
+          setTaskDate={this.props.setTaskDate}
+          setTaskTime={this.props.setTaskTime}
+          fetchAllUsers={this.props.fetchAllUsers}
+          {...props}
+        />
+      );
+    }
+
     return (
       <div>
         <StatusBarWithRouter/>
@@ -111,6 +134,7 @@ class TaskForm extends React.Component {
         </div>
         <Route path="/task-form/details" render={MyTaskDetailsForm}/>
         <Route path="/task-form/taskers" render={MyPickTaskerFormContainer}/>
+        <Route path="/task-form/confirm" render={MyConfirmTaskForm}/>
       </div>
     )
   }
