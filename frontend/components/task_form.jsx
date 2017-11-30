@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import { TrustIcon } from './trust_icon';
 import { StatusBarWithRouter } from './status_bar';
 import TaskDetailsForm from './task_details_form';
-import PickTaskerForm from './pick_tasker_form';
+import PickTaskerFormContainer from './pick_tasker_form_container';
 import { handleErrorInput } from '../util/errors_util';
 
 class TaskForm extends React.Component {
@@ -30,11 +30,12 @@ class TaskForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleErrorInput = handleErrorInput.bind(this);
 
-    // console.log(this.props);
+    console.log(this.props);
   }
 
   componentDidMount() {
     this.setState({ user_id: this.props.currentUser.id })
+    this.props.fetchAllUsers();
   }
 
   handleChange(type) {
@@ -43,7 +44,6 @@ class TaskForm extends React.Component {
       //   this.location[type] = e.target.value;
       //   this.setState({ location: `${this.location.address} ${this.location.unit}` })
       // } else {
-      console.log('handling change');
         this.setState({ [type]: e.target.value })
       // }
     }
@@ -63,7 +63,7 @@ class TaskForm extends React.Component {
           state={this.state}
           // address={this.location.address}
           // unit={this.location.unit}
-          selectedTaskType={this.props.currentTask.selected_task_type}
+          selectedTaskType={this.props.currentTask.selected_type}
           location={this.state.location}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
@@ -76,9 +76,9 @@ class TaskForm extends React.Component {
       );
     }
 
-    const MyPickTaskerForm = (props) => {
+    const MyPickTaskerFormContainer = (props) => {
       return (
-        <PickTaskerForm
+        <PickTaskerFormContainer
           state={this.state}
           // address={this.location.address}
           // unit={this.location.unit}
@@ -89,9 +89,10 @@ class TaskForm extends React.Component {
           handleErrorInput={this.handleErrorInput}
           removeErrors={this.props.removeErrors}
           setState={this.setState.bind(this)}
-          availableTaskers={this.props.availableTaskers}
+          // availableTaskers={this.props.availableTaskers}
           setTaskDate={this.props.setTaskDate}
           setTaskTime={this.props.setTaskTime}
+          fetchAllUsers={this.props.fetchAllUsers}
           {...props}
         />
       );
@@ -105,7 +106,7 @@ class TaskForm extends React.Component {
           <p><strong>Trust & Safety Guarantee:</strong> $1MM insurance guarantee on every task.</p>
         </div>
         <Route path="/task-form/details" render={MyTaskDetailsForm}/>
-        <Route path="/task-form/taskers" render={MyPickTaskerForm}/>
+        <Route path="/task-form/taskers" render={MyPickTaskerFormContainer}/>
       </div>
     )
   }

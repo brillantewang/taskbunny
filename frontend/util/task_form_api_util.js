@@ -5,3 +5,10 @@ export const createTask = task => (
     data: { task }
   })
 )
+
+export const fetchAllUsers = () => (
+  $.ajax({
+    url: "api/users",
+    method: "GET"
+  })
+)

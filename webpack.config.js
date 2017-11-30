@@ -41,10 +41,10 @@ module.exports = {
           presets: ['react', 'es2015']
         }
       },
-      // {
-      //   test: /\.(scss|css)$/,
-      //   loader: 'css-loader',
-      // },
+      {
+        test: /\.(scss|css)$/,
+        loader: 'css-loader',
+      },
     ]
   },
   devtool: 'source-map',

@@ -5,6 +5,7 @@ export const RECEIVE_TASK_ERRORS = 'RECEIVE_TASK_ERRORS';
 export const RECEIVE_TASK_TYPE = 'RECEIVE_TASK_TYPE';
 export const RECEIVE_TASK_TIME = 'RECEIVE_TASK_TIME';
 export const RECEIVE_TASK_DATE = 'RECEIVE_TASK_DATE';
+export const RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS';
 
 export const receiveTask = task => ({
   type: RECEIVE_TASK,
@@ -31,6 +32,11 @@ export const receiveTaskDate = taskDate => ({
   task_date: taskDate
 })
 
+export const receiveAllUsers = users => ({
+  type: RECEIVE_ALL_USERS,
+  users
+})
+
 //thunk action creators
 
 export const createTask = task => dispatch => (
@@ -42,4 +48,9 @@ export const createTask = task => dispatch => (
         dispatch(receiveTaskErrors(errors.responseJSON))
       }
     )
+)
+
+export const fetchAllUsers = task => dispatch => (
+  taskFormAPIUtil.fetchAllUsers()
+    .then(users => dispatch(receiveAllUsers(users)))
 )

@@ -11,6 +11,10 @@ class Dashboard extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  // componentDidMount() {
+  //   this.props.fetchAllUsers();
+  // }
+
   handleClick(e) {
     const nodeClasses= e.target.classList;
     console.log(nodeClasses);

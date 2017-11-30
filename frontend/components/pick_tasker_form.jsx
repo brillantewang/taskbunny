@@ -6,6 +6,10 @@ class PickTaskerForm extends React.Component {
     super(props)
   }
 
+  // componentDidMount() {
+  //   this.props.fetchAllUsers();
+  // }
+
   onChange(type) {
     return e => {
       if (type === 'date') {
@@ -73,13 +77,13 @@ class PickTaskerForm extends React.Component {
             </div>
           </div>
           <div className="reviews">
-            {/* {this.props.availableTaskers.map(tasker => {
+            {this.props.availableTaskers.map(tasker => {
               return (
                 <div className="tasker">
                   {tasker.first_name}
                 </div>
               )
-            })} */}
+            })}
           </div>
         </div>
       </div>
