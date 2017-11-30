@@ -66,11 +66,17 @@
     font-size: 1.5em;
     color: black;
     margin-right: 20px;
+    margin-bottom: 0px;
   }
 }
 
-.tasker-name {
+#tasker-name {
   font-weight: 700;
+  margin-bottom: 0px;
+}
+
+#tasker-price {
+  margin-bottom: 35px;
 }
 
 .tasker-subheader {

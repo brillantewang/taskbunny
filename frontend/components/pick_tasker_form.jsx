@@ -167,8 +167,8 @@ class PickTaskerForm extends React.Component {
                     </div>
                     <div className="tasker-main">
                       <div className="tasker-header">
-                        <h2 className="tasker-name">{tasker.first_name} {tasker.last_name[0]}.</h2>
-                        <h3>${tasker.price_per_hour}/hr</h3>
+                        <h2 id="tasker-name">{tasker.first_name} {tasker.last_name[0]}.</h2>
+                        <h3 id="tasker-price">${tasker.price_per_hour}/hr</h3>
                       </div>
                       <div className="tasker-subheader">
                         <strong><i className="fa fa-check" aria-hidden="true"></i> {tasker.num_of_completed_tasks} Completed {this.props.state.task_type} Tasks</strong>
