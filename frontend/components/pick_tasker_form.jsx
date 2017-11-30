@@ -4,14 +4,69 @@ import React from 'react';
 class PickTaskerForm extends React.Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      taskers: this.props.availableTaskersByRecommended
+    }
+
+    // console.log(this.state.taskers, 'taskers');
   }
 
-  // componentDidMount() {
-  //   this.props.fetchAllUsers();
-  // }
+  componentWillReceiveProps(nextProps) {
+    // console.log(nextProps.availableTaskers, 'next props avail taskers');
+    // console.log(this.props.availableTaskers, 'this props avail taskers');
+    if (nextProps.availableTaskers !== this.props.availableTaskers) {
+      const sortInput = document.getElementById("sort");
+      // console.log(sortInput.value, "sort input val");
+      switch(sortInput.value) {
+        case "Highest Rating":
+          this.setState({
+            taskers: nextProps.availableTaskersByHighestRating
+          })
+          break;
+        case "Price (Lowest To Highest)":
+          this.setState({
+            taskers: nextProps.availableTaskersByLowestPrice
+          })
+          break;
+        case "Price (Highest To Lowest)":
+          this.setState({
+            taskers: nextProps.availableTaskersByHighestPrice
+          })
+          break;
+        case "Most Reviews":
+          this.setState({
+            taskers: nextProps.availableTaskersByMostReviews
+          })
+          break;
+        case "Number Of Tasks":
+          this.setState({
+            taskers: nextProps.availableTaskersByMostTasks
+          })
+          break;
+        case "Recommended":
+          this.setState({
+            taskers: nextProps.availableTaskersByRecommended
+          })
+          break;
+        default:
+          this.setState({
+            taskers: nextProps.availableTaskers
+          })
+      }
+    }
+  }
+
   componentDidMount() { //borrowed from https://stackoverflow.com/questions/6982692/html5-input-type-date-default-value-to-today
-    document.getElementById('datePicker').valueAsDate = new Date();
-    console.log(document.getElementById('datePicker').value, 'date value');
+    console.log('pick_tasker_form mounting');
+    this.props.fetchAllUsers().then(() => {
+      this.setState({
+        taskers: this.sortedTaskers("Recommended")
+      })
+    })
+
+    // document.getElementById('datePicker').valueAsDate = new Date();
+    // console.log(document.getElementById('datePicker').value, 'date value');
   }
 
   onChange(type) {
@@ -22,11 +77,36 @@ class PickTaskerForm extends React.Component {
       } else if (type === 'time') {
         this.props.handleChange('time')(e);
         this.props.setTaskTime(e.target.value);
+      } else if (type === 'sort') {
+        this.setState({
+          taskers: this.sortedTaskers(e.target.value)
+        })
       }
     }
   }
 
+  sortedTaskers(sortValue) {
+    switch(sortValue) {
+      case "Highest Rating":
+        return this.props.availableTaskersByHighestRating;
+      case "Price (Lowest To Highest)":
+        return this.props.availableTaskersByLowestPrice;
+      case "Price (Highest To Lowest)":
+        return this.props.availableTaskersByHighestPrice;
+      case "Most Reviews":
+        return this.props.availableTaskersByMostReviews;
+      case "Number Of Tasks":
+        return this.props.availableTaskersByMostTasks;
+      case "Recommended":
+        return this.props.availableTaskersByRecommended;
+      default:
+        return this.props.availableTaskers;
+    }
+  }
+
   render() {
+    // console.log(this.props, 'pick tasker form props');
+    // console.log(this.state, 'pick tasker form state');
     return (
       <div className="pick-tasker-form task-form-subform">
         <h2>Pick a Tasker</h2>
@@ -35,7 +115,7 @@ class PickTaskerForm extends React.Component {
           <div className="date-time-picker-container">
             <div className="date-time-picker">
               <strong>SORTED BY:</strong>
-              <select>
+              <select id="sort" onChange={this.onChange('sort')}>
                 <option value="Recommended">Recommended</option>
                 <option value="Price (Lowest To Highest)">Price (Lowest To Highest)</option>
                 <option value="Price (Highest To Lowest)">Price (Highest To Lowest)</option>
@@ -59,7 +139,7 @@ class PickTaskerForm extends React.Component {
             </div>
           </div>
           <div className="taskers">
-            {this.props.availableTaskers.map(tasker => {
+            {this.state.taskers.map(tasker => {
               return (
                 <div className="tasker">
                   <div className="tasker-profile">

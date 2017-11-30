@@ -3,19 +3,13 @@ import values from 'lodash/values';
 export const selectAvailableTaskers = state => {
   const allTaskers = values(state.entities.users).filter(user => user.is_tasker);
   console.log(allTaskers, 'alltaskers');
+
   const availableTaskers = allTaskers.filter(tasker => {
-    // console.log(tasker.unavailable_tasker_weekday, 'unavailable tasker weekday');
-    // console.log(state.session.currentTask.selected_date, 'selected date');
-    // //YYYY-MM-DD
-    // console.log(state.session.currentTask.selected_date.split('-'), 'split selected date');
     let parts = state.session.currentTask.selected_date.split('-').map(part => parseInt(part));
-    // console.log(parts, 'parts');
     let year, month, day;
     [year, month, day] = parts;
-    // console.log(year, month, day, 'parts variables');
     let selected_date = new Date(year, month - 1, day);
-    // console.log(selected_date);
-    // console.log(selected_date.getDay(), 'selected weekday');
+
     return (
       tasker.tasker_tasks.every(task => JSON.stringify([task.time, task.date]) !== JSON.stringify([state.session.currentTask.selected_time, state.session.currentTask.selected_date])) &&
       (tasker.available_tasker_time === state.session.currentTask.selected_time || state.session.currentTask.selected_time === "I'm Flexible" ) &&
@@ -25,4 +19,39 @@ export const selectAvailableTaskers = state => {
   })
   console.log(availableTaskers, 'availabletaskers');
   return availableTaskers;
+}
+
+export const availableTaskersByHighestRating = state => {
+  const availableTaskers = selectAvailableTaskers(state);
+  return availableTaskers.sort((taskerA, taskerB) => taskerB.percent_positive - taskerA.percent_positive);
+}
+
+export const availableTaskersByLowestPrice = state => {
+  const availableTaskers = selectAvailableTaskers(state);
+  console.log(availableTaskers.sort((taskerA, taskerB) => taskerA.price_per_hour - taskerB.price_per_hour), 'sortedbylowestprice');
+  return availableTaskers.sort((taskerA, taskerB) => taskerA.price_per_hour - taskerB.price_per_hour);
+}
+
+export const availableTaskersByHighestPrice = state => {
+  const availableTaskers = selectAvailableTaskers(state);
+  console.log(availableTaskers.sort((taskerA, taskerB) => taskerB.price_per_hour - taskerA.price_per_hour), 'sortedbyhighestprice');
+  return availableTaskers.sort((taskerA, taskerB) => taskerB.price_per_hour - taskerA.price_per_hour);
+}
+
+export const availableTaskersByMostReviews = state => {
+  const availableTaskers = selectAvailableTaskers(state);
+  console.log(availableTaskers.sort((taskerA, taskerB) => taskerB.num_of_reviews - taskerA.num_of_reviews), 'sortedbymostreviews');
+  return availableTaskers.sort((taskerA, taskerB) => taskerB.num_of_reviews - taskerA.num_of_reviews);
+}
+
+export const availableTaskersByMostTasks = state => {
+  const availableTaskers = selectAvailableTaskers(state);
+  console.log(availableTaskers.sort((taskerA, taskerB) => taskerB.num_of_completed_tasks - taskerA.num_of_completed_tasks), 'sortedbymosttasks');
+  return availableTaskers.sort((taskerA, taskerB) => taskerB.num_of_completed_tasks - taskerA.num_of_completed_tasks);
+}
+
+export const availableTaskersByRecommended = state => {
+  const sortedByMostTasks = availableTaskersByMostTasks(state);
+  console.log(sortedByMostTasks.sort((taskerA, taskerB) => taskerB.percent_positive - taskerA.percent_positive), 'sortedbyrecommended');
+  return sortedByMostTasks.sort((taskerA, taskerB) => taskerB.percent_positive - taskerA.percent_positive);
 }
