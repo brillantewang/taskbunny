@@ -87,7 +87,7 @@ class TaskDetailsForm extends React.Component {
           <div id="Location">
             <div className="location-details-form-inputs">
               <input
-                value={this.props.address}
+                value={this.props.state.location}
                 onChange={this.props.handleChange('location')}
                 className="location-details-form-input1 Location"
                 type="text"

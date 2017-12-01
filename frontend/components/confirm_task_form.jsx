@@ -11,6 +11,15 @@ class ConfirmTaskForm extends React.Component {
     })
   }
 
+  componentDidUpdate() {
+    const finalBtn = document.getElementById("confirm-submit-btn");
+    if (this.props.state.location === "" || this.props.state.description === "") {
+      finalBtn.disabled = true;
+    } else {
+      finalBtn.disabled = false;
+    }
+  }
+
   // componentDidMount() {
   //   this.props.fetchAllUsers()
   //     .then(() => this.tasker = this.props.availableTaskers.find(tasker => {
@@ -63,7 +72,7 @@ class ConfirmTaskForm extends React.Component {
             </Link>
             </div>
             <div className="submit-button-container">
-              <button className="btn-green">Confirm & Book</button>
+              <button id="confirm-submit-btn" className="btn-green">Confirm & Book</button>
               <strong>You are charged only after your task is completed.</strong>
             </div>
           </div>
