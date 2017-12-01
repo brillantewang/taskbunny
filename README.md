@@ -20,7 +20,6 @@ Another challenge that I faced was deciding how I was going to sort my taskers b
 I ended up creating a `selectors.js` that had multiple sorting functions that each did its own sorting logic before returning an array of sorted taskers. 
 
 For example:
-
 ```
 #selectors.js
 
@@ -30,9 +29,10 @@ export const availableTaskersByHighestRating = state => {
 }
 ```
 
+To sort Taskers by Recommended, I simply sorted them by most tasks completed, and then sorted that array again by highest rating: 
 ```
 export const availableTaskersByRecommended = state => {
-  const sortedByMostTasks = availableTaskersByMostTasks(state); // a helper function 
+  const sortedByMostTasks = availableTaskersByMostTasks(state);
   return sortedByMostTasks.sort((taskerA, taskerB) => taskerB.percent_positive - taskerA.percent_positive);
 }
 ```
