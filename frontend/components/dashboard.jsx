@@ -90,7 +90,7 @@ class Dashboard extends React.Component {
                     <strong className="date-time-section-month">{this.getMonth(task.date.split('-')[1])}</strong>
                   </div>
                   <div className="time-section">
-                    <strong className="date-time-section-time">{task.time}</strong>
+                    <strong className="date-time-section-time">{task.task_time}</strong>
                   </div>
                 </div>
                 <div className="dashboard-task-body">

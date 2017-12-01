@@ -5,7 +5,7 @@
       :id,
       :task_type,
       :date,
-      :time,
+      :task_time,
       :location,
       :description,
       :vehicle_requirements,

@@ -20,7 +20,7 @@ class TaskForm extends React.Component {
     this.state = {
       task_type: "",
       date: "",
-      time: "",
+      task_time: "",
       location: "",
       description: "",
       vehicle_requirements: "",
@@ -38,7 +38,7 @@ class TaskForm extends React.Component {
   componentDidMount() {
     this.setState({ user_id: this.props.currentUser.id })
     this.setState({ date: todaysDateString })
-    this.setState({ time: "I'm Flexible"})
+    this.setState({ task_time: "I'm Flexible"})
     console.log('task form mounting');
     // this.props.fetchAllUsers();
   }

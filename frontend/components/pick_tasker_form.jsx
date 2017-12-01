@@ -80,8 +80,8 @@ class PickTaskerForm extends React.Component {
       if (type === 'date') {
         this.props.handleChange('date')(e);
         this.props.setTaskDate(e.target.value);
-      } else if (type === 'time') {
-        this.props.handleChange('time')(e);
+      } else if (type === 'task_time') {
+        this.props.handleChange('task_time')(e);
         this.props.setTaskTime(e.target.value);
       } else if (type === 'sort') {
         this.setState({
@@ -148,7 +148,7 @@ class PickTaskerForm extends React.Component {
                 </strong>
                 {/* <DatePicker /> */}
                 <input id="datePicker" className="calendar-input" type="date" value={this.props.state.date} onChange={this.onChange('date')}/>
-                <select value={this.props.state.time} onChange={this.onChange('time')}>
+                <select value={this.props.state.time} onChange={this.onChange('task_time')}>
                   <option value="I'm Flexible">I'm Flexible</option>
                   <option value="Morning 8AM - 12PM">Morning 8AM - 12PM</option>
                   <option value="Afternoon 12PM - 4PM">Afternoon 12PM - 4PM</option>
