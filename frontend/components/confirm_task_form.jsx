@@ -51,7 +51,7 @@ class ConfirmTaskForm extends React.Component {
             <div className="date-time-tasker">
               <div className="date-time-tasker-date-time">
                 <strong className="mini-header">Date & Time</strong>
-                <strong className="info-text">{this.props.state.date} ({this.props.state.time})</strong>
+                <strong className="info-text">{this.props.state.date} ({this.props.state.task_time})</strong>
               </div>
               <div className="date-time-tasker-tasker">
                 <img className="tasker-mini-profile-photo" src="https://res.cloudinary.com/dezmnl5mf/image/upload/v1512006900/dummy_profile_image_m7vtxo.png"/>
