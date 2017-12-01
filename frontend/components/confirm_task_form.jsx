@@ -9,6 +9,8 @@ class ConfirmTaskForm extends React.Component {
     this.tasker = this.props.availableTaskers.find(tasker => {
       return tasker.id === this.props.state.tasker_id;
     })
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidUpdate() {
@@ -27,6 +29,12 @@ class ConfirmTaskForm extends React.Component {
   //     }));
   //     console.log(this.tasker, 'mounted tasker');
   // }
+
+  handleSubmit() {
+    console.log(this, 'in handle submit');
+    this.props.createTask(this.props.state)
+      .then(this.props.history.push('/dashboard'))
+  }
 
   render() {
     console.log(this.tasker, 'this tasker');
@@ -68,11 +76,11 @@ class ConfirmTaskForm extends React.Component {
             </div>
             <div className="modify-task-link-container">
               <Link to="/task-form/details">
-              <strong className="mini-header"><i class="fa fa-cog" aria-hidden="true"></i> Modify Task</strong>
+              <strong className="mini-header"><i className="fa fa-cog" aria-hidden="true"></i> Modify Task</strong>
             </Link>
             </div>
             <div className="submit-button-container">
-              <button id="confirm-submit-btn" className="btn-green">Confirm & Book</button>
+              <button id="confirm-submit-btn" onClick={this.handleSubmit} className="btn-green">Confirm & Book</button>
               <strong>You are charged only after your task is completed.</strong>
             </div>
           </div>

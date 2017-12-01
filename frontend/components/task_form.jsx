@@ -25,7 +25,8 @@ class TaskForm extends React.Component {
       description: "I really want this task to work out.",
       vehicle_requirements: "A car is needed",
       user_id: "",
-      tasker_id: 360
+      tasker_id: 360,
+      complete: false
     }
 
     this.handleChange = this.handleChange.bind(this);
