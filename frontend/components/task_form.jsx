@@ -18,15 +18,14 @@ class TaskForm extends React.Component {
     // }
 
     this.state = {
-      task_type: "Minor Repairs",
+      task_type: "",
       date: "",
       time: "",
-      location: "571 Teresita Blvd. San Francisco, CA 94116",
-      description: "I really want this task to work out.",
-      vehicle_requirements: "A car is needed",
+      location: "",
+      description: "",
+      vehicle_requirements: "",
       user_id: "",
-      tasker_id: 360,
-      complete: false
+      tasker_id: ""
     }
 
     this.handleChange = this.handleChange.bind(this);

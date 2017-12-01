@@ -47,8 +47,9 @@
   background: white;
   border-radius: 5px;
   margin-bottom: 15px;
-  margin-left: 55px;
-  margin-right: 55px;
+  margin-left: 60px;
+  margin-right: 60px;
+  font-size: 17px;
 }
 
 .dashboard-task-header {
@@ -98,6 +99,7 @@
   justify-content: center;
   padding-top: 30px;
   padding-bottom: 30px;
+  font-size: 15px;
 }
 
 .date-time-section-day {
@@ -118,4 +120,54 @@
 .date-time-section {
   display: flex;
   align-items: center;
+}
+
+.time-section {
+  margin-left: 12px;
+}
+
+.dashboard-task-body {
+  border-top: 1px solid $light-gray;
+}
+
+.dashboard-task-body-location {
+  display: flex;
+  flex-direction: column;
+}
+
+.fa-map-marker {
+  font-size: 24px;
+  color: $dark-gray;
+  margin-right: 10px;
+}
+
+.location-tasker-price-section {
+  padding: 20px 20px 20px 28px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dashboard-task-mini-header {
+  font-size: 15px;
+  color: $dark-gray;
+}
+
+.location-address {
+  margin-top: 4px;
+}
+
+.dashboard-task-body-tasker {
+  display: flex;
+  flex-direction: column;
+  margin-left: 190px;
+}
+
+.dashboard-task-body-tasker-name {
+  margin-top: 8px;
+}
+
+.dashboard-task-body-price {
+  display: flex;
+  flex-direction: column;
+  margin-right: 120px;
 }

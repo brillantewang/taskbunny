@@ -13,7 +13,7 @@ class Dashboard extends React.Component {
 
   componentDidMount() {
     this.props.fetchAllTasks();
-    this.props.fetchAllUsers();
+    // this.props.fetchAllUsers();
   }
 
   handleClick(e) {
@@ -27,9 +27,31 @@ class Dashboard extends React.Component {
     document.getElementById('task-categories').className = taskCategoriesClass;
   }
 
+  getMonth(num) {
+    const months = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec'
+    ]
+
+    return months[num - 1];
+  }
+
   render() {
     console.log('dashboard rendering');
     console.log(this.props.currentUser);
+
+    if (this.props.currentUserTasks)
+
     return (
       <div className="dashboard" onClick={this.handleClick}>
         <Route path="/dashboard" component={NavBarContainer}/>
@@ -48,6 +70,7 @@ class Dashboard extends React.Component {
             console.log(task.id, 'task id in dashboard');
             console.log(task, 'task in dashboard');
             console.log(task.tasker, 'tasker');
+            console.log(task.tasker.image_url, 'tasker image url');
             // let tasker = this.props.getUser(task.tasker_id);
             return (
               <div className="dashboard-task">
@@ -59,16 +82,30 @@ class Dashboard extends React.Component {
                   </div>
                 </div>
                 <div className="dashboard-task-status">
-                  <strong>{task.complete ? "Your task is complete." : `Your task is booked with ${task.tasker.first_name} ${task.tasker.last_name[0]}`}</strong>
+                  <strong>{task.complete ? "Your task is complete." : `Your task is booked with ${task.tasker.first_name} ${task.tasker.last_name[0]}.`}</strong>
+                </div>
+                <div className="date-time-section">
+                  <div className="date-section">
+                    <strong className="date-time-section-day">{task.date.split('-')[2]}</strong>
+                    <strong className="date-time-section-month">{this.getMonth(task.date.split('-')[1])}</strong>
+                  </div>
+                  <div className="time-section">
+                    <strong className="date-time-section-time">{task.time}</strong>
+                  </div>
                 </div>
                 <div className="dashboard-task-body">
-                  <div className="date-time-section">
-                    <div className="date-section">
-                      <strong className="date-time-section-day">{task.date.split('-')[2]}</strong>
-                      <strong className="date-time-section-month">{new Date(task.date).toLocaleString("en-us", { month: "short" })}</strong>
+                  <div className="location-tasker-price-section">
+                    <div className="dashboard-task-body-location">
+                      <strong className="dashboard-task-mini-header">Location</strong>
+                      <strong className="location-address"><i class="fa fa-map-marker" aria-hidden="true"></i> {task.location}</strong>
                     </div>
-                    <div className="time-section">
-                      <strong className="date-time-section-time">{task.time}</strong>
+                    <div className="dashboard-task-body-tasker">
+                      <strong className="dashboard-task-mini-header">Tasker</strong>
+                      <strong className="dashboard-task-body-tasker-name">{task.tasker.first_name} {task.tasker.last_name[0]}.</strong>
+                    </div>
+                    <div className="dashboard-task-body-price">
+                      <strong className="dashboard-task-mini-header">Price</strong>
+                      <strong className="dashboard-task-body-tasker-name">${task.tasker.price_per_hour}/hr</strong>
                     </div>
                   </div>
                 </div>

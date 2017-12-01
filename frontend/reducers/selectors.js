@@ -58,5 +58,6 @@ export const availableTaskersByRecommended = state => {
 
 export const selectCurrentUserTasks = state => {
   const allTasks = values(state.entities.tasks);
-  return allTasks.filter(task => task.user_id === state.session.currentUser.id)
+  const currentUserTasks = allTasks.filter(task => task.user_id === state.session.currentUser.id);
+  return currentUserTasks.reverse();
 }
