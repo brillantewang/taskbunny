@@ -14,5 +14,25 @@ A challenge that I faced was creating the task search bar on the landing page. I
 
 This was nice because I ended up with a `TaskSearch` component that I could re-use in my `Dashboard` with the exact behavior that I wanted. 
 
+### Tasker Sort
+Another challenge that I faced was deciding how I was going to sort my taskers based on the user's sorting preferences (by Recommended, by Highest Rating, etc).
 
+I ended up creating a `selectors.js` that had multiple sorting functions that each did its own sorting logic before returning an array of sorted taskers. 
 
+For example:
+
+```
+#selectors.js
+
+export const availableTaskersByHighestRating = state => {
+  const availableTaskers = selectAvailableTaskers(state);
+  return availableTaskers.sort((taskerA, taskerB) => taskerB.percent_positive - taskerA.percent_positive);
+}
+```
+
+```
+export const availableTaskersByRecommended = state => {
+  const sortedByMostTasks = availableTaskersByMostTasks(state); // a helper function 
+  return sortedByMostTasks.sort((taskerA, taskerB) => taskerB.percent_positive - taskerA.percent_positive);
+}
+```
