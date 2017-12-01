@@ -7,6 +7,7 @@ import PickTaskerFormContainer from './pick_tasker_form_container';
 import { handleErrorInput } from '../util/errors_util';
 import todaysDateString from '../util/todays_date_util';
 import ConfirmTaskFormContainer from './confirm_task_form_container';
+import NavBarContainer from './nav_bar_container';
 
 class TaskForm extends React.Component {
   constructor(props) {
@@ -131,6 +132,7 @@ class TaskForm extends React.Component {
 
     return (
       <div>
+        <NavBarContainer/>
         <StatusBarWithRouter/>
         <div className="trust-banner">
           <TrustIcon/>

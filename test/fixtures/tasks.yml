@@ -2,18 +2,18 @@
 #
 # Table name: tasks
 #
-#  id             :integer          not null, primary key
-#  type           :string           not null
-#  date           :date             not null
-#  time           :time             not null
-#  location       :string           not null
-#  description    :text             not null
-#  vehicle_needed :boolean          not null
-#  user_id        :integer          not null
-#  tasker_id      :integer          not null
-#  complete       :boolean          not null
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  id                   :integer          not null, primary key
+#  task_type            :string           not null
+#  date                 :date             not null
+#  task_time            :string           not null
+#  location             :string           not null
+#  description          :text             not null
+#  vehicle_requirements :string
+#  user_id              :integer          not null
+#  tasker_id            :integer          not null
+#  complete             :boolean          default(FALSE), not null
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
