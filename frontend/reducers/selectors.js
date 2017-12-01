@@ -55,3 +55,8 @@ export const availableTaskersByRecommended = state => {
   // console.log(sortedByMostTasks.sort((taskerA, taskerB) => taskerB.percent_positive - taskerA.percent_positive), 'sortedbyrecommended');
   return sortedByMostTasks.sort((taskerA, taskerB) => taskerB.percent_positive - taskerA.percent_positive);
 }
+
+export const selectCurrentUserTasks = state => {
+  const allTasks = values(state.entities.tasks);
+  return allTasks.filter(task => task.user_id === state.session.currentUser.id)
+}

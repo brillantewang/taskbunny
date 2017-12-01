@@ -11,9 +11,9 @@ class Dashboard extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.props.fetchAllUsers();
-  // }
+  componentDidMount() {
+    this.props.fetchAllTasks();
+  }
 
   handleClick(e) {
     const nodeClasses= e.target.classList;
@@ -34,6 +34,23 @@ class Dashboard extends React.Component {
         <div className="dashboard-head">
           <h2>Welcome back, {this.props.currentUser.first_name}.</h2>
           <TaskSearchWithRouter/>
+        </div>
+        <div className="dashboard-body">
+          <div className="dashboard-body-header-container">
+            <h3 className="dashboard-body-header">Tasks</h3>
+          </div>
+          {this.props.currentUserTasks.map(task => {
+            console.log(task.id, 'task id in dashboard');
+            console.log(task, 'task in dashboard');
+            return (
+              <div className="dashboard-task">
+                <div>
+                  <h2>{task.task_type}</h2>
+                  {!task.complete ? <a onClick={() => this.props.deleteTask(task.id)} className="cancel-task-link">Cancel Task</a> : ""}
+                </div>
+              </div>
+            )
+          })}
         </div>
       </div>
     )

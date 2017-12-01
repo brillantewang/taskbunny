@@ -12,3 +12,17 @@ export const fetchAllUsers = () => (
     method: "GET"
   })
 )
+
+export const fetchAllTasks = () => (
+  $.ajax({
+    url: "api/tasks",
+    method: "GET"
+  })
+)
+
+export const deleteTask = taskId => (
+  $.ajax({
+    url: `api/tasks/${taskId}`,
+    method: "DELETE"
+  })
+)

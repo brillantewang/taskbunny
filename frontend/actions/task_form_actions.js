@@ -6,6 +6,18 @@ export const RECEIVE_TASK_TYPE = 'RECEIVE_TASK_TYPE';
 export const RECEIVE_TASK_TIME = 'RECEIVE_TASK_TIME';
 export const RECEIVE_TASK_DATE = 'RECEIVE_TASK_DATE';
 export const RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS';
+export const RECEIVE_ALL_TASKS = 'RECEIVE_ALL_TASKS';
+export const REMOVE_TASK = 'REMOVE_TASK';
+
+export const removeTask = task => ({
+  type: REMOVE_TASK,
+  task
+})
+
+export const receiveAllTasks = tasks => ({
+  type: RECEIVE_ALL_TASKS,
+  tasks
+})
 
 export const receiveTask = task => ({
   type: RECEIVE_TASK,
@@ -53,4 +65,14 @@ export const createTask = task => dispatch => (
 export const fetchAllUsers = task => dispatch => (
   taskFormAPIUtil.fetchAllUsers()
     .then(users => dispatch(receiveAllUsers(users)))
+)
+
+export const fetchAllTasks = () => dispatch => (
+  taskFormAPIUtil.fetchAllTasks()
+    .then(tasks => dispatch(receiveAllTasks(tasks)))
+)
+
+export const deleteTask = taskId => dispatch => (
+  taskFormAPIUtil.deleteTask(taskId)
+    .then(task => dispatch(removeTask(task)))
 )
