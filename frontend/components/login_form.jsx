@@ -52,6 +52,7 @@ class LoginForm extends React.Component {
         </div>
         <div className="session-form-container">
           <form onSubmit={this.handleSubmit} className="session-form">
+            <img className="session-form-logo" src="https://res.cloudinary.com/dezmnl5mf/image/upload/v1512150412/taskwombat_logo_gnnuiq.png"/>
             <fieldset>
               <label>Email Address</label>
               <input className="Email session-input" type="text" value={this.state.email} onChange={this.handleChange('email')}/>

@@ -46,6 +46,7 @@ class SignupForm extends React.Component {
       <div className="session-form-page">
         <div className="session-form-container">
           <form onSubmit={this.handleSubmit.bind(this)} className="session-form">
+            <img className="session-form-logo" src="https://res.cloudinary.com/dezmnl5mf/image/upload/v1512150412/taskwombat_logo_gnnuiq.png"/>
             <fieldset>
               <label>First Name</label>
               <input type="text" value={this.state.first_name} onChange={this.handleChange('first_name')} className="First session-input"/>

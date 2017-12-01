@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(<Root store={store}/>, root);
 });
 
-window.signup = sessionAPIUtil.signup;
-
-window.login = login;
-window.logout = logout;
+// window.onbeforeunload = function() {
+//   return "Data will be lost if you leave the page, are you sure?";
+// };

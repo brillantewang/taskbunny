@@ -2,10 +2,16 @@
   border-bottom: 1px solid $light-gray;
   padding: 14px 20px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   width: 100%;
   box-sizing: border-box;
   background: white;
+  align-items: center;
+}
+
+.nav-bar-logo {
+  height: 33px;
+  margin-left: 100px;
 }
 
 .session-buttons {

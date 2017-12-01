@@ -32,7 +32,7 @@ class TaskForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleErrorInput = handleErrorInput.bind(this);
 
-    console.log(this.props);
+    console.log('task form constructing');
   }
 
   componentDidMount() {
@@ -41,6 +41,10 @@ class TaskForm extends React.Component {
     this.setState({ time: "I'm Flexible"})
     console.log('task form mounting');
     // this.props.fetchAllUsers();
+  }
+
+  componentWillUnmount() {
+    this.props.history.push("/dashboard");
   }
 
   handleChange(type) {
