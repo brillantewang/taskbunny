@@ -40,6 +40,7 @@
   font-size: 17px;
   margin-bottom: 10px;
   margin-left: 20px;
+  font-weight: 400;
 }
 
 .dashboard-task {
@@ -55,14 +56,23 @@
 .dashboard-task-header {
   display: flex;
   justify-content: space-between;
-  padding: 15px 20px 15px 20px;
+  padding: 18px 25px 18px 25px;
+}
+
+.cancel-task-link {
+  font-size: 16px;
+}
+
+.dashboard-task-header-title {
+  font-size: 28px;
+  font-weight: 400;
 }
 
 .dashboard-body-header-container {
   border-bottom: 1px solid $light-gray;
   display: flex;
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .dashboard-body {
@@ -97,8 +107,8 @@
   border-left: 5px solid $light-orange;
   display: flex;
   justify-content: center;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 27px;
+  padding-bottom: 27px;
   font-size: 15px;
 }
 
@@ -128,6 +138,7 @@
 
 .dashboard-task-body {
   border-top: 1px solid $light-gray;
+  padding: 20px 28px 20px 28px;
 }
 
 .dashboard-task-body-location {
@@ -142,7 +153,6 @@
 }
 
 .location-tasker-price-section {
-  padding: 20px 20px 20px 28px;
   display: flex;
   justify-content: space-between;
 }
@@ -170,4 +180,31 @@
   display: flex;
   flex-direction: column;
   margin-right: 120px;
+}
+
+.dashboard-task-body-description {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.dashboard-task-body-description-text {
+  margin-top: 8px;
+}
+
+.dashboard-task-body-vehicle-requirements {
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  // border-top: 2px solid $dark-gray;
+  margin-bottom: 40px;
+}
+
+.small-border {
+  margin-right: 84%;
+  background-color: $dark-gray;
+  height: 1.4px;
+}
+
+.dashboard-task-body-vehicle-requirements-text {
+  margin-top: 8px;
 }

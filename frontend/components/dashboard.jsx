@@ -75,7 +75,7 @@ class Dashboard extends React.Component {
             return (
               <div className="dashboard-task">
                 <div className="dashboard-task-header">
-                  <h2>{task.task_type}</h2>
+                  <h2 className="dashboard-task-header-title">{task.task_type}</h2>
                   <div className="tasker-cancel-section">
                     <img className="tasker-profile-img" src={task.tasker.image_url}/>
                     {!task.complete ? <a onClick={() => this.props.deleteTask(task.id)} className="cancel-task-link">Cancel Task</a> : ""}
@@ -107,6 +107,15 @@ class Dashboard extends React.Component {
                       <strong className="dashboard-task-mini-header">Price</strong>
                       <strong className="dashboard-task-body-tasker-name">${task.tasker.price_per_hour}/hr</strong>
                     </div>
+                  </div>
+                  <div className="dashboard-task-body-description">
+                    <strong className="dashboard-task-mini-header">Description</strong>
+                    <p className="dashboard-task-body-description-text">{task.description}</p>
+                  </div>
+                  <div className="small-border"></div>
+                  <div className="dashboard-task-body-vehicle-requirements">
+                    <strong>Vehicle Requirements:</strong>
+                    <strong className="dashboard-task-body-vehicle-requirements-text">{task.vehicle_requirements}</strong>
                   </div>
                 </div>
               </div>

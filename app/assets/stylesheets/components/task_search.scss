@@ -9,6 +9,10 @@
   background-color: white;
 }
 
+.task-search::placeholder {
+  font-size: 17px;
+}
+
 .task-search-container {
   position: relative;
 }
