@@ -161,7 +161,7 @@ class PickTaskerForm extends React.Component {
             <div className="taskers">
               {this.state.taskers.map(tasker => {
                 return (
-                  <div className="tasker">
+                  <div key={tasker.id} className="tasker">
                     <div className="tasker-profile">
                       <img className="tasker-profile-image" src={tasker.image_url}/>
                       <button onClick={this.handleClick(tasker.id)} className="btn-green">Select & Continue</button>
