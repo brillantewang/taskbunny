@@ -11,5 +11,6 @@ json.(
   :num_of_completed_tasks,
   :percent_positive,
   :tasker_description,
-  :price_per_hour
+  :price_per_hour,
+  :image_url
 )

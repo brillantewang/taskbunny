@@ -13,5 +13,6 @@
       :tasker_id,
       :complete
     )
+    json.tasker task.tasker
   end
 end
