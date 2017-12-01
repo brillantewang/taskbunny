@@ -64,14 +64,14 @@ class PickTaskerForm extends React.Component {
   }
 
   componentDidMount() { //borrowed from https://stackoverflow.com/questions/6982692/html5-input-type-date-default-value-to-today
-    console.log('pick_tasker_form mounting');
+    // console.log('pick_tasker_form mounting');
     this.props.fetchAllUsers().then(() => {
       this.setState({
         taskers: this.sortedTaskers("Recommended")
       })
     })
 
-    // document.getElementById('datePicker').valueAsDate = new Date();
+    // document.addEventListener('DOMContentLoaded', () => document.getElementById('datePicker').valueAsDate = new Date());
     // console.log(document.getElementById('datePicker').value, 'date value');
   }
 
@@ -111,6 +111,7 @@ class PickTaskerForm extends React.Component {
   }
 
   handleClick(taskerId) {
+    // this.props.setTaskTaskerId(taskerId);
     return e => {
       e.preventDefault();
       this.props.setState({
@@ -123,7 +124,7 @@ class PickTaskerForm extends React.Component {
   render() {
     // console.log(this.props, 'pick tasker form props');
     // console.log(this.state, 'pick tasker form state');
-    console.log(this.state.taskers, 'taskers rendered');
+    // console.log(this.state.taskers, 'taskers rendered');
 
     if (this.loading() === false) {
       return (

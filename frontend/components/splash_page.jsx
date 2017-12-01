@@ -16,7 +16,6 @@ class SplashPage extends React.Component {
 
   handleClick(e) {
     const nodeClasses= e.target.classList;
-    console.log(nodeClasses);
     const taskCategoriesClass = classNames({
       'hidden': !nodeClasses.contains("search")
     })

@@ -33,14 +33,15 @@ class TaskForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleErrorInput = handleErrorInput.bind(this);
 
-    console.log('task form constructing');
+    // console.log('task form constructing');
   }
 
   componentDidMount() {
     this.setState({ user_id: this.props.currentUser.id })
     this.setState({ date: todaysDateString })
     this.setState({ task_time: "I'm Flexible"})
-    console.log('task form mounting');
+    this.setState({ vehicle_requirements: "No vehicle needed"})
+    // console.log('task form mounting');
     // this.props.fetchAllUsers();
   }
 
@@ -65,7 +66,7 @@ class TaskForm extends React.Component {
   }
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
 
     const MyTaskDetailsForm = (props) => {
       return (
@@ -81,6 +82,9 @@ class TaskForm extends React.Component {
           handleErrorInput={this.handleErrorInput}
           removeErrors={this.props.removeErrors}
           setState={this.setState.bind(this)}
+          // setTaskLocation={this.props.setTaskLocation}
+          // setTaskDescription={this.props.setTaskDescription}
+          // setTaskVehicleReq={this.props.setTaskVehicleReq}
           {...props}
         />
       );
@@ -102,6 +106,7 @@ class TaskForm extends React.Component {
           // availableTaskers={this.props.availableTaskers}
           setTaskDate={this.props.setTaskDate}
           setTaskTime={this.props.setTaskTime}
+          // setTaskTaskerId={this.props.setTaskTaskerId}
           fetchAllUsers={this.props.fetchAllUsers}
           {...props}
         />
@@ -132,7 +137,7 @@ class TaskForm extends React.Component {
 
     return (
       <div>
-        <NavBarContainer/>
+        <Route path="/task-form" component={NavBarContainer}/>
         <StatusBarWithRouter/>
         <div className="trust-banner">
           <TrustIcon/>

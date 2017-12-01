@@ -144,6 +144,7 @@
 .dashboard-task-body-location {
   display: flex;
   flex-direction: column;
+  width: 65%;
 }
 
 .fa-map-marker {
@@ -154,7 +155,7 @@
 
 .location-tasker-price-section {
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
 }
 
 .dashboard-task-mini-header {
@@ -169,7 +170,7 @@
 .dashboard-task-body-tasker {
   display: flex;
   flex-direction: column;
-  margin-left: 190px;
+  width: 20%;
 }
 
 .dashboard-task-body-tasker-name {
@@ -179,7 +180,7 @@
 .dashboard-task-body-price {
   display: flex;
   flex-direction: column;
-  margin-right: 120px;
+  width: 15%;
 }
 
 .dashboard-task-body-description {

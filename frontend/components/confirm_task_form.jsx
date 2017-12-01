@@ -31,13 +31,11 @@ class ConfirmTaskForm extends React.Component {
   // }
 
   handleSubmit() {
-    console.log(this, 'in handle submit');
     this.props.createTask(this.props.state)
       .then(this.props.history.push('/dashboard'))
   }
 
   render() {
-    console.log(this.tasker, 'this tasker');
     return (
       <div className="confirm-task-form-container">
         <div className="confirm-task-form">

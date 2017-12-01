@@ -6,7 +6,6 @@ class TaskDetailsForm extends React.Component {
     super(props);
 
     this.handleSubFormSubmit = this.handleSubFormSubmit.bind(this);
-    console.log(this.props);
   }
 
   componentDidMount() {
@@ -33,6 +32,18 @@ class TaskDetailsForm extends React.Component {
   }
 
   handleSubFormSubmit(subFormId, nextSubFormId) {
+    // switch(subFormId) {
+    //   case "Location":
+    //     this.props.setTaskLocation(this.props.state.location);
+    //     break;
+    //   case "Vehicle":
+    //     this.props.setTaskVehicleReq(this.props.state.vehicle_requirements);
+    //     break;
+    //   case "Description":
+    //     this.props.setTaskDescription(this.props.state.description);
+    //     break;
+    // }
+
     return e => {
       this.props.handleSubmit(e)
         .then(null, () => {

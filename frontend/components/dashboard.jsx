@@ -19,11 +19,11 @@ class Dashboard extends React.Component {
 
   handleClick(e) {
     const nodeClasses= e.target.classList;
-    console.log(nodeClasses);
+    // console.log(nodeClasses);
     const taskCategoriesClass = classNames({
       'hidden': !nodeClasses.contains("search")
     })
-    console.log(taskCategoriesClass);
+    // console.log(taskCategoriesClass);
 
     document.getElementById('task-categories').className = taskCategoriesClass;
   }
@@ -48,8 +48,8 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    console.log('dashboard rendering');
-    console.log(this.props.currentUser);
+    // console.log('dashboard rendering');
+    // console.log(this.props.currentUser);
 
     if (this.props.currentUserTasks.length > 0) {
       return (
@@ -67,13 +67,13 @@ class Dashboard extends React.Component {
               <h3 className="dashboard-body-header">Tasks</h3>
             </div>
             {this.props.currentUserTasks.map(task => {
-              console.log(task.id, 'task id in dashboard');
-              console.log(task, 'task in dashboard');
-              console.log(task.tasker, 'tasker');
-              console.log(task.tasker.image_url, 'tasker image url');
+              // console.log(task.id, 'task id in dashboard');
+              // console.log(task, 'task in dashboard');
+              // console.log(task.tasker, 'tasker');
+              // console.log(task.tasker.image_url, 'tasker image url');
               // let tasker = this.props.getUser(task.tasker_id);
               return (
-                <div className="dashboard-task">
+                <div key={task.id} className="dashboard-task">
                   <div className="dashboard-task-header">
                     <h2 className="dashboard-task-header-title">{task.task_type}</h2>
                     <div className="tasker-cancel-section">
@@ -97,7 +97,7 @@ class Dashboard extends React.Component {
                     <div className="location-tasker-price-section">
                       <div className="dashboard-task-body-location">
                         <strong className="dashboard-task-mini-header">Location</strong>
-                        <strong className="location-address"><i class="fa fa-map-marker" aria-hidden="true"></i> {task.location}</strong>
+                        <strong className="location-address"><i className="fa fa-map-marker" aria-hidden="true"></i> {task.location}</strong>
                       </div>
                       <div className="dashboard-task-body-tasker">
                         <strong className="dashboard-task-mini-header">Tasker</strong>
