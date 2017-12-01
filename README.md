@@ -12,7 +12,11 @@ For example, being able to view the state right after an action was dispatched a
 ### Task Search
 A challenge that I faced was creating the task search bar on the landing page. I spent a while looking through different libraries but eventually realized that I was probably better off hand rolling it on my own since I had to implement very specific behavior to mimic TaskRabbit's search bar. I also thought it would be an awesome learning experience to build out an auto-complete dropdown completely from scratch.
 
+![alt_text](https://res.cloudinary.com/dezmnl5mf/image/upload/v1512172465/Screen_Shot_2017-12-01_at_3.53.14_PM_iwmsxy.png "Auto-complete drop-down")
+
 This was nice because I ended up with a `TaskSearch` component that I could re-use in my `Dashboard` with the exact behavior that I wanted. 
+
+![alt_text](https://res.cloudinary.com/dezmnl5mf/image/upload/v1512172571/Screen_Shot_2017-12-01_at_3.53.45_PM_dti84c.png "On Dashboard")
 
 ### Tasker Sort
 Another challenge that I faced was deciding how I was going to sort my taskers based on the user's sorting preferences (by Recommended, by Highest Rating, etc).
