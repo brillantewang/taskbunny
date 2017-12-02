@@ -52,7 +52,7 @@ class ConfirmTaskForm extends React.Component {
                 <strong className="info-text">{this.props.state.date} ({this.props.state.task_time})</strong>
               </div>
               <div className="date-time-tasker-tasker">
-                <img className="tasker-mini-profile-photo" src="https://res.cloudinary.com/dezmnl5mf/image/upload/v1512006900/dummy_profile_image_m7vtxo.png"/>
+                <img className="tasker-mini-profile-photo" src={this.tasker.image_url}/>
                 <div className="tasker-name">
                   <strong className="mini-header">Tasker</strong>
                   {/* <strong className="info-text">Semo N.</strong> */}

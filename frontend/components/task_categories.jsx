@@ -12,7 +12,7 @@ export const TaskCategories = ({ text, setTaskType }) => {
     { title: "Pet Sitting", img_url: "https://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_3264,w_3648/v1511562981/pet_sitting_njnxv2.jpg" },
     { title: "Birthday and Party Planning", img_url: "https://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_2000,w_2134/v1511562966/birthday_and_party_planning_q2wyig.jpg" },
     { title: "Run Errands", img_url: "https://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_1003,w_1046,x_407/v1511562983/run_errands_naxs3u.jpg" },
-    { title: "Web Design $ Development", img_url: "https://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_979,w_1021,x_0/v1511562988/web_design_and_development_qizueo.jpg" },
+    { title: "Web Design & Development", img_url: "https://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_979,w_1021,x_0/v1511562988/web_design_and_development_qizueo.jpg" },
     { title: "Graphic Design", img_url: "https://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_1150,w_1263/v1511562975/graphic_design_cksf9y.jpg" },
     { title: "Decoration Help", img_url: "https://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_490,w_552/v1511562965/decoration_help_xyyaor.jpg" },
     { title: "Arts and Crafts", img_url: "https://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_2126,w_2213/v1511563121/arts_and_crafts_zdjicp.jpg" },

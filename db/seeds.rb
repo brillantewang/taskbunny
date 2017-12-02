@@ -8,7 +8,29 @@
 
 require 'csv'
 
-csv_text = File.read(Rails.root.join('lib', 'seeds', 'fake_users.csv'))
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'fake_users_male.csv'))
+csv = CSV.parse(csv_text, headers: true, encoding: 'ISO-8859-1')
+csv.each do |row|
+  t = User.new
+  t.email = row['email']
+  t.password = row['password']
+  t.is_tasker = row['is_tasker']
+  t.num_of_reviews = row['num_of_reviews']
+  t.num_of_completed_tasks = row['num_of_completed_tasks']
+  t.percent_positive = row['percent_positive']
+  t.tasker_description = row['tasker_description']
+  t.price_per_hour = row['price_per_hour']
+  t.first_name = row['first_name']
+  t.last_name = row['last_name']
+  t.zip_code = row['zip_code']
+  t.available_tasker_time = row['available_tasker_time']
+  t.available_task_type = row['available_task_type']
+  t.image_url = row['image_url']
+  t.unavailable_tasker_weekday = row['unavailable_tasker_weekday']
+  t.save
+end
+
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'fake_users_female.csv'))
 csv = CSV.parse(csv_text, headers: true, encoding: 'ISO-8859-1')
 csv.each do |row|
   t = User.new

@@ -106,15 +106,17 @@
 
   button {
     margin-top: 15px;
-    font-size: 20px;
-    width: 210px;
+    font-size: 16px;
+    width: 170px;
+    padding-left: 22px;
+    padding-right: 22px;
     box-sizing: border-box;
   }
 }
 
 .tasker-profile-image {
-  width: 210px;
-  height: 220px;
+  width: 170px;
+  height: 170px;
   border-radius: 5px;
   margin-right: 25px;
 }
