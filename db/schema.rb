@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171201180102) do
+ActiveRecord::Schema.define(version: 20171202000303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20171201180102) do
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.integer "zip_code", null: false
-    t.string "image_url"
+    t.string "image_url", default: "https://res.cloudinary.com/dezmnl5mf/image/upload/v1512006900/dummy_profile_image_m7vtxo.png"
     t.string "available_tasker_time", default: "8:00am"
     t.string "available_task_type", default: "General Cleaning"
     t.integer "unavailable_tasker_weekday"
