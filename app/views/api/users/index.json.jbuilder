@@ -17,6 +17,7 @@
       :unavailable_tasker_weekday,
       :image_url
     )
+    json.user_tasks user.user_tasks.pluck(:id)
     json.tasker_tasks user.tasker_tasks.pluck(:id)
   end
 end

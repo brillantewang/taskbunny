@@ -10,7 +10,7 @@ class PickTaskerForm extends React.Component {
       taskers: this.props.availableTaskersByRecommended
     }
 
-    // console.log(this.state.taskers, 'taskers');
+    console.log(this.state.taskers, 'taskers');
   }
 
   loading() {
@@ -110,14 +110,16 @@ class PickTaskerForm extends React.Component {
     }
   }
 
-  handleClick(taskerId) {
+  handleSubmit(taskerId) {
     // this.props.setTaskTaskerId(taskerId);
+    // console.log(taskerId, 'submit pick tasker form tasker id');
     return e => {
       e.preventDefault();
-      this.props.setState({
-        tasker_id: taskerId
-      })
-      this.props.history.push('/task-form/confirm');
+      this.props.setState({ tasker_id: taskerId }, () => {
+        this.props.updateTask(this.props.state);
+        console.log(this.props.state, 'select and confirm clicked');
+        this.props.history.push('/task-form/confirm');
+      });
     }
   }
 
@@ -125,6 +127,7 @@ class PickTaskerForm extends React.Component {
     // console.log(this.props, 'pick tasker form props');
     // console.log(this.state, 'pick tasker form state');
     // console.log(this.state.taskers, 'taskers rendered');
+    console.log(this.props.state, 'state in pick tasker form render');
 
     if (this.loading() === false) {
       return (
@@ -164,7 +167,7 @@ class PickTaskerForm extends React.Component {
                   <div key={tasker.id} className="tasker">
                     <div className="tasker-profile">
                       <img className="tasker-profile-image" src={tasker.image_url}/>
-                      <button onClick={this.handleClick(tasker.id)} className="btn-green">Select & Continue</button>
+                      <button onClick={this.handleSubmit(tasker.id)} className="btn-green">Select & Continue</button>
                     </div>
                     <div className="tasker-main">
                       <div className="tasker-header">

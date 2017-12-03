@@ -21,6 +21,13 @@ export const fetchAllUsers = () => (
   })
 )
 
+export const fetchUser = userId => (
+  $.ajax({
+    url: `api/users/${userId}`,
+    method: "GET"
+  })
+)
+
 export const fetchAllTasks = () => (
   $.ajax({
     url: "api/tasks",
@@ -32,5 +39,12 @@ export const deleteTask = taskId => (
   $.ajax({
     url: `api/tasks/${taskId}`,
     method: "DELETE"
+  })
+)
+
+export const fetchLastTaskForCurrentUser = taskId => (
+  $.ajax({
+    url: `api/tasks/${taskId}`,
+    method: "GET"
   })
 )

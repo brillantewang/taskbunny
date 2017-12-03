@@ -19,7 +19,7 @@ class Api::TasksController < ApplicationController
     @task = Task.find_by(id: params[:id])
 
     if @task
-      @task.update
+      @task.update(task_params)
       render :show #does this render the task before it was updated, or after? shouldn't @task still point to the original task?
     else
       render json: ["Task not found"], status: 404

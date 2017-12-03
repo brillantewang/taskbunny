@@ -2,13 +2,16 @@ import { connect } from 'react-redux';
 import {
   createTask,
   updateTask,
+  fetchLastTaskForCurrentUser,
   receiveTaskDate,
   receiveTaskTime,
   // receiveTaskerId,
   // receiveDescription,
   // receiveLocation,
   // receiveVehicleReq,
-  fetchAllUsers } from '../actions/task_form_actions';
+  fetchAllUsers,
+  fetchCurrentUser
+} from '../actions/task_form_actions';
 import TaskForm from './task_form';
 import { handleErrorInput } from '../util/errors_util.js';
 import { removeErrors } from '../actions/session_actions';
@@ -31,7 +34,9 @@ const mapDispatchToProps = dispatch => ({
   // setTaskDescription: description => dispatch(receiveDescription(description)),
   // setTaskLocation: location => dispatch(receiveLocation(location)),
   // setTaskVehicleReq: vehicleReq => dispatch(receiveVehicleReq(vehicleReq)),
-  fetchAllUsers: () => dispatch(fetchAllUsers())
+  fetchAllUsers: () => dispatch(fetchAllUsers()),
+  fetchCurrentUser: userId => dispatch(fetchCurrentUser(userId)),
+  fetchLastTaskForCurrentUser: taskId => dispatch(fetchLastTaskForCurrentUser(taskId))
 })
 
 export default connect(

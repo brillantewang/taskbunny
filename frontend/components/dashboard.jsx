@@ -48,8 +48,9 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    // console.log('dashboard rendering');
+    console.log('dashboard rendering');
     // console.log(this.props.currentUser);
+    console.log(this.props.currentUserTasks, 'current user tasks');
 
     if (this.props.currentUserTasks.length > 0) {
       return (

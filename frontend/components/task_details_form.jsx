@@ -6,10 +6,12 @@ class TaskDetailsForm extends React.Component {
     super(props);
 
     this.handleSubFormSubmit = this.handleSubFormSubmit.bind(this);
+    // this.taskCreated = null;
   }
 
   componentDidMount() {
-    this.props.setState({ task_type: this.props.selectedTaskType })
+    console.log('task details form mounting');
+    this.props.setState({ task_type: this.props.selectedTaskType });
   }
 
   collapse(subFormId, nextSubFormId) {
@@ -51,8 +53,10 @@ class TaskDetailsForm extends React.Component {
 
     if (this.props.state.id === null) {
       return e => {
+        e.preventDefault();
         this.props.createTask(this.props.state)
           .then((taskRes) => {
+            // this.taskCreated = taskRes.task;
             // console.log(taskRes);
             this.props.setState(taskRes.task); //so we get the id
             this.collapse(subFormId, nextSubFormId);
@@ -60,9 +64,11 @@ class TaskDetailsForm extends React.Component {
       }
     } else {
       return e => {
+        e.preventDefault();
         this.props.updateTask(this.props.state)
           .then(() => {
-            this.collapse(subFormId, nextSubForm)
+            // this.props.setState(this.props.state);
+            this.collapse(subFormId, nextSubFormId)
           })
         }
     }
@@ -118,7 +124,7 @@ class TaskDetailsForm extends React.Component {
         <h3>We need these inputs to show only qualified and available Taskers for the job.</h3>
         <form onClick={this.handleClick("Location")} className="task-details-subform location-details-form">
           <strong className="task-subform-header">YOUR TASK LOCATION</strong>
-          <p id="location-text" className="hidden">{`${this.props.state.location}` || "Location can't be blank"}</p>
+          {/* <p id="location-text" className="hidden">{`${this.props.state.location}` || "Location can't be blank"}</p> */}
           <div id="location">
             <div className="location-details-form-inputs">
               <input
@@ -136,7 +142,7 @@ class TaskDetailsForm extends React.Component {
                 placeholder="Unit or Apt #"
               />
             </div>
-            {this.props.handleErrorInput('Location')}
+            {/* {this.props.handleErrorInput('Location')} */}
             <div className="save-button-container">
               <button onClick={this.handleSubFormSubmit("location", "vehicle_requirements")} className="btn-green">Save</button>
             </div>

@@ -13,11 +13,6 @@ class TaskForm extends React.Component {
   constructor(props) {
     super(props)
 
-    // this.location = {
-    //   address: "",
-    //   unit: ""
-    // }
-
     this.state = {
       id: null,
       task_type: "",
@@ -28,13 +23,14 @@ class TaskForm extends React.Component {
       vehicle_requirements: "No vehicle needed",
       user_id: this.props.currentUser.id,
       tasker_id: "",
+      tasker: null,
       form_complete: false
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleErrorInput = handleErrorInput.bind(this);
-
+    this.reloadTask = this.reloadTask.bind(this);
     // console.log('task form constructing');
   }
 
@@ -46,6 +42,41 @@ class TaskForm extends React.Component {
     // this.setState({ form_complete: false })
     // console.log('task form mounting');
     // this.props.fetchAllUsers();
+    console.log('task form mounting');
+    // const sortedTaskIds = this.props.currentUser.tasks.sort();
+    // const lastId = sortedTaskIds[sortedTaskIds.length - 1];
+    // this.props.fetchLastTaskForCurrentUser(lastId)
+    //   .then(taskRes => { // why is taskRes the action POJO dispatched? is taskRes the return value of fetchLastTaskForCurrentUser?
+    //     // console.log(taskRes);
+    //     const lastTask = taskRes.task;
+    //     this.setState(lastTask);
+    //   })
+    this.reloadTask();
+
+    // const lastTask = this.props.fetchLastTaskForCurrentUser(lastId);
+    // console.log(lastTask, 'lasttask in mounting');
+    // this.setState(lastTask);
+  }
+
+  reloadTask() {
+    console.log('task reloading');
+    // console.log(this.props.currentUser);
+    this.props.fetchCurrentUser(this.state.user_id)
+      .then(userRes => {
+        const currentUser = userRes.user;
+        const sortedTaskIds = currentUser.user_tasks.sort((a,b) => a - b);
+        console.log(sortedTaskIds, 'sortedtaskIds');
+        const lastId = sortedTaskIds[sortedTaskIds.length - 1];
+        this.props.fetchLastTaskForCurrentUser(lastId)
+        .then(taskRes => { // why is taskRes the action POJO dispatched? is taskRes the return value of fetchLastTaskForCurrentUser?
+          // console.log(taskRes);
+          const lastTask = taskRes.task;
+          console.log(lastTask, 'lastTask in reload');
+          if (lastTask.form_complete === false) {
+            this.setState(lastTask, () => console.log(this.state, 'state in task form reload'));
+          }
+        })
+      })
   }
 
   // componentWillUnmount() {
@@ -65,6 +96,7 @@ class TaskForm extends React.Component {
 
   render() {
     // console.log(this.state);
+    console.log('task form rendering');
 
     const MyTaskDetailsForm = (props) => {
       return (
@@ -77,6 +109,7 @@ class TaskForm extends React.Component {
           handleChange={this.handleChange}
           // handleSubmit={this.handleSubmit}
           createTask={this.props.createTask}
+          updateTask={this.props.updateTask}
           errors={this.props.errors}
           handleErrorInput={this.handleErrorInput}
           removeErrors={this.props.removeErrors}
@@ -107,6 +140,7 @@ class TaskForm extends React.Component {
           setTaskTime={this.props.setTaskTime}
           // setTaskTaskerId={this.props.setTaskTaskerId}
           fetchAllUsers={this.props.fetchAllUsers}
+          updateTask={this.props.updateTask}
           {...props}
         />
       );
@@ -129,6 +163,9 @@ class TaskForm extends React.Component {
           setTaskDate={this.props.setTaskDate}
           setTaskTime={this.props.setTaskTime}
           fetchAllUsers={this.props.fetchAllUsers}
+          fetchCurrentUser={this.props.fetchCurrentUser}
+          reloadTask={this.reloadTask}
+          updateTask={this.props.updateTask}
           {...props}
         />
       );

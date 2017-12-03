@@ -1,4 +1,5 @@
 import * as taskFormAPIUtil from '../util/task_form_api_util';
+import { RECEIVE_CURRENT_USER, receiveCurrentUser } from './session_actions';
 
 export const RECEIVE_TASK = 'RECEIVE_TASK';
 export const RECEIVE_TASK_ERRORS = 'RECEIVE_TASK_ERRORS';
@@ -92,9 +93,22 @@ export const updateTask = task => dispatch => (
     )
 )
 
+export const fetchLastTaskForCurrentUser = taskId => dispatch => (
+  taskFormAPIUtil.fetchLastTaskForCurrentUser(taskId)
+    .then(
+      taskRes => dispatch(receiveTask(taskRes)),
+      errors => dispatch(receiveTaskErrors(errors.responseJSON))
+    )
+)
+
 export const fetchAllUsers = task => dispatch => (
   taskFormAPIUtil.fetchAllUsers()
     .then(users => dispatch(receiveAllUsers(users)))
+)
+
+export const fetchCurrentUser = userId => dispatch => (
+  taskFormAPIUtil.fetchUser(userId)
+    .then(user => dispatch(receiveCurrentUser(user)))
 )
 
 export const fetchAllTasks = () => dispatch => (

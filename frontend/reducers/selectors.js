@@ -9,6 +9,8 @@ export const selectAvailableTaskers = state => {
     let year, month, day;
     [year, month, day] = parts;
     let selected_date = new Date(year, month - 1, day);
+    // console.log(tasker, 'tasker in selector');
+    // console.log(tasker.tasker_tasks, 'tasker tasks in selector');
 
     return (
       tasker.tasker_tasks.every(task => JSON.stringify([task.time, task.date]) !== JSON.stringify([state.session.currentTask.selected_time, state.session.currentTask.selected_date])) &&
@@ -58,6 +60,7 @@ export const availableTaskersByRecommended = state => {
 
 export const selectCurrentUserTasks = state => {
   const allTasks = values(state.entities.tasks);
-  const currentUserTasks = allTasks.filter(task => task.user_id === state.session.currentUser.id);
+  console.log(allTasks, 'alltasks');
+  const currentUserTasks = allTasks.filter(task => task.user_id === state.session.currentUser.id && task.form_complete === true);
   return currentUserTasks.reverse();
 }
