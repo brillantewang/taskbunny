@@ -11,8 +11,24 @@ class TaskDetailsForm extends React.Component {
 
   componentDidMount() {
     console.log('task details form mounting');
-    this.props.setState({ task_type: this.props.selectedTaskType });
+
+    this.props.reloadTask()
+      .then(
+        () => { this.props.updateTask(this.props.state) },
+        () => { this.props.createTask(this.props.state).then(taskRes => this.props.setState(taskRes)) }
+      )
+      // this.props.setState({ task_type: this.props.selectedTaskType }, () => {
+      //   this.props.createTask(this.props.state)
+      //     .then((taskRes) => {
+      //       // this.taskCreated = taskRes.task;
+      //       // console.log(taskRes, 'taskres');
+      //       this.props.setState(taskRes.task); //so we get the id
+      //       // this.collapse(subFormId, nextSubFormId);
+      //     })
+      // });
   }
+
+
 
   collapse(subFormId, nextSubFormId) {
     const subForm = document.getElementById(subFormId);
@@ -51,18 +67,18 @@ class TaskDetailsForm extends React.Component {
     //     break;
     // }
 
-    if (this.props.state.id === null) {
-      return e => {
-        e.preventDefault();
-        this.props.createTask(this.props.state)
-          .then((taskRes) => {
-            // this.taskCreated = taskRes.task;
-            // console.log(taskRes);
-            this.props.setState(taskRes.task); //so we get the id
-            this.collapse(subFormId, nextSubFormId);
-          })
-      }
-    } else {
+    // if (this.props.state.id === null) {
+    //   return e => {
+    //     e.preventDefault();
+    //     this.props.createTask(this.props.state)
+    //       .then((taskRes) => {
+    //         // this.taskCreated = taskRes.task;
+    //         // console.log(taskRes);
+    //         this.props.setState(taskRes.task); //so we get the id
+    //         this.collapse(subFormId, nextSubFormId);
+    //       })
+    //   }
+    // } else {
       return e => {
         e.preventDefault();
         this.props.updateTask(this.props.state)
@@ -71,7 +87,7 @@ class TaskDetailsForm extends React.Component {
             this.collapse(subFormId, nextSubFormId)
           })
         }
-    }
+    // }
 
     // return e => {
     //   this.props.handleSubmit(e)
@@ -117,7 +133,7 @@ class TaskDetailsForm extends React.Component {
   }
 
   render() {
-    console.log(this.props.state, 'taskform state');
+    console.log(this.props.state, 'task details form rendering - taskform state');
     return (
       <div className="task-details-form task-form-subform">
         <h2>Describe Your Task</h2>

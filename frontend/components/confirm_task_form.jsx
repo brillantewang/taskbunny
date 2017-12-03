@@ -16,7 +16,7 @@ class ConfirmTaskForm extends React.Component {
   }
 
   loaded() {
-    console.log(this.props.state.tasker, 'tasker in loaded');
+    // console.log(this.props.state.tasker, 'tasker in loaded');
     return this.props.state.tasker !== null
   }
 
@@ -32,7 +32,7 @@ class ConfirmTaskForm extends React.Component {
   }
 
   componentWillMount() {
-    console.log('component will mount in confirm task form');
+    // console.log('component will mount in confirm task form');
     this.props.reloadTask();
   }
 
@@ -53,9 +53,9 @@ class ConfirmTaskForm extends React.Component {
   }
 
   render() {
-    console.log(this.props.state, 'confirm task form rendering');
-    console.log(this.props.state.tasker);
-    console.log(this.loaded(), 'loaded in confirm task render');
+    // console.log(this.props.state, 'confirm task form rendering');
+    // console.log(this.props.state.tasker);
+    // console.log(this.loaded(), 'loaded in confirm task render');
     if (this.loaded()) {
       return (
         <div className="confirm-task-form-container">

@@ -60,8 +60,8 @@ class TaskForm extends React.Component {
 
   reloadTask() {
     console.log('task reloading');
-    // console.log(this.props.currentUser);
-    this.props.fetchCurrentUser(this.state.user_id)
+    return new Promise((resolve, reject) => {
+      this.props.fetchCurrentUser(this.state.user_id)
       .then(userRes => {
         const currentUser = userRes.user;
         const sortedTaskIds = currentUser.user_tasks.sort((a,b) => a - b);
@@ -71,12 +71,17 @@ class TaskForm extends React.Component {
         .then(taskRes => { // why is taskRes the action POJO dispatched? is taskRes the return value of fetchLastTaskForCurrentUser?
           // console.log(taskRes);
           const lastTask = taskRes.task;
-          console.log(lastTask, 'lastTask in reload');
+          // console.log(lastTask, 'lastTask in reload');
           if (lastTask.form_complete === false) {
-            this.setState(lastTask, () => console.log(this.state, 'state in task form reload'));
+            this.setState(lastTask, () => resolve());
+          } else {
+            reject();
           }
         })
       })
+
+    })
+    // console.log(this.props.currentUser);
   }
 
   // componentWillUnmount() {
@@ -114,6 +119,7 @@ class TaskForm extends React.Component {
           handleErrorInput={this.handleErrorInput}
           removeErrors={this.props.removeErrors}
           setState={this.setState.bind(this)}
+          reloadTask={this.reloadTask.bind(this)}
           // setTaskLocation={this.props.setTaskLocation}
           // setTaskDescription={this.props.setTaskDescription}
           // setTaskVehicleReq={this.props.setTaskVehicleReq}

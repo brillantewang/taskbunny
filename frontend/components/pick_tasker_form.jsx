@@ -117,7 +117,7 @@ class PickTaskerForm extends React.Component {
       e.preventDefault();
       this.props.setState({ tasker_id: taskerId }, () => {
         this.props.updateTask(this.props.state);
-        console.log(this.props.state, 'select and confirm clicked');
+        // console.log(this.props.state, 'select and confirm clicked');
         this.props.history.push('/task-form/confirm');
       });
     }
@@ -127,7 +127,7 @@ class PickTaskerForm extends React.Component {
     // console.log(this.props, 'pick tasker form props');
     // console.log(this.state, 'pick tasker form state');
     // console.log(this.state.taskers, 'taskers rendered');
-    console.log(this.props.state, 'state in pick tasker form render');
+    // console.log(this.props.state, 'state in pick tasker form render');
 
     if (this.loading() === false) {
       return (
