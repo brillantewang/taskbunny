@@ -15,6 +15,17 @@ class Api::TasksController < ApplicationController
     end
   end
 
+  def update
+    @task = Task.find_by(id: params[:id])
+
+    if @task
+      @task.update
+      render :show #does this render the task before it was updated, or after? shouldn't @task still point to the original task?
+    else
+      render json: ["Task not found"], status: 404
+    end
+  end
+
   def destroy
     @task = Task.find_by(id: params[:id])
     @task.destroy!
@@ -29,6 +40,6 @@ class Api::TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:task_type, :date, :task_time, :location, :description, :vehicle_requirements, :user_id, :tasker_id, :complete)
+    params.require(:task).permit(:id, :form_complete, :task_type, :date, :task_time, :location, :description, :vehicle_requirements, :user_id, :tasker_id, :complete)
   end
 end

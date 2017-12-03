@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import {
   createTask,
+  updateTask,
   receiveTaskDate,
   receiveTaskTime,
   // receiveTaskerId,
@@ -22,6 +23,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   createTask: task => dispatch(createTask(task)),
+  updateTask: task => dispatch(updateTask(task)),
   removeErrors: () => dispatch(removeErrors()),
   setTaskDate: date => dispatch(receiveTaskDate(date)),
   setTaskTime: time => dispatch(receiveTaskTime(time)),

@@ -8,10 +8,10 @@ export const RECEIVE_TASK_DATE = 'RECEIVE_TASK_DATE';
 export const RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS';
 export const RECEIVE_ALL_TASKS = 'RECEIVE_ALL_TASKS';
 export const REMOVE_TASK = 'REMOVE_TASK';
-export const RECEIVE_TASKER_ID = 'RECEIVE_TASKER_ID';
-export const RECEIVE_LOCATION = 'RECEIVE_LOCATION';
-export const RECEIVE_DESCRIPTION = 'RECEIVE_DESCRIPTION';
-export const RECEIVE_VEHICLE_REQ = 'RECEIVE_VEHICLE_REQ';
+// export const RECEIVE_TASKER_ID = 'RECEIVE_TASKER_ID';
+// export const RECEIVE_LOCATION = 'RECEIVE_LOCATION';
+// export const RECEIVE_DESCRIPTION = 'RECEIVE_DESCRIPTION';
+// export const RECEIVE_VEHICLE_REQ = 'RECEIVE_VEHICLE_REQ';
 
 export const removeTask = task => ({
   type: REMOVE_TASK,
@@ -75,13 +75,20 @@ export const receiveAllUsers = users => ({
 
 //thunk action creators
 
+//why does this evaluate to the receiveTask action object?
 export const createTask = task => dispatch => (
   taskFormAPIUtil.createTask(task)
     .then(
       taskRes => dispatch(receiveTask(taskRes)),
-      errors => {
-        dispatch(receiveTaskErrors(errors.responseJSON))
-      }
+      errors => dispatch(receiveTaskErrors(errors.responseJSON))
+    )
+)
+
+export const updateTask = task => dispatch => (
+  taskFormAPIUtil.updateTask(task)
+    .then(
+      taskRes => dispatch(receiveTask(taskRes)),
+      errors => dispatch(receiveTaskErrors(errors.responseJSON))
     )
 )
 

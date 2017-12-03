@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-//this is persistData branch
 
 class TaskDetailsForm extends React.Component {
   constructor(props) {
@@ -21,15 +20,20 @@ class TaskDetailsForm extends React.Component {
     // console.log(nextSubFormId, 'nextsubform-id');
     // console.log(nextSubForm, 'nextsubform');
 
-    return new Promise((resolve, reject) => {
-      if (this.props.handleErrorInput(subFormId) === undefined) {
-        subForm.classList.add("hidden");
-        nextSubForm.classList.remove("hidden");
-        resolve();
-      } else {
-        reject();
-      }
-    })
+    if (this.props.state[subFormId] !== "") {
+      subForm.classList.add("hidden");
+      nextSubForm.classList.remove("hidden");
+    }
+
+    // return new Promise((resolve, reject) => {
+    //   if (this.props.handleErrorInput(subFormId) === undefined) {
+    //     subForm.classList.add("hidden");
+    //     nextSubForm.classList.remove("hidden");
+    //     resolve();
+    //   } else {
+    //     reject();
+    //   }
+    // })
   }
 
   handleSubFormSubmit(subFormId, nextSubFormId) {
@@ -45,13 +49,31 @@ class TaskDetailsForm extends React.Component {
     //     break;
     // }
 
-    return e => {
-      this.props.handleSubmit(e)
-        .then(null, () => {
-          this.collapse(subFormId, nextSubFormId)
-            // .then(() => this.props.removeErrors())
-        })
+    if (this.props.state.id === null) {
+      return e => {
+        this.props.createTask(this.props.state)
+          .then((taskRes) => {
+            // console.log(taskRes);
+            this.props.setState(taskRes.task); //so we get the id
+            this.collapse(subFormId, nextSubFormId);
+          })
+      }
+    } else {
+      return e => {
+        this.props.updateTask(this.props.state)
+          .then(() => {
+            this.collapse(subFormId, nextSubForm)
+          })
+        }
     }
+
+    // return e => {
+    //   this.props.handleSubmit(e)
+    //     .then(null, () => {
+    //       this.collapse(subFormId, nextSubFormId)
+    //         // .then(() => this.props.removeErrors())
+    //     })
+    // }
   }
 
   componentDidUpdate() {
@@ -73,22 +95,23 @@ class TaskDetailsForm extends React.Component {
   }
 
   handleClick(subFormId) {
-    const subFormIds = ["Location", "Vehicle", "Description"];
-
-    return e => {
-      const clickedSubForm = document.getElementById(subFormId);
-      const otherSubForms = subFormIds.filter(subId => {
-        return subId !== subFormId
-      }).map(subId => document.getElementById(subId))
-
-      clickedSubForm.classList.remove("hidden");
-      otherSubForms.forEach(subForm => {
-        subForm.classList.add("hidden")
-      })
-    }
+    // const subFormIds = ["Location", "Vehicle", "Description"];
+    //
+    // return e => {
+    //   const clickedSubForm = document.getElementById(subFormId);
+    //   const otherSubForms = subFormIds.filter(subId => {
+    //     return subId !== subFormId
+    //   }).map(subId => document.getElementById(subId))
+    //
+    //   clickedSubForm.classList.remove("hidden");
+    //   otherSubForms.forEach(subForm => {
+    //     subForm.classList.add("hidden")
+    //   })
+    // }
   }
 
   render() {
+    console.log(this.props.state, 'taskform state');
     return (
       <div className="task-details-form task-form-subform">
         <h2>Describe Your Task</h2>
@@ -96,7 +119,7 @@ class TaskDetailsForm extends React.Component {
         <form onClick={this.handleClick("Location")} className="task-details-subform location-details-form">
           <strong className="task-subform-header">YOUR TASK LOCATION</strong>
           <p id="location-text" className="hidden">{`${this.props.state.location}` || "Location can't be blank"}</p>
-          <div id="Location">
+          <div id="location">
             <div className="location-details-form-inputs">
               <input
                 value={this.props.state.location}
@@ -115,14 +138,14 @@ class TaskDetailsForm extends React.Component {
             </div>
             {this.props.handleErrorInput('Location')}
             <div className="save-button-container">
-              <button onClick={this.handleSubFormSubmit("Location", "Vehicle")} className="btn-green">Save</button>
+              <button onClick={this.handleSubFormSubmit("location", "vehicle_requirements")} className="btn-green">Save</button>
             </div>
           </div>
         </form>
-        <form onClick={this.handleClick("Vehicle")} className="task-details-subform vehicle-details-form">
+        <form onClick={this.handleClick("vehicle_requirements")} className="task-details-subform vehicle-details-form">
           <strong className="task-subform-header">VEHICLE REQUIREMENTS</strong>
           <p className="hidden">{`${this.props.state.vehicle_requirements}`}</p>
-          <div id="Vehicle" className="hidden">
+          <div id="vehicle_requirements" className="hidden">
             <div className="vehicle-details-form-inputs">
               <span className="vehicle-option">
                 <input
@@ -156,13 +179,13 @@ class TaskDetailsForm extends React.Component {
               </span>
             </div>
             <div className="save-button-container">
-              <button onClick={this.handleSubFormSubmit("Vehicle", "Description")} className="btn-green">Save</button>
+              <button onClick={this.handleSubFormSubmit("vehicle_requirements", "description")} className="btn-green">Save</button>
             </div>
           </div>
         </form>
-        <form onClick={this.handleClick("Description")} onSubmit={this.props.handleSubmit} className="task-details-subform description-details-form">
+        <form onClick={this.handleClick("description")} onSubmit={this.props.handleSubmit} className="task-details-subform description-details-form">
           <strong className="task-subform-header">TELL US ABOUT YOUR TASK</strong>
-          <div id="Description" className="hidden">
+          <div id="description" className="hidden">
             <div className="description-details-form-content">
               <p>Tell us what you need done, plus any requirements or questions that you may have. You can edit this later.</p>
               <textarea
@@ -171,10 +194,10 @@ class TaskDetailsForm extends React.Component {
                 className="description-details-form-textarea Description"
                 placeholder="EXAMPLE: I rented a moving van, but need help moving my stuff in and out of it. I have: queen bed with frame, medium couch, loveseat, entertainment center, large TV, armchair, 2 bookcases, dining room table with 4 chairs, desk and chair, and about 50 boxes.">
               </textarea>
-              {/* {this.props.handleErrorInput('Description')} */}
+              {/* {this.props.handleErrorInput('description')} */}
               <p>If you need two or more Taskers, please post additional tasks for each Tasker needed.</p>
               <div className="save-button-container">
-                <Link to="/task-form/taskers"><button disabled="true" id="details-final-submit" onClick={this.handleSubFormSubmit("Description")} className="btn-green">See Taskers & Prices</button></Link>
+                <Link to="/task-form/taskers"><button disabled="true" id="details-final-submit" onClick={this.handleSubFormSubmit("description")} className="btn-green">See Taskers & Prices</button></Link>
               </div>
             </div>
           </div>

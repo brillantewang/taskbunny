@@ -17,13 +17,14 @@
 #
 
 class Task < ApplicationRecord
-  validates :task_type, :date, :task_time, :location, :description,
-    :user_id, :tasker_id, presence: true
+  # validates :task_type, :date, :task_time, :location, :description,
+  #   :user_id, :tasker_id, presence: true
 
   belongs_to :user
 
   belongs_to :tasker,
     class_name: :User,
     primary_key: :id,
-    foreign_key: :tasker_id
+    foreign_key: :tasker_id,
+    optional: true
 end

@@ -19,14 +19,16 @@ class TaskForm extends React.Component {
     // }
 
     this.state = {
+      id: null,
       task_type: "",
-      date: "",
-      task_time: "",
+      date: todaysDateString,
+      task_time: "I'm Flexible",
       location: "",
       description: "",
-      vehicle_requirements: "",
-      user_id: "",
-      tasker_id: ""
+      vehicle_requirements: "No vehicle needed",
+      user_id: this.props.currentUser.id,
+      tasker_id: "",
+      form_complete: false
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -37,26 +39,22 @@ class TaskForm extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ user_id: this.props.currentUser.id })
-    this.setState({ date: todaysDateString })
-    this.setState({ task_time: "I'm Flexible"})
-    this.setState({ vehicle_requirements: "No vehicle needed"})
+    // this.setState({ user_id: this.props.currentUser.id })
+    // this.setState({ date: todaysDateString })
+    // this.setState({ task_time: "I'm Flexible"})
+    // this.setState({ vehicle_requirements: "No vehicle needed"})
+    // this.setState({ form_complete: false })
     // console.log('task form mounting');
     // this.props.fetchAllUsers();
   }
 
-  componentWillUnmount() {
-    this.props.history.push("/dashboard");
-  }
+  // componentWillUnmount() {
+  //   this.props.history.push("/dashboard");
+  // }
 
   handleChange(type) {
     return e => {
-      // if (type === 'address' || type === 'unit') {
-      //   this.location[type] = e.target.value;
-      //   this.setState({ location: `${this.location.address} ${this.location.unit}` })
-      // } else {
-        this.setState({ [type]: e.target.value })
-      // }
+      this.setState({ [type]: e.target.value })
     }
   }
 
@@ -77,7 +75,8 @@ class TaskForm extends React.Component {
           selectedTaskType={this.props.currentTask.selected_type}
           location={this.state.location}
           handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
+          // handleSubmit={this.handleSubmit}
+          createTask={this.props.createTask}
           errors={this.props.errors}
           handleErrorInput={this.handleErrorInput}
           removeErrors={this.props.removeErrors}

@@ -6,6 +6,14 @@ export const createTask = task => (
   })
 )
 
+export const updateTask = task => (
+  $.ajax({
+    url: `api/tasks/${task.id}`,
+    method: "PATCH",
+    data: { task }
+  })
+)
+
 export const fetchAllUsers = () => (
   $.ajax({
     url: "api/users",
