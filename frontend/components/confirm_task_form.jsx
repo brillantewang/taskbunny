@@ -1,4 +1,5 @@
 import React from 'react';
+import { ClipLoader } from 'react-spinners';
 import { Link } from 'react-router-dom';
 
 class ConfirmTaskForm extends React.Component {
@@ -111,7 +112,9 @@ class ConfirmTaskForm extends React.Component {
       )
     } else {
       return (
-        <div>rendering</div>
+        <div className="loader-icon">
+          <ClipLoader/>
+        </div>
       )
     }
   }
