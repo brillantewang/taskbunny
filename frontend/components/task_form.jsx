@@ -34,44 +34,47 @@ class TaskForm extends React.Component {
     // console.log('task form constructing');
   }
 
-  componentDidMount() {
-    // this.setState({ user_id: this.props.currentUser.id })
-    // this.setState({ date: todaysDateString })
-    // this.setState({ task_time: "I'm Flexible"})
-    // this.setState({ vehicle_requirements: "No vehicle needed"})
-    // this.setState({ form_complete: false })
-    // console.log('task form mounting');
-    // this.props.fetchAllUsers();
-    console.log('task form mounting');
-    // const sortedTaskIds = this.props.currentUser.tasks.sort();
-    // const lastId = sortedTaskIds[sortedTaskIds.length - 1];
-    // this.props.fetchLastTaskForCurrentUser(lastId)
-    //   .then(taskRes => { // why is taskRes the action POJO dispatched? is taskRes the return value of fetchLastTaskForCurrentUser?
-    //     // console.log(taskRes);
-    //     const lastTask = taskRes.task;
-    //     this.setState(lastTask);
-    //   })
-    this.reloadTask();
+  // componentDidMount() {
+  //   // this.setState({ user_id: this.props.currentUser.id })
+  //   // this.setState({ date: todaysDateString })
+  //   // this.setState({ task_time: "I'm Flexible"})
+  //   // this.setState({ vehicle_requirements: "No vehicle needed"})
+  //   // this.setState({ form_complete: false })
+  //   // console.log('task form mounting');
+  //   // this.props.fetchAllUsers();
+  //   console.log('task form mounting');
+  //   // const sortedTaskIds = this.props.currentUser.tasks.sort();
+  //   // const lastId = sortedTaskIds[sortedTaskIds.length - 1];
+  //   // this.props.fetchLastTaskForCurrentUser(lastId)
+  //   //   .then(taskRes => { // why is taskRes the action POJO dispatched? is taskRes the return value of fetchLastTaskForCurrentUser?
+  //   //     // console.log(taskRes);
+  //   //     const lastTask = taskRes.task;
+  //   //     this.setState(lastTask);
+  //   //   })
+  //   this.reloadTask();
+  //
+  //   // const lastTask = this.props.fetchLastTaskForCurrentUser(lastId);
+  //   // console.log(lastTask, 'lasttask in mounting');
+  //   // this.setState(lastTask);
+  // }
 
-    // const lastTask = this.props.fetchLastTaskForCurrentUser(lastId);
-    // console.log(lastTask, 'lasttask in mounting');
-    // this.setState(lastTask);
+  getLastTaskId(user) {
+    const sortedTaskIds = user.user_tasks.sort((a,b) => a - b);
+    return sortedTaskIds[sortedTaskIds.length - 1];
   }
 
-  reloadTask() {
-    console.log('task reloading');
+  reloadTask() { //gets last task for current user and sets state if its incomplete
+    // console.log('task reloading');
     return new Promise((resolve, reject) => {
       this.props.fetchCurrentUser(this.state.user_id)
       .then(userRes => {
         const currentUser = userRes.user;
-        const sortedTaskIds = currentUser.user_tasks.sort((a,b) => a - b);
-        console.log(sortedTaskIds, 'sortedtaskIds');
-        const lastId = sortedTaskIds[sortedTaskIds.length - 1];
+        const lastId = this.getLastTaskId(currentUser);
+
         this.props.fetchLastTaskForCurrentUser(lastId)
         .then(taskRes => { // why is taskRes the action POJO dispatched? is taskRes the return value of fetchLastTaskForCurrentUser?
-          // console.log(taskRes);
           const lastTask = taskRes.task;
-          // console.log(lastTask, 'lastTask in reload');
+
           if (lastTask.form_complete === false) {
             this.setState(lastTask, () => resolve());
           } else {

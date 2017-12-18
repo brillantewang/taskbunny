@@ -11,10 +11,11 @@ class TaskDetailsForm extends React.Component {
 
   componentDidMount() {
     console.log('task details form mounting');
-
+    // debugger
     this.props.reloadTask()
       .then(
-        () => { this.props.updateTask(this.props.state) },
+        // () => { this.props.updateTask(this.props.state) },
+        null,
         () => { this.props.createTask(this.props.state).then(taskRes => this.props.setState(taskRes)) }
       )
       // this.props.setState({ task_type: this.props.selectedTaskType }, () => {
