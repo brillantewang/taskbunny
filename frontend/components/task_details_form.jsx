@@ -41,7 +41,7 @@ class TaskDetailsForm extends React.Component {
 
     if (this.props.state[subFormId] !== "") {
       subForm.classList.add("hidden");
-      nextSubForm.classList.remove("hidden");
+      if (nextSubForm) nextSubForm.classList.remove("hidden");
     }
 
     // return new Promise((resolve, reject) => {
@@ -82,6 +82,7 @@ class TaskDetailsForm extends React.Component {
     // } else {
       return e => {
         e.preventDefault();
+        console.log('task updating');
         this.props.updateTask(this.props.state)
           .then(() => {
             // this.props.setState(this.props.state);
@@ -206,7 +207,7 @@ class TaskDetailsForm extends React.Component {
             </div>
           </div>
         </form>
-        <form onClick={this.handleClick("description")} onSubmit={this.props.handleSubmit} className="task-details-subform description-details-form">
+        <form onClick={this.handleClick("description")} className="task-details-subform description-details-form">
           <strong className="task-subform-header">TELL US ABOUT YOUR TASK</strong>
           <div id="description" className="hidden">
             <div className="description-details-form-content">
@@ -220,7 +221,7 @@ class TaskDetailsForm extends React.Component {
               {/* {this.props.handleErrorInput('description')} */}
               <p>If you need two or more Taskers, please post additional tasks for each Tasker needed.</p>
               <div className="save-button-container">
-                <Link to="/task-form/taskers"><button disabled="true" id="details-final-submit" onClick={this.handleSubFormSubmit("description")} className="btn-green">See Taskers & Prices</button></Link>
+                <Link to="/task-form/taskers"><button id="details-final-submit" onClick={this.handleSubFormSubmit("description")} className="btn-green">See Taskers & Prices</button></Link>
               </div>
             </div>
           </div>

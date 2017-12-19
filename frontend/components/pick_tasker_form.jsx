@@ -10,7 +10,7 @@ class PickTaskerForm extends React.Component {
       taskers: this.props.availableTaskersByRecommended
     }
 
-    console.log(this.state.taskers, 'taskers');
+    // console.log(this.state.taskers, 'taskers');
   }
 
   loading() {
@@ -66,7 +66,7 @@ class PickTaskerForm extends React.Component {
   componentDidMount() { //borrowed from https://stackoverflow.com/questions/6982692/html5-input-type-date-default-value-to-today
     // console.log('pick_tasker_form mounting');
     this.props.reloadTask();
-    
+
     this.props.fetchAllUsers().then(() => {
       this.setState({
         taskers: this.sortedTaskers("Recommended")
