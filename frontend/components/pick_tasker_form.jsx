@@ -130,7 +130,7 @@ class PickTaskerForm extends React.Component {
     // console.log(this.props, 'pick tasker form props');
     // console.log(this.state, 'pick tasker form state');
     // console.log(this.state.taskers, 'taskers rendered');
-    // console.log(this.props.state, 'state in pick tasker form render');
+    console.log(this.props.state, 'state in pick tasker form render');
 
     if (this.loading() === false) {
       return (
@@ -149,13 +149,13 @@ class PickTaskerForm extends React.Component {
                   <option value="Most Reviews">Most Reviews</option>
                   <option value="Number Of Tasks">Number Of Tasks</option>
                 </select>
-                <strong>
+                <strong>g
                   <i className="fa fa-clock-o" aria-hidden="true"></i>
                   TASK DATE & TIME:
                 </strong>
                 {/* <DatePicker /> */}
                 <input id="datePicker" className="calendar-input" type="date" value={this.props.state.date} onChange={this.onChange('date')}/>
-                <select value={this.props.state.time} onChange={this.onChange('task_time')}>
+                <select value={this.props.state.task_time} onChange={this.onChange('task_time')}>
                   <option value="I'm Flexible">I'm Flexible</option>
                   <option value="Morning 8AM - 12PM">Morning 8AM - 12PM</option>
                   <option value="Afternoon 12PM - 4PM">Afternoon 12PM - 4PM</option>
