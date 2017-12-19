@@ -93,7 +93,7 @@ class TaskForm extends React.Component {
 
   handleChange(type) {
     return e => {
-      this.setState({ [type]: e.target.value })
+      this.setState({ [type]: e.target.value }, () => this.props.dispatchCurrentTask(this.state))
     }
   }
 

@@ -5,18 +5,18 @@ export const selectAvailableTaskers = state => {
   // console.log(allTaskers, 'alltaskers');
 
   const availableTaskers = allTaskers.filter(tasker => {
-    let parts = state.session.currentTask.selected_date.split('-').map(part => parseInt(part));
+    let parts = state.session.currentTask.date.split('-').map(part => parseInt(part));
     let year, month, day;
     [year, month, day] = parts;
-    let selected_date = new Date(year, month - 1, day);
+    let date = new Date(year, month - 1, day);
     // console.log(tasker, 'tasker in selector');
     // console.log(tasker.tasker_tasks, 'tasker tasks in selector');
 
     return (
-      tasker.tasker_tasks.every(task => JSON.stringify([task.time, task.date]) !== JSON.stringify([state.session.currentTask.selected_time, state.session.currentTask.selected_date])) &&
-      (tasker.available_tasker_time === state.session.currentTask.selected_time || state.session.currentTask.selected_time === "I'm Flexible" ) &&
-      tasker.unavailable_tasker_weekday !== selected_date.getDay() &&
-      tasker.available_task_type === state.session.currentTask.selected_type
+      tasker.tasker_tasks.every(task => JSON.stringify([task.time, task.date]) !== JSON.stringify([state.session.currentTask.task_time, state.session.currentTask.date])) &&
+      (tasker.available_tasker_time === state.session.currentTask.task_time || state.session.currentTask.task_time === "I'm Flexible" ) &&
+      tasker.unavailable_tasker_weekday !== date.getDay() &&
+      tasker.available_task_type === state.session.currentTask.task_type
     )
   })
   // console.log(availableTaskers, 'availabletaskers');

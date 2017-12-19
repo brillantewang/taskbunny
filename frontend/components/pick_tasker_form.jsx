@@ -18,6 +18,7 @@ class PickTaskerForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log('will receive props available taskers', nextProps.availableTaskers);
     if (this.loading()) return;
     // console.log(nextProps.availableTaskers, 'next props avail taskers');
     // console.log(this.props.availableTaskers, 'this props avail taskers');
