@@ -176,6 +176,7 @@ class TaskForm extends React.Component {
           fetchCurrentUser={this.props.fetchCurrentUser}
           reloadTask={this.reloadTask}
           updateTask={this.props.updateTask}
+          dispatchCurrentTask={this.props.dispatchCurrentTask}
           {...props}
         />
       );

@@ -18,7 +18,7 @@ class PickTaskerForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('will receive props available taskers', nextProps.availableTaskers);
+    // console.log('will receive props available taskers', nextProps.availableTaskers);
     if (this.loading()) return;
     // console.log(nextProps.availableTaskers, 'next props avail taskers');
     // console.log(this.props.availableTaskers, 'this props avail taskers');
@@ -130,7 +130,7 @@ class PickTaskerForm extends React.Component {
     // console.log(this.props, 'pick tasker form props');
     // console.log(this.state, 'pick tasker form state');
     // console.log(this.state.taskers, 'taskers rendered');
-    console.log(this.props.state, 'state in pick tasker form render');
+    // console.log(this.props.state, 'state in pick tasker form render');
 
     if (this.loading() === false) {
       return (

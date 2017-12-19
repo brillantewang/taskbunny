@@ -46,6 +46,7 @@ class ConfirmTaskForm extends React.Component {
 
   handleSubmit() {
     this.props.setState({ form_complete: true }, () => {
+      this.props.dispatchCurrentTask(this.props.state);
       this.props.updateTask(this.props.state)
         .then(this.props.history.push('/dashboard'))
       });
