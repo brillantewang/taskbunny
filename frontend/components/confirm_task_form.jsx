@@ -31,7 +31,7 @@ class ConfirmTaskForm extends React.Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     // console.log('component will mount in confirm task form');
     this.props.reloadTask();
   }

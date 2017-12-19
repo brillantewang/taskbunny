@@ -150,6 +150,7 @@ class TaskForm extends React.Component {
           // setTaskTaskerId={this.props.setTaskTaskerId}
           fetchAllUsers={this.props.fetchAllUsers}
           updateTask={this.props.updateTask}
+          reloadTask={this.reloadTask}
           {...props}
         />
       );
