@@ -39,8 +39,9 @@ class TaskDetailsForm extends React.Component {
     // console.log(subForm, 'subform');
     // console.log(nextSubFormId, 'nextsubform-id');
     // console.log(nextSubForm, 'nextsubform');
+    console.log(this.props.state[subFormId], 'collapsing');
 
-    if (this.props.state[subFormId] !== "") {
+    if (this.props.state[subFormId]) {
       subForm.classList.add("hidden");
       nextSubForm.classList.remove("hidden");
     }
@@ -142,7 +143,7 @@ class TaskDetailsForm extends React.Component {
   }
 
   render() {
-    // console.log(this.props.state, 'task details form rendering - taskform state');
+    console.log(this.props.state, 'task details form rendering - taskform state');
     return (
       <div className="task-details-form task-form-subform">
         <h2>Describe Your Task</h2>
