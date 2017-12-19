@@ -10,7 +10,8 @@ import {
   // receiveLocation,
   // receiveVehicleReq,
   fetchAllUsers,
-  fetchCurrentUser
+  fetchCurrentUser,
+  receiveCurrentTask
 } from '../actions/task_form_actions';
 import TaskForm from './task_form';
 import { handleErrorInput } from '../util/errors_util.js';
@@ -30,6 +31,7 @@ const mapDispatchToProps = dispatch => ({
   removeErrors: () => dispatch(removeErrors()),
   setTaskDate: date => dispatch(receiveTaskDate(date)),
   setTaskTime: time => dispatch(receiveTaskTime(time)),
+  dispatchCurrentTask: task => dispatch(receiveCurrentTask(task)),
   // setTaskTaskerId: taskerId => dispatch(receiveTaskerId(taskerId)),
   // setTaskDescription: description => dispatch(receiveDescription(description)),
   // setTaskLocation: location => dispatch(receiveLocation(location)),

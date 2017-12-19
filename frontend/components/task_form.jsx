@@ -76,7 +76,7 @@ class TaskForm extends React.Component {
           const lastTask = taskRes.task;
 
           if (lastTask.form_complete === false) {
-            this.setState(lastTask, () => resolve());
+            this.setState(lastTask, () => this.props.dispatchCurrentTask(this.state));
           } else {
             reject();
           }
@@ -112,7 +112,7 @@ class TaskForm extends React.Component {
           state={this.state}
           // address={this.location.address}
           // unit={this.location.unit}
-          selectedTaskType={this.props.currentTask.selected_type}
+          // selectedTaskType={this.props.currentTask.selected_type}
           location={this.state.location}
           handleChange={this.handleChange}
           // handleSubmit={this.handleSubmit}

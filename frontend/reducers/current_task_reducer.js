@@ -6,15 +6,26 @@ import selectedTaskTimeReducer from './selected_task_time_reducer';
 // import selectedDescriptionReducer from './selected_description_reducer';
 // import selectedVehicleReqReducer from './selected_vehicle_req_reducer';
 import { combineReducers } from 'redux';
+import { RECEIVE_CURRENT_TASK } from '../actions/task_form_actions';
 
-const currentTaskReducer = combineReducers({
-  selected_type: selectedTaskTypeReducer,
-  selected_date: selectedTaskDateReducer,
-  selected_time: selectedTaskTimeReducer,
-  // selected_tasker_id: selectedTaskerIdReducer,
-  // selected_location: selectedLocationReducer,
-  // selected_description: selectedDescriptionReducer,
-  // selected_vehicle_req: selectedVehicleReqReducer,
-})
+const currentTaskReducer = (state = null, action) => {
+  Object.freeze(state);
+  switch(action.type) {
+    case RECEIVE_CURRENT_TASK:
+      return action.task;
+    default:
+      return state;
+  }
+}
+
+// const currentTaskReducer = combineReducers({
+//   selected_type: selectedTaskTypeReducer,
+//   selected_date: selectedTaskDateReducer,
+//   selected_time: selectedTaskTimeReducer,
+//   // selected_tasker_id: selectedTaskerIdReducer,
+//   // selected_location: selectedLocationReducer,
+//   // selected_description: selectedDescriptionReducer,
+//   // selected_vehicle_req: selectedVehicleReqReducer,
+// })
 
 export default currentTaskReducer;
