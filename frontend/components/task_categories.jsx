@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import todaysDateString from '../util/todays_date_util';
 
 export const TaskCategories = ({ text, setTaskType, createTask, currentUser }) => {
   const taskCategories = [
@@ -39,7 +40,7 @@ export const TaskCategories = ({ text, setTaskType, createTask, currentUser }) =
               to="/task-form/details"
               key={taskCategory.title}
               className="task-category search"
-              onClick={() => createTask({user_id: currentUser.id, task_type: taskCategory.title})}>
+              onClick={() => createTask({user_id: currentUser.id, task_type: taskCategory.title, date: todaysDateString, task_time: "I'm Flexible"})}>
               <img className="task-category-img search" src={taskCategory.img_url}/>
               <strong className="task-category-title search">{taskCategory.title}</strong>
             </Link>
@@ -61,7 +62,7 @@ export const TaskCategories = ({ text, setTaskType, createTask, currentUser }) =
               to="/task-form/details"
               key={taskCategory.title}
               className="task-category search"
-              onClick={() => createTask({user_id: currentUser.id, task_type: taskCategory.title})}>
+              onClick={() => createTask({user_id: currentUser.id, task_type: taskCategory.title, date: todaysDateString, task_time: "I'm Flexible"})}>
               <img className="task-category-img search" src={taskCategory.img_url}/>
               <strong className="task-category-title search">{taskCategory.title}</strong>
             </Link>

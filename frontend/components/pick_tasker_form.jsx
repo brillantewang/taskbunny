@@ -81,10 +81,10 @@ class PickTaskerForm extends React.Component {
     return e => {
       if (type === 'date') {
         this.props.handleChange('date')(e);
-        this.props.setTaskDate(e.target.value);
+        // this.props.setTaskDate(e.target.value);
       } else if (type === 'task_time') {
         this.props.handleChange('task_time')(e);
-        this.props.setTaskTime(e.target.value);
+        // this.props.setTaskTime(e.target.value);
       } else if (type === 'sort') {
         this.setState({
           taskers: this.sortedTaskers(e.target.value)
