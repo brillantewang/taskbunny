@@ -13,7 +13,8 @@ class TaskDetailsForm extends React.Component {
   componentDidMount() {
     // console.log('task details form mounting', this.props.state);
     // debugger
-    this.props.reloadTask()
+    this.updateDisableStatus();
+    this.props.reloadTask();
       // .then(
       //   // () => { this.props.updateTask(this.props.state) },
       //   null,
@@ -39,7 +40,6 @@ class TaskDetailsForm extends React.Component {
     // console.log(subForm, 'subform');
     // console.log(nextSubFormId, 'nextsubform-id');
     // console.log(nextSubForm, 'nextsubform');
-    console.log(this.props.state[subFormId], 'collapsing');
 
     if (this.props.state[subFormId]) {
       subForm.classList.add("hidden");
@@ -108,14 +108,17 @@ class TaskDetailsForm extends React.Component {
       .then(() => this.props.history.push("/task-form/taskers"))
   }
 
-  componentDidUpdate() {
+  updateDisableStatus() {
     const finalBtn = document.getElementById("details-final-submit");
-    if (this.props.state.location === "" || this.props.state.description === "") {
-      finalBtn.disabled = true;
-    } else {
+    if (this.props.state.location && this.props.state.description) {
       finalBtn.disabled = false;
+    } else {
+      finalBtn.disabled = true;
     }
+  }
 
+  componentDidUpdate() {
+    this.updateDisableStatus();
     // const locationSubForm = document.getElementById("Location");
     // const locationText = document.getElementById("location-text")
     // console.log(locationText, 'text');
@@ -143,7 +146,7 @@ class TaskDetailsForm extends React.Component {
   }
 
   render() {
-    console.log(this.props.state, 'task details form rendering - taskform state');
+    // console.log(this.props.state, 'task details form rendering - taskform state');
     return (
       <div className="task-details-form task-form-subform">
         <h2>Describe Your Task</h2>
