@@ -153,7 +153,7 @@ class TaskDetailsForm extends React.Component {
           <div id="location">
             <div className="location-details-form-inputs">
               <input
-                value={this.props.state.location}
+                value={this.props.state.location || ""}
                 onChange={this.props.handleChange('location')}
                 className="location-details-form-input1 Location"
                 type="text"
@@ -220,7 +220,7 @@ class TaskDetailsForm extends React.Component {
             <div className="description-details-form-content">
               <p>Tell us what you need done, plus any requirements or questions that you may have. You can edit this later.</p>
               <textarea
-                value={this.props.state.description}
+                value={this.props.state.description || ""}
                 onChange={this.props.handleChange('description')}
                 className="description-details-form-textarea Description"
                 placeholder="EXAMPLE: I rented a moving van, but need help moving my stuff in and out of it. I have: queen bed with frame, medium couch, loveseat, entertainment center, large TV, armchair, 2 bookcases, dining room table with 4 chairs, desk and chair, and about 50 boxes.">
