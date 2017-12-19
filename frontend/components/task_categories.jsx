@@ -53,7 +53,11 @@ export const TaskCategories = ({ text, setTaskType }) => {
       <div id="task-categories" className="hidden">
         {matchedCategories.slice(0, 4).map(taskCategory => {
           return (
-            <Link to="/task-form/details" key={taskCategory.title} className="task-category search" onClick={() => setTaskType(taskCategory.title)}>
+            <Link
+              to="/task-form/details"
+              key={taskCategory.title}
+              className="task-category search"
+              onClick={() => createTask({task_type: taskCategory.title})}>
               <img className="task-category-img search" src={taskCategory.img_url}/>
               <strong className="task-category-title search">{taskCategory.title}</strong>
             </Link>
