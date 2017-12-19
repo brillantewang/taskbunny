@@ -6,6 +6,7 @@ class TaskDetailsForm extends React.Component {
     super(props);
 
     this.handleSubFormSubmit = this.handleSubFormSubmit.bind(this);
+    this.handleLastSubFormSubmit = this.handleLastSubFormSubmit.bind(this);
     // this.taskCreated = null;
   }
 
@@ -41,7 +42,7 @@ class TaskDetailsForm extends React.Component {
 
     if (this.props.state[subFormId] !== "") {
       subForm.classList.add("hidden");
-      if (nextSubForm) nextSubForm.classList.remove("hidden");
+      nextSubForm.classList.remove("hidden");
     }
 
     // return new Promise((resolve, reject) => {
@@ -98,6 +99,12 @@ class TaskDetailsForm extends React.Component {
     //         // .then(() => this.props.removeErrors())
     //     })
     // }
+  }
+
+  handleLastSubFormSubmit(e) {
+    e.preventDefault();
+    this.props.updateTask(this.props.state)
+      .then(() => this.props.history.push("/task-form/taskers"))
   }
 
   componentDidUpdate() {
@@ -221,7 +228,7 @@ class TaskDetailsForm extends React.Component {
               {/* {this.props.handleErrorInput('description')} */}
               <p>If you need two or more Taskers, please post additional tasks for each Tasker needed.</p>
               <div className="save-button-container">
-                <Link to="/task-form/taskers"><button id="details-final-submit" onClick={this.handleSubFormSubmit("description")} className="btn-green">See Taskers & Prices</button></Link>
+                <button id="details-final-submit" onClick={this.handleLastSubFormSubmit} className="btn-green">See Taskers & Prices</button>
               </div>
             </div>
           </div>
