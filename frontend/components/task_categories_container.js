@@ -1,13 +1,14 @@
 import { connect } from 'react-redux';
 import { TaskCategories } from './task_categories.jsx';
-import { receiveTaskType } from '../actions/task_form_actions.js';
+import { receiveTaskType, createTask } from '../actions/task_form_actions.js';
 
 const mapStateToProps = (state, ownProps) => ({
   text: ownProps.text
 })
 
 const mapDispatchToProps = dispatch => ({
-  setTaskType: taskType => dispatch(receiveTaskType(taskType))
+  setTaskType: taskType => dispatch(receiveTaskType(taskType)),
+  createTask: task => dispatch(createTask(task))
 })
 
 export default connect(

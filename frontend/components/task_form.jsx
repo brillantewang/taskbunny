@@ -104,7 +104,7 @@ class TaskForm extends React.Component {
 
   render() {
     // console.log(this.state);
-    console.log('task form rendering');
+    // console.log('task form rendering');
 
     const MyTaskDetailsForm = (props) => {
       return (

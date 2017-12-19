@@ -10,7 +10,7 @@ class TaskDetailsForm extends React.Component {
   }
 
   componentDidMount() {
-    console.log('task details form mounting');
+    // console.log('task details form mounting', this.props.state);
     // debugger
     this.props.reloadTask()
       .then(
@@ -134,7 +134,7 @@ class TaskDetailsForm extends React.Component {
   }
 
   render() {
-    console.log(this.props.state, 'task details form rendering - taskform state');
+    // console.log(this.props.state, 'task details form rendering - taskform state');
     return (
       <div className="task-details-form task-form-subform">
         <h2>Describe Your Task</h2>
