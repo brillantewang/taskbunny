@@ -36,6 +36,10 @@ class ConfirmTaskForm extends React.Component {
     this.props.reloadTask();
   }
 
+  // componentWillUnmount() {
+  //   this.props.fetchAllTasks();
+  // }
+
   // componentDidMount() {
   //   this.props.fetchAllUsers()
   //     .then(() => this.tasker = this.props.availableTaskers.find(tasker => {
@@ -48,7 +52,7 @@ class ConfirmTaskForm extends React.Component {
     this.props.setState({ form_complete: true }, () => {
       this.props.dispatchCurrentTask(this.props.state);
       this.props.updateTask(this.props.state)
-        .then(this.props.history.push('/dashboard'))
+        .then(() => this.props.history.push('/dashboard'))
       });
     // console.log(this.props.state, 'state right before updating in confirm task form');
   }
