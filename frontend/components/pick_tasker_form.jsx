@@ -149,7 +149,7 @@ class PickTaskerForm extends React.Component {
                   <option value="Most Reviews">Most Reviews</option>
                   <option value="Number Of Tasks">Number Of Tasks</option>
                 </select>
-                <strong>g
+                <strong>
                   <i className="fa fa-clock-o" aria-hidden="true"></i>
                   TASK DATE & TIME:
                 </strong>
