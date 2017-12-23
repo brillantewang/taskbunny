@@ -150,10 +150,11 @@ class Dashboard extends React.Component {
             })}
             {/* <SplashBody/> */}
           </div>
-          <Modal isOpen={this.state.modalIsOpen}>
+          <Modal className="cancel-modal-container" isOpen={this.state.modalIsOpen}>
             <div className="cancel-modal">
-              <p>modal modal time</p>
-              <a onClick={this.closeModal.bind(this)}>No I don't want to cancel</a>
+              <h3 classsName="cancel-modal-header">Cancel Task</h3>
+              <button className="btn-green cancel-modal-btn">Confirm</button>
+              <a className="cancel-modal-link" onClick={this.closeModal.bind(this)}>I don't want to cancel</a>
             </div>
           </Modal>
         </div>
