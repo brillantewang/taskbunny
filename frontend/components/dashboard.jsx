@@ -4,6 +4,7 @@ import TaskSearchWithRouter from './task_search';
 import classNames from 'classnames';
 import { Route } from 'react-router-dom';
 import ToggleText from './toggle_text';
+import Modal from 'react-modal';
 // import { SplashBody } from './splash_body';
 
 class Dashboard extends React.Component {
@@ -11,10 +12,18 @@ class Dashboard extends React.Component {
     super(props);
 
     this.state = {
-      toggleText: <strong>Show Details <i class="fa fa-angle-down" aria-hidden="true"></i></strong>
+      modalIsOpen: false
     }
 
     this.handleClick = this.handleClick.bind(this);
+  }
+
+  openModal() {
+    this.setState({modalIsOpen: true});
+  }
+
+  closeModal() {
+    this.setState({modalIsOpen: false});
   }
 
   componentDidMount() {
@@ -56,13 +65,7 @@ class Dashboard extends React.Component {
     let task = document.getElementById(taskId);
     let taskBody = task.getElementsByClassName("dashboard-task-body")[0];
 
-    if (taskBody.classList.contains("hidden")) {
-      taskBody.classList.remove("hidden")
-      this.setState({ toggleText: <strong>Hide Details <i class="fa fa-angle-up" aria-hidden="true"></i></strong>})
-    } else {
-      taskBody.classList.add("hidden")
-      this.setState({ toggleText: <strong>Show Details <i class="fa fa-angle-down" aria-hidden="true"></i></strong>})
-    }
+    taskBody.classList.toggle("hidden");
   }
 
   render() {

@@ -6,7 +6,7 @@ class ToggleText extends React.Component {
 
     this.state = {
       hidden: true,
-      text: <strong>Show Details <i class="fa fa-angle-down" aria-hidden="true"></i></strong>,
+      text: <strong>Show Details <i className="fa fa-angle-down" aria-hidden="true"></i></strong>,
     }
   }
 
@@ -14,7 +14,7 @@ class ToggleText extends React.Component {
     if (this.state.hidden) {
       this.setState({
         hidden: false,
-        text: <strong>Hide Details <i class="fa fa-angle-up" aria-hidden="true"></i></strong>
+        text: <strong>Hide Details <i className="fa fa-angle-up" aria-hidden="true"></i></strong>
       })
     } else {
       this.setState({
