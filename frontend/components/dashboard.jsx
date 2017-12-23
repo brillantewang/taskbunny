@@ -7,6 +7,7 @@ import ToggleText from './toggle_text';
 import Modal from 'react-modal';
 import todaysDateString from "../util/todays_date_util";
 import { FooterNav } from './footer_nav';
+import { ClipLoader } from 'react-spinners';
 // import { SplashBody } from './splash_body';
 
 class Dashboard extends React.Component {
@@ -249,21 +250,10 @@ class Dashboard extends React.Component {
       )
     } else {
       return (
-        <div className="dashboard" onClick={this.handleClick}>
+        <div>
           <Route path="/dashboard" component={NavBarContainer}/>
-          <div className="dashboard-head">
-            <div className="user-greeting">
-              <img className="user-profile-img" src={this.props.currentUser.image_url}/>
-              <h2>Welcome back, {this.props.currentUser.first_name}.</h2>
-            </div>
-            <TaskSearchWithRouter/>
-          </div>
-          <div className="dashboard-body">
-            <div className="dashboard-body-header-container">
-              <h3 className="dashboard-body-header">Tasks</h3>
-            </div>
-            <div className="dashboard-empty-bottom-section">
-            </div>
+          <div className="loader-icon">
+            <ClipLoader/>
           </div>
         </div>
       )
