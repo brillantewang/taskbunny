@@ -20,6 +20,7 @@ class Dashboard extends React.Component {
   }
 
   handleClickCancel(taskId) {
+    Modal.setAppElement(".dashboard")
     this.setState({ cancelTaskId: taskId });
     this.openModal();
   }
