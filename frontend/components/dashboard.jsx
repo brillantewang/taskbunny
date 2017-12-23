@@ -47,6 +47,13 @@ class Dashboard extends React.Component {
     return months[num - 1];
   }
 
+  collapse(taskId) {
+    let task = document.getElementById(taskId);
+    let taskBody = task.getElementsByClassName("dashboard-task-body")[0];
+
+    taskBody.classList.toggle("hidden")
+  }
+
   render() {
     console.log('dashboard rendering');
     // console.log(this.props.currentUser);
@@ -74,7 +81,7 @@ class Dashboard extends React.Component {
               // console.log(task.tasker.image_url, 'tasker image url');
               // let tasker = this.props.getUser(task.tasker_id);
               return (
-                <div key={task.id} className="dashboard-task">
+                <div key={task.id} id={task.id} className="dashboard-task">
                   <div className="dashboard-task-header">
                     <h2 className="dashboard-task-header-title">{task.task_type}</h2>
                     <div className="tasker-cancel-section">
@@ -94,7 +101,7 @@ class Dashboard extends React.Component {
                       <strong className="date-time-section-time">{task.task_time}</strong>
                     </div>
                   </div>
-                  <div className="dashboard-task-body">
+                  <div className="dashboard-task-body hidden">
                     <div className="location-tasker-price-section">
                       <div className="dashboard-task-body-location">
                         <strong className="dashboard-task-mini-header">Location</strong>
@@ -120,7 +127,7 @@ class Dashboard extends React.Component {
                     </div>
                   </div>
                   <div className="toggle-details">
-                    <a>Hide Details <i className="fa fa-angle-up" aria-hidden="true"></i></a>
+                    <a onClick={() => this.collapse(task.id)}>Hide Details <i className="fa fa-angle-up" aria-hidden="true"></i></a>
                   </div>
                 </div>
               )
