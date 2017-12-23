@@ -119,6 +119,9 @@ class Dashboard extends React.Component {
                       <strong className="dashboard-task-body-vehicle-requirements-text">{task.vehicle_requirements}</strong>
                     </div>
                   </div>
+                  <div className="toggle-details">
+                    <strong>Hide Details</strong>
+                  </div>
                 </div>
               )
             })}
