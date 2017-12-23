@@ -166,12 +166,13 @@ class Dashboard extends React.Component {
           <div className="dashboard-bottom">
             <h2 className="dashboard-bottom-header">How We Can Help</h2>
             <div className="dashboard-bottom-toprow">
-              <Link
-                to="/task-form/details"
-                className="dashboard-bottom-image-link"
-                onClick={() => this.props.createTask({user_id: this.props.currentUser.id, task_type: "Mounting", date: todaysDateString, task_time: "I'm Flexible"})}>
-                <img className="dashboard-bottom-image" src="https://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_501,w_565,x_0,y_60/v1511572825/splash_body_img2_q8ekt9.jpg"/>
-              </Link>
+                <Link
+                  to="/task-form/details"
+                  className="dashboard-bottom-image-link"
+                  onClick={() => this.props.createTask({user_id: this.props.currentUser.id, task_type: "Mounting", date: todaysDateString, task_time: "I'm Flexible"})}>
+                  <img className="dashboard-bottom-image" src="https://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_501,w_565,x_0,y_60/v1511572825/splash_body_img2_q8ekt9.jpg"/>
+                  <h3 className="dashboard-bottom-image-text">Mount a TV or mirror</h3>
+                </Link>
               <Link
                 to="/task-form/details"
                 className="dashboard-bottom-image-link"

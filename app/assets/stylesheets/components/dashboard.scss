@@ -284,3 +284,18 @@
   margin-bottom: 8px;
   font-weight: 400;
 }
+
+.dashboard-bottom-image-link {
+  position: relative;
+}
+
+.dashboard-bottom-image-text {
+  position: absolute;
+  z-index: 1;
+  top: 50px;
+  left: 25px;
+  color: white;
+  font-weight: 400;
+  font-size: 25px;
+  text-shadow: 1px 1px 2px $dark-gray;
+}
