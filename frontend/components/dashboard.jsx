@@ -12,10 +12,21 @@ class Dashboard extends React.Component {
     super(props);
 
     this.state = {
+      cancelTaskId: null,
       modalIsOpen: false
     }
 
     this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClickCancel(taskId) {
+    this.setState({ cancelTaskId: taskId });
+    this.openModal();
+  }
+
+  handleConfirmCancel() {
+    this.props.deleteTask(this.state.cancelTaskId);
+    this.closeModal();
   }
 
   openModal() {
@@ -100,7 +111,7 @@ class Dashboard extends React.Component {
                     <h2 className="dashboard-task-header-title">{task.task_type}</h2>
                     <div className="tasker-cancel-section">
                       <img className="tasker-profile-img" src={task.tasker.image_url}/>
-                      {!task.complete ? <a onClick={this.openModal.bind(this)} className="cancel-task-link">Cancel Task</a> : ""}
+                      {!task.complete ? <a onClick={() => this.handleClickCancel(task.id)} className="cancel-task-link">Cancel Task</a> : ""}
                     </div>
                   </div>
                   <div className="dashboard-task-status">
@@ -159,7 +170,7 @@ class Dashboard extends React.Component {
             <div className="cancel-modal">
               <h3 className="cancel-modal-header">Cancel Task</h3>
               <p className="cancel-modal-text">Are you sure you want to cancel this task?</p>
-              <button className="btn-green cancel-modal-btn">Confirm</button>
+              <button onClick={this.handleConfirmCancel.bind(this)} className="btn-green cancel-modal-btn">Confirm</button>
               <a className="cancel-modal-link" onClick={this.closeModal.bind(this)}>No, I don't want to cancel</a>
             </div>
           </Modal>
