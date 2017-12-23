@@ -6,6 +6,7 @@ import { Route, Link } from 'react-router-dom';
 import ToggleText from './toggle_text';
 import Modal from 'react-modal';
 import todaysDateString from "../util/todays_date_util";
+import { FooterNav } from './footer_nav';
 // import { SplashBody } from './splash_body';
 
 class Dashboard extends React.Component {
@@ -198,6 +199,7 @@ class Dashboard extends React.Component {
               </Link>
             </div>
           </div>
+          <FooterNav/>
           <Modal
             className="cancel-modal-container"
             overlayClassName="cancel-modal-container-overlay"
