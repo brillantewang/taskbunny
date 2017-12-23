@@ -19,7 +19,7 @@ class ToggleText extends React.Component {
     } else {
       this.setState({
         hidden: true,
-        text: <strong>Show Details <i class="fa fa-angle-down" aria-hidden="true"></i></strong>
+        text: <strong>Show Details <i className="fa fa-angle-down" aria-hidden="true"></i></strong>
       })
     }
   }
