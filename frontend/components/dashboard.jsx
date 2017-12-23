@@ -2,9 +2,10 @@ import React from 'react';
 import NavBarContainer from './nav_bar_container';
 import TaskSearchWithRouter from './task_search';
 import classNames from 'classnames';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import ToggleText from './toggle_text';
 import Modal from 'react-modal';
+import todaysDateString from "../util/todays_date_util";
 // import { SplashBody } from './splash_body';
 
 class Dashboard extends React.Component {
@@ -161,6 +162,15 @@ class Dashboard extends React.Component {
               )
             })}
             {/* <SplashBody/> */}
+          </div>
+          <div className="dashboard-bottom">
+            <h2>How We Can Help</h2>
+            <Link
+              to="/task-form/details"
+              className="dashboard-bottom-image-link"
+              onClick={() => this.props.createTask({user_id: this.props.currentUser.id, task_type: "Mounting", date: todaysDateString, task_time: "I'm Flexible"})}>
+              <img className="dashboard-bottom-image" src="https://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_501,w_565,x_0,y_60/v1511572825/splash_body_img2_q8ekt9.jpg"/>
+            </Link>
           </div>
           <Modal
             className="cancel-modal-container"
