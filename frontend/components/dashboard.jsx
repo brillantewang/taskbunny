@@ -153,6 +153,7 @@ class Dashboard extends React.Component {
           <Modal
             className="cancel-modal-container"
             overlayClassName="cancel-modal-container-overlay"
+            onRequestClose={this.closeModal.bind(this)}
             isOpen={this.state.modalIsOpen}
             >
             <div className="cancel-modal">
