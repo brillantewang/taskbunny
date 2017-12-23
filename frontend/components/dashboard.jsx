@@ -9,6 +9,10 @@ class Dashboard extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      toggleText: "Show Details"
+    }
+
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -51,7 +55,16 @@ class Dashboard extends React.Component {
     let task = document.getElementById(taskId);
     let taskBody = task.getElementsByClassName("dashboard-task-body")[0];
 
-    taskBody.classList.toggle("hidden")
+    if (taskBody.classList.contains("hidden")) {
+      taskBody.classList.remove("hidden")
+      this.setState({ toggleText: "Hide Details"})
+    } else {
+      taskBody.classList.add("hidden")
+      this.setState({ toggleText: "Show Details"})
+    }
+
+    // taskBody.classList.toggle("hidden")
+    // taskBody.classList.contains("hidden")
   }
 
   render() {
@@ -127,7 +140,9 @@ class Dashboard extends React.Component {
                     </div>
                   </div>
                   <div className="toggle-details">
-                    <a onClick={() => this.collapse(task.id)}>Hide Details <i className="fa fa-angle-up" aria-hidden="true"></i></a>
+                    <a onClick={() => this.collapse(task.id)}>
+                      {this.state.toggleText}
+                    </a>
                   </div>
                 </div>
               )
