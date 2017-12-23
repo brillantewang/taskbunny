@@ -3,6 +3,7 @@ import NavBarContainer from './nav_bar_container';
 import TaskSearchWithRouter from './task_search';
 import classNames from 'classnames';
 import { Route } from 'react-router-dom';
+import ToggleText from './toggle_text';
 // import { SplashBody } from './splash_body';
 
 class Dashboard extends React.Component {
@@ -10,7 +11,7 @@ class Dashboard extends React.Component {
     super(props);
 
     this.state = {
-      toggleText: "Show Details"
+      toggleText: <strong>Show Details <i class="fa fa-angle-down" aria-hidden="true"></i></strong>
     }
 
     this.handleClick = this.handleClick.bind(this);
@@ -57,14 +58,11 @@ class Dashboard extends React.Component {
 
     if (taskBody.classList.contains("hidden")) {
       taskBody.classList.remove("hidden")
-      this.setState({ toggleText: "Hide Details"})
+      this.setState({ toggleText: <strong>Hide Details <i class="fa fa-angle-up" aria-hidden="true"></i></strong>})
     } else {
       taskBody.classList.add("hidden")
-      this.setState({ toggleText: "Show Details"})
+      this.setState({ toggleText: <strong>Show Details <i class="fa fa-angle-down" aria-hidden="true"></i></strong>})
     }
-
-    // taskBody.classList.toggle("hidden")
-    // taskBody.classList.contains("hidden")
   }
 
   render() {
@@ -141,7 +139,7 @@ class Dashboard extends React.Component {
                   </div>
                   <div className="toggle-details">
                     <a onClick={() => this.collapse(task.id)}>
-                      {this.state.toggleText}
+                      <ToggleText/>
                     </a>
                   </div>
                 </div>
