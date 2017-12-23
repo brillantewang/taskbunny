@@ -120,7 +120,7 @@ class Dashboard extends React.Component {
                     </div>
                   </div>
                   <div className="toggle-details">
-                    <a>Hide Details</a>
+                    <a>Hide Details <i className="fa fa-angle-up" aria-hidden="true"></i></a>
                   </div>
                 </div>
               )
