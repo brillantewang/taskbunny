@@ -100,7 +100,7 @@ class Dashboard extends React.Component {
                     <h2 className="dashboard-task-header-title">{task.task_type}</h2>
                     <div className="tasker-cancel-section">
                       <img className="tasker-profile-img" src={task.tasker.image_url}/>
-                      {!task.complete ? <a onClick={() => this.props.deleteTask(task.id)} className="cancel-task-link">Cancel Task</a> : ""}
+                      {!task.complete ? <a onClick={this.openModal.bind(this)} className="cancel-task-link">Cancel Task</a> : ""}
                     </div>
                   </div>
                   <div className="dashboard-task-status">
@@ -150,6 +150,12 @@ class Dashboard extends React.Component {
             })}
             {/* <SplashBody/> */}
           </div>
+          <Modal isOpen={this.state.modalIsOpen}>
+            <div className="cancel-modal">
+              <p>modal modal time</p>
+              <a onClick={this.closeModal.bind(this)}>No I don't want to cancel</a>
+            </div>
+          </Modal>
         </div>
       )
     } else {
