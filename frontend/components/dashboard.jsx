@@ -120,7 +120,7 @@ class Dashboard extends React.Component {
                     </div>
                   </div>
                   <div className="toggle-details">
-                    <strong>Hide Details</strong>
+                    <a>Hide Details</a>
                   </div>
                 </div>
               )
