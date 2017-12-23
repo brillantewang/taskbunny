@@ -269,3 +269,13 @@
 .dashboard-bottom {
   width: 1200px;
 }
+
+.dashboard-bottom-image {
+  height: 350px;
+  width: 380px;
+}
+
+.dashboard-bottom-toprow {
+  display: flex;
+  justify-content: space-between;
+}
