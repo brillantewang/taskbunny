@@ -166,17 +166,49 @@ class Dashboard extends React.Component {
           </div>
           <div className="dashboard-bottom">
             <h2 className="dashboard-bottom-header">How We Can Help</h2>
-            <div className="dashboard-bottom-toprow">
-                <Link
-                  to="/task-form/details"
-                  className="dashboard-bottom-image-link"
-                  onClick={() => this.props.createTask({user_id: this.props.currentUser.id, task_type: "Mounting", date: todaysDateString, task_time: "I'm Flexible"})}>
-                  <img className="dashboard-bottom-image" src="https://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_501,w_565,x_0,y_60/v1511572825/splash_body_img2_q8ekt9.jpg"/>
-                  <div className="dashboard-bottom-image-tag">
-                    <strong>Mounting</strong>
-                  </div>
-                  <h3 className="dashboard-bottom-image-text">Mount a TV or mirror</h3>
-                </Link>
+            <div className="dashboard-bottom-row">
+              <Link
+                to="/task-form/details"
+                className="dashboard-bottom-image-link"
+                onClick={() => this.props.createTask({user_id: this.props.currentUser.id, task_type: "Mounting", date: todaysDateString, task_time: "I'm Flexible"})}>
+                <img className="dashboard-bottom-image" src="https://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_501,w_565,x_0,y_60/v1511572825/splash_body_img2_q8ekt9.jpg"/>
+                <div className="dashboard-bottom-image-tag">
+                  <strong>Mounting</strong>
+                </div>
+                <h3 className="dashboard-bottom-image-text">Mount a TV or mirror</h3>
+              </Link>
+              <Link
+                to="/task-form/details"
+                className="dashboard-bottom-image-link"
+                onClick={() => this.props.createTask({user_id: this.props.currentUser.id, task_type: "Assembly", date: todaysDateString, task_time: "I'm Flexible"})}>
+                <img className="dashboard-bottom-image" src="https://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_469,w_573,x_0,y_26/v1511572825/splash_body_img3_y0fp9x.jpg"/>
+                <div className="dashboard-bottom-image-tag">
+                  <strong>Assembly</strong>
+                </div>
+                <h3 className="dashboard-bottom-image-text">Put together furniture</h3>
+              </Link>
+              <Link
+                to="/task-form/details"
+                className="dashboard-bottom-image-link"
+                onClick={() => this.props.createTask({user_id: this.props.currentUser.id, task_type: "Help Moving", date: todaysDateString, task_time: "I'm Flexible"})}>
+                <img className="dashboard-bottom-image" src="https://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_381,w_445,x_859,y_400/v1511572825/splash_body_img4_mrpzwp.jpg"/>
+                <div className="dashboard-bottom-image-tag">
+                  <strong>Help Moving</strong>
+                </div>
+                <h3 className="dashboard-bottom-image-text">Lift & shift heavy items</h3>
+              </Link>
+            </div>
+            <div className="dashboard-bottom-row">
+              <Link
+                to="/task-form/details"
+                className="dashboard-bottom-image-link"
+                onClick={() => this.props.createTask({user_id: this.props.currentUser.id, task_type: "Mounting", date: todaysDateString, task_time: "I'm Flexible"})}>
+                <img className="dashboard-bottom-image" src="https://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_501,w_565,x_0,y_60/v1511572825/splash_body_img2_q8ekt9.jpg"/>
+                <div className="dashboard-bottom-image-tag">
+                  <strong>Mounting</strong>
+                </div>
+                <h3 className="dashboard-bottom-image-text">Mount a TV or mirror</h3>
+              </Link>
               <Link
                 to="/task-form/details"
                 className="dashboard-bottom-image-link"

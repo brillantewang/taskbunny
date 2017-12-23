@@ -271,13 +271,14 @@
 }
 
 .dashboard-bottom-image {
-  height: 350px;
-  width: 380px;
+  height: 360px;
+  width: 385px;
 }
 
-.dashboard-bottom-toprow {
+.dashboard-bottom-row {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 15px;
 }
 
 .dashboard-bottom-header {
