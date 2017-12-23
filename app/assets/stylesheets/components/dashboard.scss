@@ -213,3 +213,9 @@
 .dashboard-empty-bottom-section {
   height: 600px;
 }
+
+.toggle-details {
+  border-top: 1px solid $light-gray;
+  display: flex;
+  justify-content: center;
+}
