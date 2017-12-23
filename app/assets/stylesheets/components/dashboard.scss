@@ -77,7 +77,7 @@
 
 .dashboard-body {
   width: 930px;
-  margin-bottom: 70px;
+  margin-bottom: 60px;
 }
 
 .user-profile-img {
@@ -278,4 +278,9 @@
 .dashboard-bottom-toprow {
   display: flex;
   justify-content: space-between;
+}
+
+.dashboard-bottom-header {
+  margin-bottom: 8px;
+  font-weight: 400;
 }

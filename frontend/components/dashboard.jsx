@@ -164,7 +164,7 @@ class Dashboard extends React.Component {
             {/* <SplashBody/> */}
           </div>
           <div className="dashboard-bottom">
-            <h2>How We Can Help</h2>
+            <h2 className="dashboard-bottom-header">How We Can Help</h2>
             <div className="dashboard-bottom-toprow">
               <Link
                 to="/task-form/details"
