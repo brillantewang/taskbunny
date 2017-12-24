@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import todaysDateString from '../util/todays_date_util';
 
 export const TaskCategories = ({ text, setTaskType, createTask, currentUser }) => {
+  console.log(text);
   const taskCategories = [
     { title: "Minor Repairs", img_url: "https://res.cloudinary.com/dezmnl5mf/image/upload/v1511562978/minor_repairs_bozruc.jpg" },
     { title: "Mounting", img_url: "https://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_618,w_637,x_0,y_22/v1511572825/splash_body_img2_q8ekt9.jpg" },
@@ -53,22 +54,34 @@ export const TaskCategories = ({ text, setTaskType, createTask, currentUser }) =
     const matchedCategories = taskCategories.filter(taskCategory => {
       return regex.test(taskCategory.title);
     })
+    console.log(matchedCategories, 'matchedCategories');
 
-    return (
-      <div id="task-categories" className="hidden">
-        {matchedCategories.slice(0, 4).map(taskCategory => {
-          return (
-            <Link
-              to="/task-form/details"
-              key={taskCategory.title}
-              className="task-category search"
-              onClick={() => createTask({user_id: currentUser.id, task_type: taskCategory.title, date: todaysDateString, task_time: "I'm Flexible"})}>
-              <img className="task-category-img search" src={taskCategory.img_url}/>
-              <strong className="task-category-title search">{taskCategory.title}</strong>
-            </Link>
-          )
-        })}
-      </div>
-    )
+    if (matchedCategories.length > 0) {
+      console.log('in the if');
+      return (
+        <div id="task-categories">
+          {matchedCategories.slice(0, 4).map(taskCategory => {
+            return (
+              <Link
+                to="/task-form/details"
+                key={taskCategory.title}
+                className="task-category search"
+                onClick={() => createTask({user_id: currentUser.id, task_type: taskCategory.title, date: todaysDateString, task_time: "I'm Flexible"})}>
+                <img className="task-category-img search" src={taskCategory.img_url}/>
+                <strong className="task-category-title search">{taskCategory.title}</strong>
+              </Link>
+            )
+          })}
+        </div>
+      )
+    } else {
+      return (
+        <div
+          id="task-categories">
+          <strong>Oops, "{text}" isn't currently a recognized task</strong>
+        </div>
+      )
+    }
+
   }
 }
