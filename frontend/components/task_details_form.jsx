@@ -109,12 +109,14 @@ class TaskDetailsForm extends React.Component {
   }
 
   updateDisableStatus() {
+    const locationBtn = document.getElementById("details-location-submit");
+    locationBtn.disabled =  this.props.state.location ? false : true;
+
+    const vehicleBtn = document.getElementById("details-vehicle-btn");
+    vehicleBtn.disabled =  this.props.state.vehicle_requirements ? false : true;
+
     const finalBtn = document.getElementById("details-final-submit");
-    if (this.props.state.location && this.props.state.description) {
-      finalBtn.disabled = false;
-    } else {
-      finalBtn.disabled = true;
-    }
+    finalBtn.disabled =  this.props.state.location && this.props.state.description ? false : true;
   }
 
   componentDidUpdate() {
@@ -173,7 +175,7 @@ class TaskDetailsForm extends React.Component {
             </div>
             {/* {this.props.handleErrorInput('Location')} */}
             <div className="save-button-container">
-              <button onClick={this.handleSubFormSubmit("location", "vehicle_requirements")} className="btn-green">Save</button>
+              <button id="details-location-submit" onClick={this.handleSubFormSubmit("location", "vehicle_requirements")} className="btn-green">Save</button>
             </div>
           </div>
         </form>
@@ -214,7 +216,7 @@ class TaskDetailsForm extends React.Component {
               </span>
             </div>
             <div className="save-button-container">
-              <button onClick={this.handleSubFormSubmit("vehicle_requirements", "description")} className="btn-green">Save</button>
+              <button id="details-vehicle-btn" onClick={this.handleSubFormSubmit("vehicle_requirements", "description")} className="btn-green">Save</button>
             </div>
           </div>
         </form>

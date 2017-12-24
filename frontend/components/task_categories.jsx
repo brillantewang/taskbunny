@@ -31,7 +31,7 @@ export const TaskCategories = ({ text, setTaskType, createTask, currentUser }) =
     { title: "Yard work", img_url: "https://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_420,w_455/v1511562988/yard_work_byqags.jpg" }
   ]
 
-  if (text === "" ) {
+  if (text === "") {
     return (
       <div id="task-categories" className="hidden">
         {taskCategories.slice(0, 4).map(taskCategory => {
