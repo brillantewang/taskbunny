@@ -183,7 +183,7 @@ class TaskDetailsForm extends React.Component {
         </form>
         <form onClick={this.handleClick("vehicle_requirements")} className="task-details-subform vehicle-details-form">
           <strong className="task-subform-header">VEHICLE REQUIREMENTS</strong>
-          <p id="vehicle_requirements-text" className="subform-text hidden">{this.props.state.vehicle_requirements}</p>
+          <strong id="vehicle_requirements-text" className="subform-text hidden"><i class="fa fa-car" aria-hidden="true"></i>{this.props.state.vehicle_requirements}</strong>
           <div id="vehicle_requirements" className="hidden">
             <div className="vehicle-details-form-inputs">
               <span className="vehicle-option">
