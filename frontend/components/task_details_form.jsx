@@ -37,6 +37,7 @@ class TaskDetailsForm extends React.Component {
     const subForm = document.getElementById(subFormId);
     const subFormText = document.getElementById(`${subFormId}-text`);
     const nextSubForm = document.getElementById(nextSubFormId);
+    const nextSubFormText = document.getElementById(`${nextSubFormId}-text`);
     // console.log(subFormId, 'subform-id');
     // console.log(subForm, 'subform');
     // console.log(nextSubFormId, 'nextsubform-id');
@@ -46,6 +47,7 @@ class TaskDetailsForm extends React.Component {
       subForm.classList.add("hidden");
       subFormText.classList.remove("hidden");
       nextSubForm.classList.remove("hidden");
+      nextSubFormText.classList.add("hidden");
     // }
 
     // return new Promise((resolve, reject) => {
@@ -141,29 +143,29 @@ class TaskDetailsForm extends React.Component {
   }
 
   handleClick(subFormId) {
-    // const subFormIds = ["location", "vehicle_requirements", "description"];
-    //
-    // return e => {
-    //   const clickedSubForm = document.getElementById(subFormId);
-    //   const clickedSubFormText = document.getElementById(`${subFormId}-text`);
-    //
-    //   const otherSubForms = subFormIds.filter(subId => {
-    //     return subId !== subFormId
-    //   }).map(subId => document.getElementById(subId))
-    //
-    //   const otherSubFormTexts = subFormIds.filter(subId => {
-    //     return subId !== subFormId
-    //   }).map(subId => document.getElementById(`${subId}-text`))
-    //
-    //   clickedSubForm.classList.remove("hidden");
-    //   clickedSubFormText.classList.add("hidden");
-    //   otherSubForms.forEach(subForm => {
-    //     subForm.classList.add("hidden")
-    //   })
-    //   otherSubFormTexts.forEach(subForm => {
-    //     subForm.classList.remove("hidden")
-    //   })
-    // }
+    const subFormIds = ["location", "vehicle_requirements", "description"];
+
+    return e => {
+      const clickedSubForm = document.getElementById(subFormId);
+      const clickedSubFormText = document.getElementById(`${subFormId}-text`);
+
+      const otherSubForms = subFormIds.filter(subId => {
+        return subId !== subFormId
+      }).map(subId => document.getElementById(subId))
+
+      // const otherSubFormTexts = subFormIds.filter(subId => {
+      //   return subId !== subFormId
+      // }).map(subId => document.getElementById(`${subId}-text`))
+
+      clickedSubForm.classList.remove("hidden");
+      if (clickedSubFormText) clickedSubFormText.classList.add("hidden");
+      otherSubForms.forEach(subForm => {
+        subForm.classList.add("hidden")
+      })
+      // otherSubFormTexts.forEach(subForm => {
+      //   subForm.classList.remove("hidden")
+      // })
+    }
   }
 
   render() {
@@ -172,9 +174,12 @@ class TaskDetailsForm extends React.Component {
       <div className="task-details-form task-form-subform">
         <h2>Describe Your Task</h2>
         <h3>We need these inputs to show only qualified and available Taskers for the job.</h3>
-        <form onClick={this.handleClick("location")} className="task-details-subform location-details-form">
+        <form className="task-details-subform location-details-form">
           <strong className="task-subform-header">YOUR TASK LOCATION</strong>
-          <strong id="location-text" className="subform-text hidden"><i class="fa fa-map-marker" aria-hidden="true"></i>{this.props.state.location}</strong>
+          <strong id="location-text" className="subform-text hidden">
+            <i class="fa fa-map-marker" aria-hidden="true"></i>{this.props.state.location}
+            <i onClick={this.handleClick("location")} class="fa fa-pencil" aria-hidden="true"></i>
+          </strong>
           <div id="location">
             <div className="location-details-form-inputs">
               <input
@@ -198,9 +203,12 @@ class TaskDetailsForm extends React.Component {
             </div>
           </div>
         </form>
-        <form onClick={this.handleClick("vehicle_requirements")} className="task-details-subform vehicle-details-form">
+        <form className="task-details-subform vehicle-details-form">
           <strong className="task-subform-header">VEHICLE REQUIREMENTS</strong>
-          <strong id="vehicle_requirements-text" className="subform-text hidden"><i class="fa fa-car" aria-hidden="true"></i>{this.props.state.vehicle_requirements}</strong>
+          <strong id="vehicle_requirements-text" className="subform-text hidden">
+            <i class="fa fa-car" aria-hidden="true"></i>{this.props.state.vehicle_requirements}
+            <i onClick={this.handleClick("vehicle_requirements")} class="fa fa-pencil" aria-hidden="true"></i>
+          </strong>
           <div id="vehicle_requirements" className="hidden">
             <div className="vehicle-details-form-inputs">
               <span className="vehicle-option">

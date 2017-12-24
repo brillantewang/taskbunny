@@ -1,4 +1,5 @@
 .task-details-subform {
+  position: relative;
   margin-bottom: 10px;
   background: white;
   width: 65%;
@@ -123,4 +124,11 @@
   .fa-car {
     font-size: 15px;
   }
+}
+
+.fa-pencil {
+  position: absolute;
+  top: 22px;
+  right: 15px;
+  cursor: pointer;
 }
