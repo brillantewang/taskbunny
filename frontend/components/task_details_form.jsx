@@ -110,6 +110,13 @@ class TaskDetailsForm extends React.Component {
       .then(() => this.props.history.push("/task-form/taskers"))
   }
 
+  // updateSubFormTextStatus() {
+  //   const locationText = document.getElementById("location-text");
+  //   const locationForm = document.getElementById("location");
+  //
+  //   locationForm.classList.contains("hidden") ? locationText.classList.remove("hidden") : locationText.classList.add("hidden");
+  // }
+
   updateDisableStatus() {
     const locationBtn = document.getElementById("details-location-submit");
     locationBtn.disabled =  this.props.state.location ? false : true;
@@ -134,17 +141,27 @@ class TaskDetailsForm extends React.Component {
   }
 
   handleClick(subFormId) {
-    // const subFormIds = ["Location", "Vehicle", "Description"];
+    // const subFormIds = ["location", "vehicle_requirements", "description"];
     //
     // return e => {
     //   const clickedSubForm = document.getElementById(subFormId);
+    //   const clickedSubFormText = document.getElementById(`${subFormId}-text`);
+    //
     //   const otherSubForms = subFormIds.filter(subId => {
     //     return subId !== subFormId
     //   }).map(subId => document.getElementById(subId))
     //
+    //   const otherSubFormTexts = subFormIds.filter(subId => {
+    //     return subId !== subFormId
+    //   }).map(subId => document.getElementById(`${subId}-text`))
+    //
     //   clickedSubForm.classList.remove("hidden");
+    //   clickedSubFormText.classList.add("hidden");
     //   otherSubForms.forEach(subForm => {
     //     subForm.classList.add("hidden")
+    //   })
+    //   otherSubFormTexts.forEach(subForm => {
+    //     subForm.classList.remove("hidden")
     //   })
     // }
   }
@@ -155,7 +172,7 @@ class TaskDetailsForm extends React.Component {
       <div className="task-details-form task-form-subform">
         <h2>Describe Your Task</h2>
         <h3>We need these inputs to show only qualified and available Taskers for the job.</h3>
-        <form onClick={this.handleClick("Location")} className="task-details-subform location-details-form">
+        <form onClick={this.handleClick("location")} className="task-details-subform location-details-form">
           <strong className="task-subform-header">YOUR TASK LOCATION</strong>
           <strong id="location-text" className="subform-text hidden"><i class="fa fa-map-marker" aria-hidden="true"></i>{this.props.state.location}</strong>
           <div id="location">

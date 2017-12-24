@@ -4,7 +4,7 @@
   width: 65%;
   display: flex;
   flex-direction: column;
-  padding: 25px 25px 35px 25px;
+  padding: 25px 25px 40px 25px;
   box-shadow: 1px 1px 6px $light-gray, -1px 1px 6px $light-gray;
 
   button {
@@ -110,8 +110,9 @@
 }
 
 .subform-text {
-  margin-top: 15px;
+  margin-top: 12px;
   margin-left: 5px;
+  margin-bottom: -10px;
 
   i {
     font-size: 18px;
