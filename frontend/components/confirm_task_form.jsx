@@ -1,6 +1,7 @@
 import React from 'react';
 import { ClipLoader } from 'react-spinners';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 class ConfirmTaskForm extends React.Component {
   constructor(props) {
@@ -58,6 +59,7 @@ class ConfirmTaskForm extends React.Component {
   }
 
   render() {
+    let date = moment(this.props.state.date).format('ddd[,] MMM Do');
     // console.log(this.props.state, 'confirm task form rendering');
     // console.log(this.props.state.tasker);
     // console.log(this.loaded(), 'loaded in confirm task render');
@@ -75,7 +77,7 @@ class ConfirmTaskForm extends React.Component {
               <div className="date-time-tasker">
                 <div className="date-time-tasker-date-time  ">
                   <strong className="mini-header">Date & Time</strong>
-                  <strong className="info-text">{this.props.state.date} ({this.props.state.task_time})</strong>
+                  <strong className="info-text">{date} ({this.props.state.task_time})</strong>
                 </div>
                 <div className="date-time-tasker-tasker">
                   <img className="tasker-mini-profile-photo" src={this.props.state.tasker.image_url}/>
