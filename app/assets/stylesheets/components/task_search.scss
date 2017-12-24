@@ -60,3 +60,13 @@
   color: $gray;
   cursor: pointer;
 }
+
+.no-tasks-text-container {
+  padding: 10px 20px 10px 20px;
+  background-color: $lightest-gray;
+
+  strong {
+    font-size: 14px;
+    font-weight: 400;
+  }
+}

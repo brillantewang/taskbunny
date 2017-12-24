@@ -78,7 +78,9 @@ export const TaskCategories = ({ text, setTaskType, createTask, currentUser }) =
       return (
         <div
           id="task-categories">
-          <strong>Oops, "{text}" isn't currently a recognized task</strong>
+          <div className="no-tasks-text-container">
+            <strong>Oops, "{text}" isn't currently a recognized task.</strong>
+          </div>
         </div>
       )
     }
