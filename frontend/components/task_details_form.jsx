@@ -47,7 +47,7 @@ class TaskDetailsForm extends React.Component {
       subForm.classList.add("hidden");
       subFormText.classList.remove("hidden");
       nextSubForm.classList.remove("hidden");
-      nextSubFormText.classList.add("hidden");
+      if (nextSubFormText) nextSubFormText.classList.add("hidden");
     // }
 
     // return new Promise((resolve, reject) => {
@@ -247,7 +247,7 @@ class TaskDetailsForm extends React.Component {
             </div>
           </div>
         </form>
-        <form onClick={this.handleClick("description")} className="task-details-subform description-details-form">
+        <form className="task-details-subform description-details-form">
           <strong className="task-subform-header">TELL US ABOUT YOUR TASK</strong>
           <div id="description" className="hidden">
             <div className="description-details-form-content">
