@@ -35,16 +35,18 @@ class TaskDetailsForm extends React.Component {
 
   collapse(subFormId, nextSubFormId) {
     const subForm = document.getElementById(subFormId);
+    const subFormText = document.getElementById(`${subFormId}-text`);
     const nextSubForm = document.getElementById(nextSubFormId);
     // console.log(subFormId, 'subform-id');
     // console.log(subForm, 'subform');
     // console.log(nextSubFormId, 'nextsubform-id');
     // console.log(nextSubForm, 'nextsubform');
 
-    if (this.props.state[subFormId]) {
+    // if (this.props.state[subFormId]) {
       subForm.classList.add("hidden");
+      subFormText.classList.remove("hidden");
       nextSubForm.classList.remove("hidden");
-    }
+    // }
 
     // return new Promise((resolve, reject) => {
     //   if (this.props.handleErrorInput(subFormId) === undefined) {
@@ -155,7 +157,7 @@ class TaskDetailsForm extends React.Component {
         <h3>We need these inputs to show only qualified and available Taskers for the job.</h3>
         <form onClick={this.handleClick("Location")} className="task-details-subform location-details-form">
           <strong className="task-subform-header">YOUR TASK LOCATION</strong>
-          {/* <p id="location-text" className="hidden">{`${this.props.state.location}` || "Location can't be blank"}</p> */}
+          <strong id="location-text" className="subform-text hidden"><i class="fa fa-map-marker" aria-hidden="true"></i>{this.props.state.location}</strong>
           <div id="location">
             <div className="location-details-form-inputs">
               <input
@@ -181,7 +183,7 @@ class TaskDetailsForm extends React.Component {
         </form>
         <form onClick={this.handleClick("vehicle_requirements")} className="task-details-subform vehicle-details-form">
           <strong className="task-subform-header">VEHICLE REQUIREMENTS</strong>
-          <p className="hidden">{`${this.props.state.vehicle_requirements}`}</p>
+          <p id="vehicle_requirements-text" className="subform-text hidden">{this.props.state.vehicle_requirements}</p>
           <div id="vehicle_requirements" className="hidden">
             <div className="vehicle-details-form-inputs">
               <span className="vehicle-option">
