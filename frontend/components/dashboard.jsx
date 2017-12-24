@@ -88,7 +88,7 @@ class Dashboard extends React.Component {
     // console.log(this.props.currentUser);
     // console.log(this.props.currentUserTasks, 'current user tasks');
 
-    if (this.props.currentUserTasks.length > 0) {
+    // if (this.props.currentUserTasks.length > 0) {
       return (
         <div className="dashboard" onClick={this.handleClick}>
           <Route path="/dashboard" component={NavBarContainer}/>
@@ -248,16 +248,16 @@ class Dashboard extends React.Component {
           </Modal>
         </div>
       )
-    } else {
-      return (
-        <div>
-          <Route path="/dashboard" component={NavBarContainer}/>
-          <div className="loader-icon">
-            <ClipLoader/>
-          </div>
-        </div>
-      )
-    }
+    // } else {
+    //   return (
+    //     <div>
+    //       <Route path="/dashboard" component={NavBarContainer}/>
+    //       <div className="loader-icon">
+    //         <ClipLoader/>
+    //       </div>
+    //     </div>
+    //   )
+    // }
 
   }
 }

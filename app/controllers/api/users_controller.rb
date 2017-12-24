@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
-  def index
-    @users = User.all.includes(:tasker_tasks)
+  def index # info on eager loading https://www.sitepoint.com/silver-bullet-n1-problem/
+    @users = User.all.includes(:tasker_tasks, :user_tasks)
     render :index
   end
 
