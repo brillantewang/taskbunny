@@ -177,8 +177,8 @@ class TaskDetailsForm extends React.Component {
         <form className="task-details-subform location-details-form">
           <strong className="task-subform-header">YOUR TASK LOCATION</strong>
           <strong id="location-text" className="subform-text hidden">
-            <i class="fa fa-map-marker" aria-hidden="true"></i>{this.props.state.location}
-            <i onClick={this.handleClick("location")} class="fa fa-pencil" aria-hidden="true"></i>
+            <i className="fa fa-map-marker" aria-hidden="true"></i>{this.props.state.location}
+            <i onClick={this.handleClick("location")} className="fa fa-pencil" aria-hidden="true"></i>
           </strong>
           <div id="location">
             <div className="location-details-form-inputs">
@@ -206,8 +206,8 @@ class TaskDetailsForm extends React.Component {
         <form className="task-details-subform vehicle-details-form">
           <strong className="task-subform-header">VEHICLE REQUIREMENTS</strong>
           <strong id="vehicle_requirements-text" className="subform-text hidden">
-            <i class="fa fa-car" aria-hidden="true"></i>{this.props.state.vehicle_requirements}
-            <i onClick={this.handleClick("vehicle_requirements")} class="fa fa-pencil" aria-hidden="true"></i>
+            <i className="fa fa-car" aria-hidden="true"></i>{this.props.state.vehicle_requirements}
+            <i onClick={this.handleClick("vehicle_requirements")} className="fa fa-pencil" aria-hidden="true"></i>
           </strong>
           <div id="vehicle_requirements" className="hidden">
             <div className="vehicle-details-form-inputs">
