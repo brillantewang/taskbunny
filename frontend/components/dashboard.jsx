@@ -57,6 +57,12 @@ class Dashboard extends React.Component {
     document.getElementById('task-categories').className = taskCategoriesClass;
   }
 
+  handleImageClick(taskCategory) {
+    createTask({user_id: currentUser.id, task_type: taskCategory, date: todaysDateString, task_time: "I'm Flexible"}).then(
+      () => history.push('/task-form/details')
+    )
+  }
+
   getMonth(num) {
     const months = [
       'Jan',

@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import todaysDateString from '../util/todays_date_util';
 
-export const TaskCategories = ({ text, setTaskType, createTask, currentUser }) => {
-  console.log(text);
+export const TaskCategories = ({ text, setTaskType, createTask, currentUser, history }) => {
   const taskCategories = [
     { title: "Minor Repairs", img_url: "https://res.cloudinary.com/dezmnl5mf/image/upload/v1511562978/minor_repairs_bozruc.jpg" },
     { title: "Mounting", img_url: "https://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_618,w_637,x_0,y_22/v1511572825/splash_body_img2_q8ekt9.jpg" },
@@ -32,19 +31,24 @@ export const TaskCategories = ({ text, setTaskType, createTask, currentUser }) =
     { title: "Yard work", img_url: "https://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_420,w_455/v1511562988/yard_work_byqags.jpg" }
   ]
 
+  const handleClick = (taskCategory) => {
+    createTask({user_id: currentUser.id, task_type: taskCategory.title, date: todaysDateString, task_time: "I'm Flexible"}).then(
+      () => history.push('/task-form/details')
+    )
+  }
+
   if (text === "") {
     return (
       <div id="task-categories" className="hidden">
         {taskCategories.slice(0, 4).map(taskCategory => {
           return (
-            <Link
-              to="/task-form/details"
+            <a
               key={taskCategory.title}
               className="task-category search"
-              onClick={() => createTask({user_id: currentUser.id, task_type: taskCategory.title, date: todaysDateString, task_time: "I'm Flexible"})}>
+              onClick={() => handleClick(taskCategory)}>
               <img className="task-category-img search" src={taskCategory.img_url}/>
               <strong className="task-category-title search">{taskCategory.title}</strong>
-            </Link>
+            </a>
           )
         })}
       </div>
@@ -62,14 +66,13 @@ export const TaskCategories = ({ text, setTaskType, createTask, currentUser }) =
         <div id="task-categories">
           {matchedCategories.slice(0, 4).map(taskCategory => {
             return (
-              <Link
-                to="/task-form/details"
+              <a
                 key={taskCategory.title}
                 className="task-category search"
-                onClick={() => createTask({user_id: currentUser.id, task_type: taskCategory.title, date: todaysDateString, task_time: "I'm Flexible"})}>
+                onClick={() => handleClick(taskCategory)}>
                 <img className="task-category-img search" src={taskCategory.img_url}/>
                 <strong className="task-category-title search">{taskCategory.title}</strong>
-              </Link>
+              </a>
             )
           })}
         </div>

@@ -49,7 +49,7 @@ class TaskSearch extends React.Component {
           placeholder={this.props.location.pathname === "/dashboard" ? "What do you need help with?" : "Need something different?" }
         />
         <i onClick={this.resetState} id="input-canceler" className="fa fa-times-circle hidden" aria-hidden="true"></i>
-        <TaskCategoriesContainer text={this.state.text}/>
+        <TaskCategoriesContainer text={this.state.text} history={this.props.history}/>
       </div>
     )
   }
