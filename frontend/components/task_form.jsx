@@ -75,11 +75,12 @@ class TaskForm extends React.Component {
         .then(taskRes => { // why is taskRes the action POJO dispatched? is taskRes the return value of fetchLastTaskForCurrentUser?
           const lastTask = taskRes.task;
 
-          if (lastTask.form_complete === false) {
+          // if (lastTask.form_complete === false) {
             this.setState(lastTask, () => this.props.dispatchCurrentTask(this.state));
-          } else {
-            reject();
-          }
+          // } else {
+          //   console.log(lastTask, 'this is the last task in the else of reload condition');
+          //   reject();
+          // }
         })
       })
 
