@@ -65,7 +65,7 @@ class TaskForm extends React.Component {
 
   reloadTask() { //checks last task for current user and reloads it to state if it's incomplete
     // console.log('task reloading');
-    return new Promise((resolve, reject) => {
+    // return new Promise((resolve, reject) => {
       this.props.fetchCurrentUser(this.state.user_id)
       .then(userRes => {
         const currentUser = userRes.user;
@@ -84,7 +84,7 @@ class TaskForm extends React.Component {
         })
       })
 
-    })
+    // })
     // console.log(this.props.currentUser);
   }
 
