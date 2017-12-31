@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import todaysDateString from '../util/todays_date_util';
 
-export const TaskCategories = ({ text, setTaskType, createTask, currentUser, history }) => {
+export const TaskCategories = ({ text, setTaskType, createTask, currentUser, history, location }) => {
   const taskCategories = [
     { title: "Minor Repairs", img_url: "https://res.cloudinary.com/dezmnl5mf/image/upload/v1511562978/minor_repairs_bozruc.jpg" },
     { title: "Mounting", img_url: "https://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_618,w_637,x_0,y_22/v1511572825/splash_body_img2_q8ekt9.jpg" },
@@ -32,9 +32,14 @@ export const TaskCategories = ({ text, setTaskType, createTask, currentUser, his
   ]
 
   const handleClick = (taskCategory) => {
-    createTask({user_id: currentUser.id, task_type: taskCategory.title, date: todaysDateString, task_time: "I'm Flexible"}).then(
-      () => history.push('/task-form/details')
-    )
+    if (location.pathname === "/") {
+      history.push("/login")
+    }
+    else {
+      createTask({user_id: currentUser.id, task_type: taskCategory.title, date: todaysDateString, task_time: "I'm Flexible"}).then(
+        () => history.push('/task-form/details')
+      )
+    }
   }
 
   if (text === "") {
