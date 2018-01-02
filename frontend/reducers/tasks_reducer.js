@@ -6,15 +6,15 @@ const tasksReducer = (state = {}, action) => {
   let newState = merge({}, state);
   switch(action.type) {
     case RECEIVE_ALL_TASKS:
-      console.log('state before merge', newState);
+      // console.log('state before merge', newState);
       newState = merge(newState, action.tasks);
-      console.log('state after merge', newState);
+      // console.log('state after merge', newState);
       return newState;
     case RECEIVE_TASK:
-    console.log(action, 'receive task action');
-    console.log('state before task update', newState);
+    // console.log(action, 'receive task action');
+    // console.log('state before task update', newState);
       newState[action.task.id] = action.task;
-      console.log('state before task update', newState);
+      // console.log('state before task update', newState);
       return newState;
     case REMOVE_TASK:
       delete newState[action.task.id]

@@ -88,7 +88,7 @@ class TaskDetailsForm extends React.Component {
     // } else {
       return e => {
         e.preventDefault();
-        console.log('task updating');
+        // console.log('task updating');
         this.props.updateTask(this.props.state)
           .then(() => {
             // this.props.setState(this.props.state);

@@ -63,10 +63,10 @@ export const TaskCategories = ({ text, setTaskType, createTask, currentUser, his
     const matchedCategories = taskCategories.filter(taskCategory => {
       return regex.test(taskCategory.title);
     })
-    console.log(matchedCategories, 'matchedCategories');
+    // console.log(matchedCategories, 'matchedCategories');
 
     if (matchedCategories.length > 0) {
-      console.log('in the if');
+      // console.log('in the if');
       return (
         <div id="task-categories">
           {matchedCategories.slice(0, 4).map(taskCategory => {
