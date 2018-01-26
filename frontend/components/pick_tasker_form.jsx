@@ -121,7 +121,9 @@ class PickTaskerForm extends React.Component {
       this.props.setState({ tasker_id: taskerId }, () => {
         this.props.updateTask(this.props.state);
         // console.log(this.props.state, 'select and confirm clicked');
-        this.props.history.push('/task-form/confirm');
+        if (this.props.state.user_id) {
+          this.props.history.push('/task-form/confirm');
+        }
       });
     }
   }
