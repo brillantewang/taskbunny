@@ -86,7 +86,7 @@ class TaskForm extends React.Component {
         })
       })
     } else {
-      this.props.getLastTaskInDB()
+      this.props.fetchLastTaskInDB()
       .then(taskRes => {
         const lastTask = taskRes.task;
 

@@ -48,3 +48,10 @@ export const fetchLastTaskForCurrentUser = taskId => (
     method: "GET"
   })
 )
+
+export const fetchLastTaskInDB = () => (
+  $.ajax({
+    url: "api/last_task",
+    method: "GET"
+  })
+)

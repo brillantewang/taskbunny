@@ -11,7 +11,8 @@ import {
   // receiveVehicleReq,
   fetchAllUsers,
   fetchCurrentUser,
-  receiveCurrentTask
+  receiveCurrentTask,
+  fetchLastTaskInDB
 } from '../actions/task_form_actions';
 import TaskForm from './task_form';
 import { handleErrorInput } from '../util/errors_util.js';
@@ -38,7 +39,8 @@ const mapDispatchToProps = dispatch => ({
   // setTaskVehicleReq: vehicleReq => dispatch(receiveVehicleReq(vehicleReq)),
   fetchAllUsers: () => dispatch(fetchAllUsers()),
   fetchCurrentUser: userId => dispatch(fetchCurrentUser(userId)),
-  fetchLastTaskForCurrentUser: taskId => dispatch(fetchLastTaskForCurrentUser(taskId))
+  fetchLastTaskForCurrentUser: taskId => dispatch(fetchLastTaskForCurrentUser(taskId)),
+  fetchLastTaskInDB: () => dispatch(fetchLastTaskInDB())
 })
 
 export default connect(

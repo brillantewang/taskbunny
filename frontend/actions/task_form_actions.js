@@ -107,6 +107,14 @@ export const fetchLastTaskForCurrentUser = taskId => dispatch => (
     )
 )
 
+export const fetchLastTaskInDB = () => dispatch => (
+  taskFormAPIUtil.fetchLastTaskInDB()
+    .then(
+      taskRes => dispatch(receiveTask(taskRes)),
+      errors => dispatch(receiveTaskErrors(errors.responseJSON))
+    )
+)
+
 export const fetchAllUsers = task => dispatch => (
   taskFormAPIUtil.fetchAllUsers()
     .then(users => dispatch(receiveAllUsers(users)))
