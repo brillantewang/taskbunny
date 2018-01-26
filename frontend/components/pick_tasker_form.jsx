@@ -1,4 +1,5 @@
 import React from 'react';
+import Modal from 'react-modal';
 import { ClipLoader } from 'react-spinners';
 // import DatePicker from 'react-date-picker';
 
@@ -7,10 +8,19 @@ class PickTaskerForm extends React.Component {
     super(props)
 
     this.state = {
-      taskers: this.props.availableTaskersByRecommended
+      taskers: this.props.availableTaskersByRecommended,
+      modalIsOpen: false
     }
 
     // console.log(this.state.taskers, 'taskers');
+  }
+
+  openModal() {
+    this.setState({modalIsOpen: true});
+  }
+
+  closeModal() {
+    this.setState({modalIsOpen: false});
   }
 
   loading() {
@@ -123,6 +133,8 @@ class PickTaskerForm extends React.Component {
         // console.log(this.props.state, 'select and confirm clicked');
         if (this.props.state.user_id) {
           this.props.history.push('/task-form/confirm');
+        } else {
+          Modal.setAppElement(".task-form");
         }
       });
     }

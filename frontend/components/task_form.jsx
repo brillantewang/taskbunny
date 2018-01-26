@@ -194,7 +194,7 @@ class TaskForm extends React.Component {
     }
 
     return (
-      <div>
+      <div className="task-form">
         <Route path="/task-form" component={NavBarContainer}/>
         <StatusBarWithRouter/>
         <div className="trust-banner">
