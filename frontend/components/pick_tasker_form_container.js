@@ -8,6 +8,7 @@ import {
   availableTaskersByMostTasks,
   availableTaskersByRecommended
 } from '../reducers/selectors';
+import { signup, removeErrors } from '../actions/session_actions';
 import PickTaskerForm from './pick_tasker_form';
 
 const mapStateToProps = state => ({
@@ -20,7 +21,12 @@ const mapStateToProps = state => ({
   availableTaskersByRecommended: availableTaskersByRecommended(state)
 })
 
+const mapDispatchToProps = dispatch => ({
+  signup: user => dispatch(signup(user)),
+  removeErrors: () => dispatch(removeErrors())
+})
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(PickTaskerForm);

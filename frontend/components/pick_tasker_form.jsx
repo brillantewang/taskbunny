@@ -147,11 +147,18 @@ class PickTaskerForm extends React.Component {
     }
   }
 
+  handleSessionFormSubmit(e) {
+    e.preventDefault();
+    this.props.signup(this.state)
+      .then(() => this.props.history.push('/dashboard'));
+  }
+
   handleChange(type) {
     return e => this.setState({ [type]: e.target.value })
   }
 
   handleErrorInput(type) {
+    console.log('hey');
     const regex = new RegExp(type);
     const error = this.props.errors.filter(error => { return error.match(regex) })[0];
     if (error) {
@@ -237,7 +244,7 @@ class PickTaskerForm extends React.Component {
             >
             <div className="session-form-modal">
               <div className="session-form-container">
-                <form onSubmit={this.handleSubmit.bind(this)} className="session-form">
+                <form onSubmit={this.handleSessionFormSubmit.bind(this)} className="session-form">
                   <h3>Create an account</h3>
                   <p>You'll be able to review everything before booking</p>
                   <fieldset>
