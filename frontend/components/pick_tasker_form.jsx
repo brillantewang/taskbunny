@@ -135,6 +135,7 @@ class PickTaskerForm extends React.Component {
           this.props.history.push('/task-form/confirm');
         } else {
           Modal.setAppElement(".task-form");
+          this.openModal();
         }
       });
     }
@@ -205,6 +206,18 @@ class PickTaskerForm extends React.Component {
               })}
             </div>
           </div>
+          <Modal
+            className="modal-container"
+            overlayClassName="modal-container-overlay"
+            onRequestClose={this.closeModal.bind(this)}
+            isOpen={this.state.modalIsOpen}
+            >
+            <div className="cancel-modal">
+              <h3 className="cancel-modal-header">Cancel Task</h3>
+              <p className="cancel-modal-text">Are you sure you want to cancel this task?</p>
+              <a className="cancel-modal-link" onClick={this.closeModal.bind(this)}>No, I don't want to cancel</a>
+            </div>
+          </Modal>
         </div>
       )
     } else {
