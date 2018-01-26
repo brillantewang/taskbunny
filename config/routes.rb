@@ -6,4 +6,6 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :tasks, only: [:index, :show, :create, :destroy, :update]
   end
+
+  get 'api/last_task', to: 'tasks#last'
 end

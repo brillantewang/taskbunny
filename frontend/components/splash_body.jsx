@@ -6,7 +6,7 @@ export const SplashBody = () => {
     <div className="splash-body">
       <h1>Get Inspired</h1>
       <div className="splash-body-top">
-        <Link to="/login" className="splash-body-top-item-1">
+        <Link to="/task-form/details" className="splash-body-top-item-1">
           <img src="https://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_2973,w_3877/v1511571163/splash-body-img1_gnn4se.jpg"/>
         </Link>
         <Link to="/login" className="splash-body-top-item-2">

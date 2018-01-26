@@ -21,7 +21,7 @@ class TaskForm extends React.Component {
       location: "",
       description: "",
       vehicle_requirements: "No vehicle needed",
-      user_id: this.props.currentUser.id,
+      user_id: this.props.currentUser ? this.props.currentUser.id : null,
       tasker_id: "",
       tasker: null,
       form_complete: false
@@ -64,8 +64,11 @@ class TaskForm extends React.Component {
   }
 
   reloadTask() { //checks last task for current user and reloads it to state if it's incomplete
-    // console.log('task reloading');
+    console.log('task reloading');
+    // console.log(this.state.user_id, 'current user id');
     // return new Promise((resolve, reject) => {
+    console.log(this.state.user_id, 'reloading task');
+    if (this.state.user_id) {
       this.props.fetchCurrentUser(this.state.user_id)
       .then(userRes => {
         const currentUser = userRes.user;
@@ -74,15 +77,17 @@ class TaskForm extends React.Component {
         this.props.fetchLastTaskForCurrentUser(lastId)
         .then(taskRes => { // why is taskRes the action POJO dispatched? is taskRes the return value of fetchLastTaskForCurrentUser?
           const lastTask = taskRes.task;
+          console.log(lastTask, 'last task');
 
           // if (lastTask.form_complete === false) {
-            this.setState(lastTask, () => this.props.dispatchCurrentTask(this.state));
+          this.setState(lastTask, () => this.props.dispatchCurrentTask(this.state));
           // } else {
           //   console.log(lastTask, 'this is the last task in the else of reload condition');
           //   reject();
           // }
         })
       })
+    }
 
     // })
     // console.log(this.props.currentUser);
@@ -104,8 +109,8 @@ class TaskForm extends React.Component {
   }
 
   render() {
-    // console.log(this.state);
-    // console.log('task form rendering');
+    console.log(this.state);
+    console.log('task form rendering');
 
     const MyTaskDetailsForm = (props) => {
       return (
