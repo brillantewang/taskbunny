@@ -32,14 +32,15 @@ export const TaskCategories = ({ text, setTaskType, createTask, currentUser, his
   ]
 
   const handleClick = (taskCategory) => {
-    if (location.pathname === "/") {
-      history.push("/login")
-    }
-    else {
-      createTask({user_id: currentUser.id, task_type: taskCategory.title, date: todaysDateString, task_time: "I'm Flexible"}).then(
+    let user_id = currentUser ? currentUser.id : null;
+    // if (location.pathname === "/") {
+    //   history.push("/login")
+    // }
+    // else {
+      createTask({user_id: user_id, task_type: taskCategory.title, date: todaysDateString, task_time: "I'm Flexible"}).then(
         () => history.push('/task-form/details')
       )
-    }
+    // }
   }
 
   if (text === "") {

@@ -20,7 +20,7 @@ class Task < ApplicationRecord
   # validates :task_type, :date, :task_time, :location, :description,
   #   :user_id, :tasker_id, presence: true
 
-  belongs_to :user
+  belongs_to :user, optional: true
 
   belongs_to :tasker,
     class_name: :User,
