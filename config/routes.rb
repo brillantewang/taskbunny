@@ -7,5 +7,5 @@ Rails.application.routes.draw do
     resources :tasks, only: [:index, :show, :create, :destroy, :update]
   end
 
-  get 'api/last_task', to: 'tasks#last'
+  get 'api/last_task', to: 'api/tasks#last', defaults: {format: :json}
 end

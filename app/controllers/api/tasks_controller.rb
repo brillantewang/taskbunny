@@ -37,6 +37,11 @@ class Api::TasksController < ApplicationController
     render :show
   end
 
+  def last
+    @task = Task.last
+    render :show
+  end
+
   private
 
   def task_params
