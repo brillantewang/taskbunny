@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 import { ClipLoader } from 'react-spinners';
+import { Link } from 'react-router-dom';
 // import DatePicker from 'react-date-picker';
 
 class PickTaskerForm extends React.Component {
@@ -9,8 +10,13 @@ class PickTaskerForm extends React.Component {
 
     this.state = {
       taskers: this.props.availableTaskersByRecommended,
-      modalIsOpen: false
-    }
+      modalIsOpen: true,
+      first_name: "",
+      last_name: "",
+      email: "",
+      password: "",
+      zip_code: ""
+    };
 
     // console.log(this.state.taskers, 'taskers');
   }
@@ -141,6 +147,23 @@ class PickTaskerForm extends React.Component {
     }
   }
 
+  handleChange(type) {
+    return e => this.setState({ [type]: e.target.value })
+  }
+
+  handleErrorInput(type) {
+    const regex = new RegExp(type);
+    const error = this.props.errors.filter(error => { return error.match(regex) })[0];
+    if (error) {
+      $(`.${type}`).addClass("error-input");
+      return (
+        <strong className="error-message">{error}</strong>
+      );
+    } else {
+      $(`.${type}`).removeClass("error-input");
+    }
+  }
+
   render() {
     // console.log(this.props, 'pick tasker form props');
     // console.log(this.state, 'pick tasker form state');
@@ -212,10 +235,42 @@ class PickTaskerForm extends React.Component {
             onRequestClose={this.closeModal.bind(this)}
             isOpen={this.state.modalIsOpen}
             >
-            <div className="cancel-modal">
-              <h3 className="cancel-modal-header">Cancel Task</h3>
-              <p className="cancel-modal-text">Are you sure you want to cancel this task?</p>
-              <a className="cancel-modal-link" onClick={this.closeModal.bind(this)}>No, I don't want to cancel</a>
+            <div className="session-form-modal">
+              <div className="session-form-container">
+                <form onSubmit={this.handleSubmit.bind(this)} className="session-form">
+                  <h3>Create an account</h3>
+                  <p>You'll be able to review everything before booking</p>
+                  <fieldset>
+                    <label>First Name</label>
+                    <input type="text" value={this.state.first_name} onChange={this.handleChange('first_name')} className="First session-input"/>
+                    {this.handleErrorInput("First")}
+                  </fieldset>
+                  <fieldset>
+                    <label>Last Name</label>
+                    <input type="text" value={this.state.last_name} onChange={this.handleChange('last_name')} className="Last session-input"/>
+                    {this.handleErrorInput("Last")}
+                  </fieldset>
+                  <fieldset>
+                    <label>Email Address</label>
+                    <input type="text" value={this.state.email} onChange={this.handleChange('email')} className="Email session-input"/>
+                    {this.handleErrorInput("Email")}
+                  </fieldset>
+                  <fieldset>
+                    <label>Password</label>
+                    <input type="password" value={this.state.password} onChange={this.handleChange('password')} className="Password session-input"/>
+                    {this.handleErrorInput("Password")}
+                  </fieldset>
+                  <fieldset>
+                    <label>Zip Code</label>
+                    <input type="text" value={this.state.zip_code} onChange={this.handleChange('zip_code')} className="Zip session-input"/>
+                    {this.handleErrorInput("Zip")}
+                  </fieldset>
+                  <button className="btn-green">Create account</button>
+                  <div className="extras signup-extras">
+                    <p>Already have an account? <Link to="/login">Log in</Link></p>
+                  </div>
+                </form>
+              </div>
             </div>
           </Modal>
         </div>
