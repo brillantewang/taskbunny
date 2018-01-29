@@ -1,6 +1,6 @@
 import React from 'react';
 import todaysDateString from "../util/todays_date_util";
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 // export const SplashBody = () => {
 //   return (
@@ -84,4 +84,4 @@ class SplashBody extends React.Component {
   }
 }
 
-export default SplashBody;
+export default withRouter(SplashBody);
