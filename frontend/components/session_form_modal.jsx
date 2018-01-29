@@ -87,12 +87,12 @@ class SessionFormModal extends React.Component {
             <form onSubmit={this.handleLoginSubmit.bind(this)} className="session-form">
               <h3 className="session-form-modal-header">Please log in to continue</h3>
               <fieldset>
-                <label>Email Address</label>
+                <label className="session-form-modal-fieldlabel">Email Address</label>
                 <input className="Email session-input" type="text" value={this.state.email} onChange={this.handleChange('email')}/>
                 {this.handleErrorInput("Email")}
               </fieldset>
               <fieldset>
-                <label>Password</label>
+                <label className="session-form-modal-fieldlabel">Password</label>
                 <input className="Password session-input" type="password" value={this.state.password} onChange={this.handleChange('password')}/>
                 {this.handleErrorInput("Password")}
               </fieldset>
@@ -113,27 +113,27 @@ class SessionFormModal extends React.Component {
               <h3 className="session-form-modal-header">Create an account</h3>
               <p className="session-form-modal-subheader">You'll be able to review everything before booking</p>
               <fieldset>
-                <label>First Name</label>
+                <label className="session-form-modal-fieldlabel">First Name</label>
                 <input type="text" value={this.state.first_name} onChange={this.handleChange('first_name')} className="First session-input"/>
                 {this.handleErrorInput("First")}
               </fieldset>
               <fieldset>
-                <label>Last Name</label>
+                <label className="session-form-modal-fieldlabel">Last Name</label>
                 <input type="text" value={this.state.last_name} onChange={this.handleChange('last_name')} className="Last session-input"/>
                 {this.handleErrorInput("Last")}
               </fieldset>
               <fieldset>
-                <label>Email Address</label>
+                <label className="session-form-modal-fieldlabel">Email Address</label>
                 <input type="text" value={this.state.email} onChange={this.handleChange('email')} className="Email session-input"/>
                 {this.handleErrorInput("Email")}
               </fieldset>
               <fieldset>
-                <label>Password</label>
+                <label className="session-form-modal-fieldlabel">Password</label>
                 <input type="password" value={this.state.password} onChange={this.handleChange('password')} className="Password session-input"/>
                 {this.handleErrorInput("Password")}
               </fieldset>
               <fieldset>
-                <label>Zip Code</label>
+                <label className="session-form-modal-fieldlabel">Zip Code</label>
                 <input type="text" value={this.state.zip_code} onChange={this.handleChange('zip_code')} className="Zip session-input"/>
                 {this.handleErrorInput("Zip")}
               </fieldset>
