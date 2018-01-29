@@ -2,7 +2,7 @@ import React from 'react';
 
 export const handleErrorInput = function (type) {
   const regex = new RegExp(type);
-  // console.log(this);
+  console.log(this, 'handleerrorinput');
   const error = this.props.errors.filter(error => { return error.match(regex) })[0];
   if (error) {
     $(`.${type}`).addClass("error-input");

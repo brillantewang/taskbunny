@@ -46,7 +46,13 @@ class SessionFormModal extends React.Component {
   }
 
   toggleLoginModal() {
+    this.props.removeErrors();
     this.setState({
+      first_name: "",
+      last_name: "",
+      email: "",
+      password: "",
+      zip_code: "",
       login_modal: !this.state.login_modal
     })
   }

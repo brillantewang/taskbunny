@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import SessionFormModal from './session_form_modal';
 
 const mapStateToProps = state => ({
-  errors: state.errors.signup,
+  errors: state.errors.signup.concat(state.errors.login)
 })
 
 const mapDispatchToProps = dispatch => ({
