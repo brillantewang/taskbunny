@@ -189,13 +189,13 @@ class TaskDetailsForm extends React.Component {
                 type="text"
                 placeholder="Enter street address"
               />
-              <input
+              {/* <input
                 // value={this.props.unit}
                 // onChange={this.props.handleChange('unit')}
                 className="location-details-form-input2"
                 type="text"
                 placeholder="Unit or Apt #"
-              />
+              /> */}
             </div>
             {/* {this.props.handleErrorInput('Location')} */}
             <div className="save-button-container">
