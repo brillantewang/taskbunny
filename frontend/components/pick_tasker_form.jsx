@@ -9,9 +9,11 @@ class PickTaskerForm extends React.Component {
   constructor(props) {
     super(props)
 
+    console.log(props);
+
     this.state = {
       taskers: this.props.availableTaskersByRecommended,
-      modalIsOpen: true
+      modalIsOpen: false
     };
 
     // console.log(this.state.taskers, 'taskers');
@@ -144,7 +146,8 @@ class PickTaskerForm extends React.Component {
   }
 
   render() {
-    // console.log(this.props, 'pick tasker form props');
+    console.log(this.props, 'pick tasker form props');
+    console.log(this.props.updateTask);
     // console.log(this.state, 'pick tasker form state');
     // console.log(this.state.taskers, 'taskers rendered');
     // console.log(this.props.state, 'state in pick tasker form render');
@@ -214,7 +217,12 @@ class PickTaskerForm extends React.Component {
             onRequestClose={this.closeModal.bind(this)}
             isOpen={this.state.modalIsOpen}
             >
-            <SessionFormModalContainer/>
+            <SessionFormModalContainer
+              state={this.props.state}
+              history={this.props.history}
+              setState={this.props.setState}
+              updateTask={this.props.updateTask}
+            />
           </Modal>
         </div>
       )

@@ -66,33 +66,33 @@ class TaskForm extends React.Component {
   reloadTask() { //checks last task for current user and reloads it to state if it's incomplete
     // console.log(this.state.user_id, 'current user id');
     // return new Promise((resolve, reject) => {
-    if (this.state.user_id) {
-      this.props.fetchCurrentUser(this.state.user_id)
-      .then(userRes => {
-        const currentUser = userRes.user;
-        const lastId = this.getLastTaskId(currentUser);
-
-        this.props.fetchLastTaskForCurrentUser(lastId)
-        .then(taskRes => { // why is taskRes the action POJO dispatched? is taskRes the return value of fetchLastTaskForCurrentUser?
-          const lastTask = taskRes.task;
-          console.log(lastTask, 'last task');
-
-          // if (lastTask.form_complete === false) {
-          this.setState(lastTask, () => this.props.dispatchCurrentTask(this.state));
-          // } else {
-          //   console.log(lastTask, 'this is the last task in the else of reload condition');
-          //   reject();
-          // }
-        })
-      })
-    } else {
+    // if (this.state.user_id) {
+    //   this.props.fetchCurrentUser(this.state.user_id)
+    //   .then(userRes => {
+    //     const currentUser = userRes.user;
+    //     const lastId = this.getLastTaskId(currentUser);
+    //
+    //     this.props.fetchLastTaskForCurrentUser(lastId)
+    //     .then(taskRes => { // why is taskRes the action POJO dispatched? is taskRes the return value of fetchLastTaskForCurrentUser?
+    //       const lastTask = taskRes.task;
+    //       console.log(lastTask, 'last task');
+    //
+    //       // if (lastTask.form_complete === false) {
+    //       this.setState(lastTask, () => this.props.dispatchCurrentTask(this.state));
+    //       // } else {
+    //       //   console.log(lastTask, 'this is the last task in the else of reload condition');
+    //       //   reject();
+    //       // }
+    //     })
+    //   })
+    // } else {
       this.props.fetchLastTaskInDB()
       .then(taskRes => {
         const lastTask = taskRes.task;
 
         this.setState(lastTask, () => this.props.dispatchCurrentTask(this.state));
       })
-    }
+    // }
 
     // })
     // console.log(this.props.currentUser);

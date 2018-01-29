@@ -60,7 +60,7 @@ class ConfirmTaskForm extends React.Component {
 
   render() {
     let date = moment(this.props.state.date).format('ddd[,] MMM Do');
-    // console.log(this.props.state, 'confirm task form rendering');
+    console.log(this.props.state, 'confirm task form rendering');
     // console.log(this.props.state.tasker);
     // console.log(this.loaded(), 'loaded in confirm task render');
     if (this.loaded()) {

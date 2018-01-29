@@ -19,11 +19,16 @@ class SessionFormModal extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.signup(this.state)
-      .then(() => this.props.history.push('/dashboard'));
+      .then(userRes => {
+        console.log(userRes.user.id);
+        this.props.setState({ user_id: userRes.user.id }, () => {
+          this.props.updateTask(this.props.state)
+            .then(() => this.props.history.push('/task-form/confirm'))
+        });
+      });
   }
 
   handleErrorInput(type) {
-    console.log('hey');
     const regex = new RegExp(type);
     const error = this.props.errors.filter(error => { return error.match(regex) })[0];
     if (error) {
