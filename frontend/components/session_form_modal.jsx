@@ -112,7 +112,7 @@ class SessionFormModal extends React.Component {
             <form onSubmit={this.handleSubmit.bind(this)} className="session-form">
               <h3 className="session-form-modal-header">Create an account</h3>
               <p className="session-form-modal-subheader">You'll be able to review everything before booking</p>
-              <fieldset>
+              <fieldset className="session-form-modal-namefield">
                 <label className="session-form-modal-fieldlabel">First Name</label>
                 <input type="text" value={this.state.first_name} onChange={this.handleChange('first_name')} className="First session-input"/>
                 {this.handleErrorInput("First")}
