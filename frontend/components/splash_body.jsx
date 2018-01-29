@@ -42,7 +42,7 @@ class SplashBody extends React.Component {
   }
 
   handleImageClick(taskCategory) {
-    this.props.createTask({user_id: this.props.currentUser.id, task_type: taskCategory, date: todaysDateString, task_time: "I'm Flexible"}).then(
+    this.props.createTask({task_type: taskCategory, date: todaysDateString, task_time: "I'm Flexible"}).then(
       () => this.props.history.push('/task-form/details')
     )
   }
@@ -52,9 +52,11 @@ class SplashBody extends React.Component {
       <div className="splash-body">
         <h1>Get Inspired</h1>
         <div className="splash-body-top">
-          <Link to="/task-form/details" className="splash-body-top-item-1">
+          <a
+            className="splash-body-top-item-1"
+            onClick={() => this.handleImageClick("Minor Repairs")}>
             <img src="https://res.cloudinary.com/dezmnl5mf/image/upload/c_crop,h_2973,w_3877/v1511571163/splash-body-img1_gnn4se.jpg"/>
-          </Link>
+          </a>
           <Link to="/login" className="splash-body-top-item-2">
             <h3>Tackle those home projects & repairs you've been putting off</h3>
             <button className="btn-green">Book Handyman</button>
