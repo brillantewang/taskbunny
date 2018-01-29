@@ -59,7 +59,7 @@ class SplashBody extends React.Component {
           </a>
           <a
             className="splash-body-top-item-2"
-            onClick={() => this.handleImageClick("Minor Repairs")}>
+            onClick={() => this.handleImageClick("General Handyman")}>
             <h3>Tackle those home projects & repairs you've been putting off</h3>
             <button className="btn-green">Book Handyman</button>
           </a>
