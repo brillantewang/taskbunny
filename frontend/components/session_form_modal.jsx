@@ -85,7 +85,7 @@ class SessionFormModal extends React.Component {
           </div>
           <div className="session-form-container">
             <form onSubmit={this.handleLoginSubmit.bind(this)} className="session-form">
-              <h3>Please log in to continue.</h3>
+              <h3 className="session-form-modal-header">Please log in to continue</h3>
               <fieldset>
                 <label>Email Address</label>
                 <input className="Email session-input" type="text" value={this.state.email} onChange={this.handleChange('email')}/>
@@ -110,8 +110,8 @@ class SessionFormModal extends React.Component {
         <div className="session-form-modal">
           <div className="session-form-container">
             <form onSubmit={this.handleSubmit.bind(this)} className="session-form">
-              <h3>Create an account</h3>
-              <p>You'll be able to review everything before booking</p>
+              <h3 className="session-form-modal-header">Create an account</h3>
+              <p className="session-form-modal-subheader">You'll be able to review everything before booking</p>
               <fieldset>
                 <label>First Name</label>
                 <input type="text" value={this.state.first_name} onChange={this.handleChange('first_name')} className="First session-input"/>
@@ -137,7 +137,7 @@ class SessionFormModal extends React.Component {
                 <input type="text" value={this.state.zip_code} onChange={this.handleChange('zip_code')} className="Zip session-input"/>
                 {this.handleErrorInput("Zip")}
               </fieldset>
-              <button className="btn-green">Create account</button>
+              <button className="btn-green">Sign up</button>
               <div className="extras signup-extras">
                 <p>Already have an account? <a onClick={this.toggleLoginModal.bind(this)}>Log in</a></p>
               </div>
