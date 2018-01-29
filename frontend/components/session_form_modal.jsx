@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 
 class SessionFormModal extends React.Component {
   constructor(props) {
@@ -12,7 +13,8 @@ class SessionFormModal extends React.Component {
       last_name: "",
       email: "",
       password: "",
-      zip_code: ""
+      zip_code: "",
+      login_modal: false
     };
   }
 
@@ -46,45 +48,81 @@ class SessionFormModal extends React.Component {
   }
 
   render() {
-    return (
-      <div className="session-form-modal">
-        <div className="session-form-container">
-          <form onSubmit={this.handleSubmit.bind(this)} className="session-form">
-            <h3>Create an account</h3>
-            <p>You'll be able to review everything before booking</p>
-            <fieldset>
-              <label>First Name</label>
-              <input type="text" value={this.state.first_name} onChange={this.handleChange('first_name')} className="First session-input"/>
-              {this.handleErrorInput("First")}
-            </fieldset>
-            <fieldset>
-              <label>Last Name</label>
-              <input type="text" value={this.state.last_name} onChange={this.handleChange('last_name')} className="Last session-input"/>
-              {this.handleErrorInput("Last")}
-            </fieldset>
-            <fieldset>
-              <label>Email Address</label>
-              <input type="text" value={this.state.email} onChange={this.handleChange('email')} className="Email session-input"/>
-              {this.handleErrorInput("Email")}
-            </fieldset>
-            <fieldset>
-              <label>Password</label>
-              <input type="password" value={this.state.password} onChange={this.handleChange('password')} className="Password session-input"/>
-              {this.handleErrorInput("Password")}
-            </fieldset>
-            <fieldset>
-              <label>Zip Code</label>
-              <input type="text" value={this.state.zip_code} onChange={this.handleChange('zip_code')} className="Zip session-input"/>
-              {this.handleErrorInput("Zip")}
-            </fieldset>
-            <button className="btn-green">Create account</button>
-            <div className="extras signup-extras">
-              <p>Already have an account? <Link to="/login">Log in</Link></p>
-            </div>
-          </form>
+    const errorModalClassName = classNames({
+      hidden: this.props.errors.length === 0 ||
+              this.props.errors.length > 0 && !this.props.errors[0].includes("Incorrect")
+    })
+
+    if (this.state.login_modal) {
+      return (
+        <div className="session-form-modal">
+          <div id="error-modal" className={errorModalClassName} onClick={this.props.removeErrors}>
+            <strong>{this.props.errors}</strong>
+            <i className="fa fa-times" aria-hidden="true"></i>
+          </div>
+          <div className="session-form-container">
+            <form onSubmit={this.handleSubmit} className="session-form">
+              <img className="session-form-logo" src="https://res.cloudinary.com/dezmnl5mf/image/upload/v1512150412/taskwombat_logo_gnnuiq.png"/>
+              <fieldset>
+                <label>Email Address</label>
+                <input className="Email session-input" type="text" value={this.state.email} onChange={this.handleChange('email')}/>
+                {this.handleErrorInput("Email")}
+              </fieldset>
+              <fieldset>
+                <label>Password</label>
+                <input className="Password session-input" type="password" value={this.state.password} onChange={this.handleChange('password')}/>
+                {this.handleErrorInput("Password")}
+              </fieldset>
+              <button className="btn-green">Log in</button>
+              <div className="extras login-extras">
+                <a className="demo-login" onClick={this.handleDemo}>Demo login</a>
+                <p>Don't have an account? <a onClick={() => this.setState({ login_modal: false })}>Sign up</a></p>
+              </div>
+            </form>
+          </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      return (
+        <div className="session-form-modal">
+          <div className="session-form-container">
+            <form onSubmit={this.handleSubmit.bind(this)} className="session-form">
+              <h3>Create an account</h3>
+              <p>You'll be able to review everything before booking</p>
+              <fieldset>
+                <label>First Name</label>
+                <input type="text" value={this.state.first_name} onChange={this.handleChange('first_name')} className="First session-input"/>
+                {this.handleErrorInput("First")}
+              </fieldset>
+              <fieldset>
+                <label>Last Name</label>
+                <input type="text" value={this.state.last_name} onChange={this.handleChange('last_name')} className="Last session-input"/>
+                {this.handleErrorInput("Last")}
+              </fieldset>
+              <fieldset>
+                <label>Email Address</label>
+                <input type="text" value={this.state.email} onChange={this.handleChange('email')} className="Email session-input"/>
+                {this.handleErrorInput("Email")}
+              </fieldset>
+              <fieldset>
+                <label>Password</label>
+                <input type="password" value={this.state.password} onChange={this.handleChange('password')} className="Password session-input"/>
+                {this.handleErrorInput("Password")}
+              </fieldset>
+              <fieldset>
+                <label>Zip Code</label>
+                <input type="text" value={this.state.zip_code} onChange={this.handleChange('zip_code')} className="Zip session-input"/>
+                {this.handleErrorInput("Zip")}
+              </fieldset>
+              <button className="btn-green">Create account</button>
+              <div className="extras signup-extras">
+                <p>Already have an account? <a onClick={() => this.setState({ login_modal: true })}>Log in</a></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      )
+    }
   }
 }
 
