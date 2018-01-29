@@ -19,6 +19,7 @@ class SessionFormModal extends React.Component {
     };
 
     this.handleErrorInput = handleErrorInput.bind(this);
+    this.handleDemo = this.handleDemo.bind(this);
   }
 
   handleSubmit(e) {
@@ -57,26 +58,17 @@ class SessionFormModal extends React.Component {
     })
   }
 
-  // handleErrorInput(type) {
-  //   const regex = new RegExp(type);
-  //   const error = this.props.errors.filter(error => { return error.match(regex) })[0];
-  //   if (error) {
-  //     $(`.${type}`).addClass("error-input");
-  //     return (
-  //       <strong className="error-message">{error}</strong>
-  //     );
-  //   } else {
-  //     $(`.${type}`).removeClass("error-input");
-  //   }
-  // }
-
   handleChange(type) {
     return e => this.setState({ [type]: e.target.value })
   }
 
-  // componentDidUpdate() {
-  //   this.props.removeErrors();
-  // }
+  handleDemo(e) {
+    e.preventDefault();
+    this.setState(
+      { email: "demo@gmail.com", password: "helloworld" },
+      () => this.handleLoginSubmit(e)
+    )
+  }
 
   render() {
     const errorModalClassName = classNames({
@@ -93,7 +85,7 @@ class SessionFormModal extends React.Component {
           </div>
           <div className="session-form-container">
             <form onSubmit={this.handleLoginSubmit.bind(this)} className="session-form">
-              <img className="session-form-logo" src="https://res.cloudinary.com/dezmnl5mf/image/upload/v1512150412/taskwombat_logo_gnnuiq.png"/>
+              <h3>Please log in to continue.</h3>
               <fieldset>
                 <label>Email Address</label>
                 <input className="Email session-input" type="text" value={this.state.email} onChange={this.handleChange('email')}/>
