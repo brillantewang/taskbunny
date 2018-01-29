@@ -17,7 +17,7 @@ const NavBar = ({ currentUser, logout, history, match }) => {
   } else {
     return (
       <div className="nav-bar">
-        <img className="nav-bar-logo" src="https://res.cloudinary.com/dezmnl5mf/image/upload/v1512150412/taskwombat_logo_gnnuiq.png"/>
+        <Link to="/"><img className="nav-bar-logo" src="https://res.cloudinary.com/dezmnl5mf/image/upload/v1512150412/taskwombat_logo_gnnuiq.png"/></Link>
         <div className="session-buttons">
           <Link to="/login">Log In</Link>
           <Link to="/signup"><button>Sign Up</button></Link>
