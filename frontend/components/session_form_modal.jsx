@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { handleErrorInput } from '../util/errors_util';
 import classNames from 'classnames';
 
 class SessionFormModal extends React.Component {
@@ -16,6 +17,8 @@ class SessionFormModal extends React.Component {
       zip_code: "",
       login_modal: false
     };
+
+    this.handleErrorInput = handleErrorInput.bind(this);
   }
 
   handleSubmit(e) {
@@ -30,22 +33,44 @@ class SessionFormModal extends React.Component {
       });
   }
 
-  handleErrorInput(type) {
-    const regex = new RegExp(type);
-    const error = this.props.errors.filter(error => { return error.match(regex) })[0];
-    if (error) {
-      $(`.${type}`).addClass("error-input");
-      return (
-        <strong className="error-message">{error}</strong>
-      );
-    } else {
-      $(`.${type}`).removeClass("error-input");
-    }
+  handleLoginSubmit(e) {
+    e.preventDefault();
+    this.props.login({ email: this.state.email, password: this.state.password })
+      .then(userRes => {
+        console.log(userRes.user.id);
+        this.props.setState({ user_id: userRes.user.id }, () => {
+          this.props.updateTask(this.props.state)
+            .then(() => this.props.history.push('/task-form/confirm'))
+        });
+      });
   }
+
+  toggleLoginModal() {
+    this.setState({
+      login_modal: !this.state.login_modal
+    })
+  }
+
+  // handleErrorInput(type) {
+  //   const regex = new RegExp(type);
+  //   const error = this.props.errors.filter(error => { return error.match(regex) })[0];
+  //   if (error) {
+  //     $(`.${type}`).addClass("error-input");
+  //     return (
+  //       <strong className="error-message">{error}</strong>
+  //     );
+  //   } else {
+  //     $(`.${type}`).removeClass("error-input");
+  //   }
+  // }
 
   handleChange(type) {
     return e => this.setState({ [type]: e.target.value })
   }
+
+  // componentDidUpdate() {
+  //   this.props.removeErrors();
+  // }
 
   render() {
     const errorModalClassName = classNames({
@@ -61,7 +86,7 @@ class SessionFormModal extends React.Component {
             <i className="fa fa-times" aria-hidden="true"></i>
           </div>
           <div className="session-form-container">
-            <form onSubmit={this.handleSubmit} className="session-form">
+            <form onSubmit={this.handleLoginSubmit.bind(this)} className="session-form">
               <img className="session-form-logo" src="https://res.cloudinary.com/dezmnl5mf/image/upload/v1512150412/taskwombat_logo_gnnuiq.png"/>
               <fieldset>
                 <label>Email Address</label>
@@ -76,7 +101,7 @@ class SessionFormModal extends React.Component {
               <button className="btn-green">Log in</button>
               <div className="extras login-extras">
                 <a className="demo-login" onClick={this.handleDemo}>Demo login</a>
-                <p>Don't have an account? <a onClick={() => this.setState({ login_modal: false })}>Sign up</a></p>
+                <p>Don't have an account? <a onClick={this.toggleLoginModal.bind(this)}>Sign up</a></p>
               </div>
             </form>
           </div>
@@ -116,7 +141,7 @@ class SessionFormModal extends React.Component {
               </fieldset>
               <button className="btn-green">Create account</button>
               <div className="extras signup-extras">
-                <p>Already have an account? <a onClick={() => this.setState({ login_modal: true })}>Log in</a></p>
+                <p>Already have an account? <a onClick={this.toggleLoginModal.bind(this)}>Log in</a></p>
               </div>
             </form>
           </div>
