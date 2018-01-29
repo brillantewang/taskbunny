@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FooterNav } from './footer_nav';
 import { TaskCategories } from './task_categories';
 import { SplashHead } from './splash_head';
-import { SplashBody } from './splash_body';
+import SplashBody from './splash_body';
 import NavBarContainer from './nav_bar_container';
 import classNames from 'classnames';
 
