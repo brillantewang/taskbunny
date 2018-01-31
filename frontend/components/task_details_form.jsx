@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PlacesAutocomplete from 'react-places-autocomplete';
 
 class TaskDetailsForm extends React.Component {
   constructor(props) {
