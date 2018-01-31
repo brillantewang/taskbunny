@@ -50,6 +50,10 @@
   cursor: pointer;
 }
 
+.google-places-dropdown-item:not(:last-child) {
+  border-bottom: 1px solid $light-gray;
+}
+
 .google-places-dropdown-item-active {
   background-color: #fafafa;
 }
