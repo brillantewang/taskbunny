@@ -30,12 +30,17 @@
   font-weight: 400;
 }
 
+#PlacesAutocomplete__root {
+  width: 100%;
+}
+
 .location-details-form-inputs {
   display: flex;
   margin-top: 27px;
   margin-bottom: 10px;
 
   input {
+    box-sizing: border-box;
     width: 100%;
   }
 
