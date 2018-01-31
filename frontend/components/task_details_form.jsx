@@ -182,6 +182,10 @@ class TaskDetailsForm extends React.Component {
       value: this.props.state.location || "",
       onChange: this.handleLocationChange
     }
+    const googlePlacesClasses = {
+      root: 'google-places-div',
+      autocompleteContainer: 'google-places-dropdown'
+    }
 
     return (
       <div className="task-details-form task-form-subform">
@@ -195,7 +199,10 @@ class TaskDetailsForm extends React.Component {
           </strong>
           <div id="location">
             <div className="location-details-form-inputs">
-              <PlacesAutocomplete inputProps={inputProps} />
+              <PlacesAutocomplete
+                inputProps={inputProps}
+                classNames={googlePlacesClasses}
+               />
               {/* <input
                 value={this.props.state.location || ""}
                 onChange={this.props.handleChange('location')}

@@ -30,8 +30,17 @@
   font-weight: 400;
 }
 
-#PlacesAutocomplete__root {
+.google-places-div {
   width: 100%;
+}
+
+.google-places-dropdown {
+  width: 97%;
+  left: 2px;
+  box-shadow: 1px 1px 6px $light-gray, -1px 1px 6px $light-gray;
+  background-color: white;
+  z-index: 1;
+  border: none;
 }
 
 .location-details-form-inputs {
