@@ -32,15 +32,26 @@
 
 .google-places-div {
   width: 100%;
+  position: relative;
 }
 
 .google-places-dropdown {
-  width: 97%;
+  position: absolute;
+  width: 99.5%;
   left: 2px;
   box-shadow: 1px 1px 6px $light-gray, -1px 1px 6px $light-gray;
   background-color: white;
   z-index: 1;
   border: none;
+}
+
+.google-places-dropdown-item {
+  padding: 20px;
+  cursor: pointer;
+}
+
+.google-places-dropdown-item-active {
+  background-color: #fafafa;
 }
 
 .location-details-form-inputs {

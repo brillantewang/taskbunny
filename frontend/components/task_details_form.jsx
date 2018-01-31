@@ -184,7 +184,9 @@ class TaskDetailsForm extends React.Component {
     }
     const googlePlacesClasses = {
       root: 'google-places-div',
-      autocompleteContainer: 'google-places-dropdown'
+      autocompleteContainer: 'google-places-dropdown',
+      autocompleteItem: 'google-places-dropdown-item',
+      autocompleteItemActive: 'google-places-dropdown-item-active'
     }
 
     return (
