@@ -18,7 +18,7 @@ class TaskForm extends React.Component {
       task_type: "",
       date: todaysDateString,
       task_time: "I'm Flexible",
-      location: "San Francisco, CA",
+      location: "",
       description: "",
       vehicle_requirements: "No vehicle needed",
       user_id: this.props.currentUser ? this.props.currentUser.id : null,
@@ -137,6 +137,7 @@ class TaskForm extends React.Component {
           // setTaskLocation={this.props.setTaskLocation}
           // setTaskDescription={this.props.setTaskDescription}
           // setTaskVehicleReq={this.props.setTaskVehicleReq}
+          dispatchCurrentTask={this.props.dispatchCurrentTask}
           {...props}
         />
       );

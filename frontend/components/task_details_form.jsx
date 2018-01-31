@@ -172,7 +172,7 @@ class TaskDetailsForm extends React.Component {
   }
 
   handleLocationChange(address) {
-    this.props.setState({ location: address })
+    this.props.setState({ location: address }, () => this.props.dispatchCurrentTask(this.props.state))
   }
 
   render() {
