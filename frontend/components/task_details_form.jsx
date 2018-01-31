@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PlacesAutocomplete from 'react-places-autocomplete';
+import { geocodeByAddress, geocodeByPlaceId } from 'react-places-autocomplete'
 
 class TaskDetailsForm extends React.Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class TaskDetailsForm extends React.Component {
 
     this.handleSubFormSubmit = this.handleSubFormSubmit.bind(this);
     this.handleLastSubFormSubmit = this.handleLastSubFormSubmit.bind(this);
+    this.handleLocationChange = this.handleLocationChange.bind(this);
     // this.taskCreated = null;
   }
 
@@ -169,8 +171,18 @@ class TaskDetailsForm extends React.Component {
     }
   }
 
+  handleLocationChange(address) {
+    this.props.setState({ location: address })
+  }
+
   render() {
-    // console.log(this.props.state, 'task details form rendering - taskform state');
+    console.log(this.props.state, 'task details form rendering - taskform state');
+    console.log(this.props.state.location, 'task details form rendering - taskform location');
+    const inputProps = {
+      value: this.props.state.location || "",
+      onChange: this.handleLocationChange
+    }
+
     return (
       <div className="task-details-form task-form-subform">
         <h2>Describe Your Task</h2>
@@ -183,13 +195,14 @@ class TaskDetailsForm extends React.Component {
           </strong>
           <div id="location">
             <div className="location-details-form-inputs">
-              <input
+              <PlacesAutocomplete inputProps={inputProps} />
+              {/* <input
                 value={this.props.state.location || ""}
                 onChange={this.props.handleChange('location')}
                 className="location-details-form-input1 Location"
                 type="text"
                 placeholder="Enter street address"
-              />
+              /> */}
               {/* <input
                 // value={this.props.unit}
                 // onChange={this.props.handleChange('unit')}

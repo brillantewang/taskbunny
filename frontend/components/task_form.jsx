@@ -18,7 +18,7 @@ class TaskForm extends React.Component {
       task_type: "",
       date: todaysDateString,
       task_time: "I'm Flexible",
-      location: "",
+      location: "San Francisco, CA",
       description: "",
       vehicle_requirements: "No vehicle needed",
       user_id: this.props.currentUser ? this.props.currentUser.id : null,
