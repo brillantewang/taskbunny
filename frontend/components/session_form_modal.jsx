@@ -15,7 +15,7 @@ class SessionFormModal extends React.Component {
       email: "",
       password: "",
       zip_code: "",
-      login_modal: false
+      signup_modal: false
     };
 
     this.handleErrorInput = handleErrorInput.bind(this);
@@ -46,7 +46,7 @@ class SessionFormModal extends React.Component {
       });
   }
 
-  toggleLoginModal() {
+  toggleSignupModal() {
     this.props.removeErrors();
     this.setState({
       first_name: "",
@@ -54,7 +54,7 @@ class SessionFormModal extends React.Component {
       email: "",
       password: "",
       zip_code: "",
-      login_modal: !this.state.login_modal
+      signup_modal: !this.state.signup_modal
     })
   }
 
@@ -76,36 +76,7 @@ class SessionFormModal extends React.Component {
               this.props.errors.length > 0 && !this.props.errors[0].includes("Incorrect")
     })
 
-    if (this.state.login_modal) {
-      return (
-        <div className="session-form-modal">
-          <div id="error-modal" className={errorModalClassName} onClick={this.props.removeErrors}>
-            <strong>{this.props.errors}</strong>
-            <i className="fa fa-times" aria-hidden="true"></i>
-          </div>
-          <div className="session-form-container">
-            <form onSubmit={this.handleLoginSubmit.bind(this)} className="session-form">
-              <h3 className="session-form-modal-header">Please log in to continue</h3>
-              <fieldset>
-                <label className="session-form-modal-fieldlabel">Email Address</label>
-                <input className="Email session-input" type="text" value={this.state.email} onChange={this.handleChange('email')}/>
-                {this.handleErrorInput("Email")}
-              </fieldset>
-              <fieldset>
-                <label className="session-form-modal-fieldlabel">Password</label>
-                <input className="Password session-input" type="password" value={this.state.password} onChange={this.handleChange('password')}/>
-                {this.handleErrorInput("Password")}
-              </fieldset>
-              <button className="btn-green">Log in</button>
-              <div className="extras login-extras">
-                <a className="demo-login" onClick={this.handleDemo}>Demo login</a>
-                <p>Don't have an account? <a onClick={this.toggleLoginModal.bind(this)}>Sign up</a></p>
-              </div>
-            </form>
-          </div>
-        </div>
-      )
-    } else {
+    if (this.state.signup_modal) {
       return (
         <div className="session-form-modal">
           <div className="session-form-container">
@@ -139,7 +110,36 @@ class SessionFormModal extends React.Component {
               </fieldset>
               <button className="btn-green">Sign up</button>
               <div className="extras signup-extras">
-                <p>Already have an account? <a onClick={this.toggleLoginModal.bind(this)}>Log in</a></p>
+                <p>Already have an account? <a onClick={this.toggleSignupModal.bind(this)}>Log in</a></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      )
+    } else {
+      return (
+        <div className="session-form-modal">
+          <div id="error-modal" className={errorModalClassName} onClick={this.props.removeErrors}>
+            <strong>{this.props.errors}</strong>
+            <i className="fa fa-times" aria-hidden="true"></i>
+          </div>
+          <div className="session-form-container">
+            <form onSubmit={this.handleLoginSubmit.bind(this)} className="session-form">
+              <h3 className="session-form-modal-header">Please log in to continue</h3>
+              <fieldset>
+                <label className="session-form-modal-fieldlabel">Email Address</label>
+                <input className="Email session-input" type="text" value={this.state.email} onChange={this.handleChange('email')}/>
+                {this.handleErrorInput("Email")}
+              </fieldset>
+              <fieldset>
+                <label className="session-form-modal-fieldlabel">Password</label>
+                <input className="Password session-input" type="password" value={this.state.password} onChange={this.handleChange('password')}/>
+                {this.handleErrorInput("Password")}
+              </fieldset>
+              <button className="btn-green">Log in</button>
+              <div className="extras login-extras">
+                <a className="demo-login" onClick={this.handleDemo}>Click for demo login!</a>
+                <p>Don't have an account? <a onClick={this.toggleSignupModal.bind(this)}>Sign up</a></p>
               </div>
             </form>
           </div>
