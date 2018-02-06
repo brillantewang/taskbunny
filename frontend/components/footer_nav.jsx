@@ -1,21 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Scroll from 'react-scroll';
-import { scroller } from 'react-scroll';
-import ScrollArea from 'react-scrollbar';
 
 export const FooterNav = () => {
-  // const scroll = Scroll.animateScroll;
-
   return (
     <div className="footer-nav">
-      {/* <ScrollArea
-        speed="0.8"
-        className="area"
-        contentClassName="content"
-        horizontal="false">
-        <div>Some long content.Some long content.Some long content.Some long content.Some long content.Some long content.Some long content.Some long content.Some long content.Some long content.Some long content.Some long content.Some long content.Some long content.</div>
-      </ScrollArea> */}
       <nav>
         <strong>Discover</strong>
         <a onClick={scroll.scrollToTop}>Become a Tasker</a>

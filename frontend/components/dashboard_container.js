@@ -3,7 +3,6 @@ import Dashboard from './dashboard';
 import { selectCurrentUserTasks } from '../reducers/selectors';
 import { fetchAllTasks, deleteTask, fetchAllUsers, createTask } from '../actions/task_form_actions';
 import { getUser } from '../actions/dashboard_actions';
-// import { fetchAllUsers } from '../actions/task_form_actions';
 
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser,
