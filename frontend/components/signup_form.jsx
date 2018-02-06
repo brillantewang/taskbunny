@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import { handleErrorInput } from '../util/errors_util';
 
 class SignupForm extends React.Component {
   constructor(props) {
