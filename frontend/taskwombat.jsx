@@ -20,13 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
 
-  window.getState = store.getState;
-  // window.dispatch = store.dispatch;
-
+  // window.getState = store.getState; ### Comment this back in if you want to getState from Chrome DevTools
 
   ReactDOM.render(<Root store={store}/>, root);
 });
-
-// window.onbeforeunload = function() {
-//   return "Data will be lost if you leave the page, are you sure?";
-// };
