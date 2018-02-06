@@ -33,14 +33,9 @@ export const TaskCategories = ({ text, setTaskType, createTask, currentUser, his
 
   const handleClick = (taskCategory) => {
     let user_id = currentUser ? currentUser.id : null;
-    // if (location.pathname === "/") {
-    //   history.push("/login")
-    // }
-    // else {
-      createTask({user_id: user_id, task_type: taskCategory.title, date: todaysDateString, task_time: "I'm Flexible"}).then(
-        () => history.push('/task-form/details')
-      )
-    // }
+    createTask({user_id: user_id, task_type: taskCategory.title, date: todaysDateString, task_time: "I'm Flexible"}).then(
+      () => history.push('/task-form/details')
+    )
   }
 
   if (text === "") {
@@ -64,10 +59,8 @@ export const TaskCategories = ({ text, setTaskType, createTask, currentUser, his
     const matchedCategories = taskCategories.filter(taskCategory => {
       return regex.test(taskCategory.title);
     })
-    // console.log(matchedCategories, 'matchedCategories');
 
     if (matchedCategories.length > 0) {
-      // console.log('in the if');
       return (
         <div id="task-categories">
           {matchedCategories.slice(0, 4).map(taskCategory => {
