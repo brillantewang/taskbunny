@@ -3,20 +3,15 @@ import Modal from 'react-modal';
 import { ClipLoader } from 'react-spinners';
 import { Link } from 'react-router-dom';
 import SessionFormModalContainer from './session_form_modal_container';
-// import DatePicker from 'react-date-picker';
 
 class PickTaskerForm extends React.Component {
   constructor(props) {
     super(props)
 
-    console.log(props);
-
     this.state = {
       taskers: this.props.availableTaskersByRecommended,
       modalIsOpen: false
     };
-
-    // console.log(this.state.taskers, 'taskers');
   }
 
   openModal() {
@@ -32,13 +27,9 @@ class PickTaskerForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // console.log('will receive props available taskers', nextProps.availableTaskers);
     if (this.loading()) return;
-    // console.log(nextProps.availableTaskers, 'next props avail taskers');
-    // console.log(this.props.availableTaskers, 'this props avail taskers');
     if (nextProps.availableTaskers !== this.props.availableTaskers) {
       const sortInput = document.getElementById("sort");
-      // console.log(sortInput.value, "sort input val");
       switch(sortInput.value) {
         case "Highest Rating":
           this.setState({
@@ -78,8 +69,7 @@ class PickTaskerForm extends React.Component {
     }
   }
 
-  componentDidMount() { //borrowed from https://stackoverflow.com/questions/6982692/html5-input-type-date-default-value-to-today
-    // console.log('pick_tasker_form mounting');
+  componentDidMount() {
     this.props.reloadTask();
 
     this.props.fetchAllUsers().then(() => {
@@ -87,19 +77,14 @@ class PickTaskerForm extends React.Component {
         taskers: this.sortedTaskers("Recommended")
       })
     })
-
-    // document.addEventListener('DOMContentLoaded', () => document.getElementById('datePicker').valueAsDate = new Date());
-    // console.log(document.getElementById('datePicker').value, 'date value');
   }
 
   onChange(type) {
     return e => {
       if (type === 'date') {
         this.props.handleChange('date')(e);
-        // this.props.setTaskDate(e.target.value);
       } else if (type === 'task_time') {
         this.props.handleChange('task_time')(e);
-        // this.props.setTaskTime(e.target.value);
       } else if (type === 'sort') {
         this.setState({
           taskers: this.sortedTaskers(e.target.value)
@@ -128,13 +113,10 @@ class PickTaskerForm extends React.Component {
   }
 
   handleSubmit(taskerId) {
-    // this.props.setTaskTaskerId(taskerId);
-    // console.log(taskerId, 'submit pick tasker form tasker id');
     return e => {
       e.preventDefault();
       this.props.setState({ tasker_id: taskerId }, () => {
         this.props.updateTask(this.props.state);
-        // console.log(this.props.state, 'select and confirm clicked');
         if (this.props.state.user_id) {
           this.props.history.push('/task-form/confirm');
         } else {
@@ -146,12 +128,6 @@ class PickTaskerForm extends React.Component {
   }
 
   render() {
-    console.log(this.props, 'pick tasker form props');
-    console.log(this.props.updateTask);
-    // console.log(this.state, 'pick tasker form state');
-    // console.log(this.state.taskers, 'taskers rendered');
-    // console.log(this.props.state, 'state in pick tasker form render');
-
     if (this.loading() === false) {
       return (
         <div className="pick-tasker-form task-form-subform">
@@ -173,7 +149,6 @@ class PickTaskerForm extends React.Component {
                   <i className="fa fa-clock-o" aria-hidden="true"></i>
                   TASK DATE & TIME:
                 </strong>
-                {/* <DatePicker /> */}
                 <input id="datePicker" className="calendar-input" type="date" value={this.props.state.date} onChange={this.onChange('date')}/>
                 <select value={this.props.state.task_time} onChange={this.onChange('task_time')}>
                   <option value="I'm Flexible">I'm Flexible</option>
