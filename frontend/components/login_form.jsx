@@ -20,7 +20,6 @@ class LoginForm extends React.Component {
     e.preventDefault();
     this.props.login(this.state)
       .then(() => {
-        // console.log(this.props.login(this.state));
         this.props.history.push('/dashboard')});
   }
 
