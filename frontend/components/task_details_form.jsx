@@ -10,103 +10,33 @@ class TaskDetailsForm extends React.Component {
     this.handleSubFormSubmit = this.handleSubFormSubmit.bind(this);
     this.handleLastSubFormSubmit = this.handleLastSubFormSubmit.bind(this);
     this.handleLocationChange = this.handleLocationChange.bind(this);
-    // this.taskCreated = null;
   }
 
   componentDidMount() {
-    // console.log('task details form mounting', this.props.state);
-    // debugger
     this.updateDisableStatus();
     this.props.reloadTask();
-      // .then(
-      //   // () => { this.props.updateTask(this.props.state) },
-      //   null,
-      //   () => { this.props.createTask(this.props.state).then(taskRes => this.props.setState(taskRes)) }
-      // )
-      // this.props.setState({ task_type: this.props.selectedTaskType }, () => {
-      //   this.props.createTask(this.props.state)
-      //     .then((taskRes) => {
-      //       // this.taskCreated = taskRes.task;
-      //       // console.log(taskRes, 'taskres');
-      //       this.props.setState(taskRes.task); //so we get the id
-      //       // this.collapse(subFormId, nextSubFormId);
-      //     })
-      // });
   }
-
-
 
   collapse(subFormId, nextSubFormId) {
     const subForm = document.getElementById(subFormId);
     const subFormText = document.getElementById(`${subFormId}-text`);
     const nextSubForm = document.getElementById(nextSubFormId);
     const nextSubFormText = document.getElementById(`${nextSubFormId}-text`);
-    // console.log(subFormId, 'subform-id');
-    // console.log(subForm, 'subform');
-    // console.log(nextSubFormId, 'nextsubform-id');
-    // console.log(nextSubForm, 'nextsubform');
 
-    // if (this.props.state[subFormId]) {
-      subForm.classList.add("hidden");
-      subFormText.classList.remove("hidden");
-      nextSubForm.classList.remove("hidden");
-      if (nextSubFormText) nextSubFormText.classList.add("hidden");
-    // }
-
-    // return new Promise((resolve, reject) => {
-    //   if (this.props.handleErrorInput(subFormId) === undefined) {
-    //     subForm.classList.add("hidden");
-    //     nextSubForm.classList.remove("hidden");
-    //     resolve();
-    //   } else {
-    //     reject();
-    //   }
-    // })
+    subForm.classList.add("hidden");
+    subFormText.classList.remove("hidden");
+    nextSubForm.classList.remove("hidden");
+    if (nextSubFormText) nextSubFormText.classList.add("hidden");
   }
 
   handleSubFormSubmit(subFormId, nextSubFormId) {
-    // switch(subFormId) {
-    //   case "Location":
-    //     this.props.setTaskLocation(this.props.state.location);
-    //     break;
-    //   case "Vehicle":
-    //     this.props.setTaskVehicleReq(this.props.state.vehicle_requirements);
-    //     break;
-    //   case "Description":
-    //     this.props.setTaskDescription(this.props.state.description);
-    //     break;
-    // }
-
-    // if (this.props.state.id === null) {
-    //   return e => {
-    //     e.preventDefault();
-    //     this.props.createTask(this.props.state)
-    //       .then((taskRes) => {
-    //         // this.taskCreated = taskRes.task;
-    //         // console.log(taskRes);
-    //         this.props.setState(taskRes.task); //so we get the id
-    //         this.collapse(subFormId, nextSubFormId);
-    //       })
-    //   }
-    // } else {
-      return e => {
-        e.preventDefault();
-        // console.log('task updating');
-        this.props.updateTask(this.props.state)
-          .then(() => {
-            // this.props.setState(this.props.state);
-            this.collapse(subFormId, nextSubFormId)
-          })
-        }
-    // }
-
-    // return e => {
-    //   this.props.handleSubmit(e)
-    //     .then(null, () => {
-    //       this.collapse(subFormId, nextSubFormId)
-    //         // .then(() => this.props.removeErrors())
-    //     })
-    // }
+    return e => {
+      e.preventDefault();
+      this.props.updateTask(this.props.state)
+        .then(() => {
+          this.collapse(subFormId, nextSubFormId)
+        })
+    }
   }
 
   handleLastSubFormSubmit(e) {
@@ -114,13 +44,6 @@ class TaskDetailsForm extends React.Component {
     this.props.updateTask(this.props.state)
       .then(() => this.props.history.push("/task-form/taskers"))
   }
-
-  // updateSubFormTextStatus() {
-  //   const locationText = document.getElementById("location-text");
-  //   const locationForm = document.getElementById("location");
-  //
-  //   locationForm.classList.contains("hidden") ? locationText.classList.remove("hidden") : locationText.classList.add("hidden");
-  // }
 
   updateDisableStatus() {
     const locationBtn = document.getElementById("details-location-submit");
@@ -135,14 +58,6 @@ class TaskDetailsForm extends React.Component {
 
   componentDidUpdate() {
     this.updateDisableStatus();
-    // const locationSubForm = document.getElementById("Location");
-    // const locationText = document.getElementById("location-text")
-    // console.log(locationText, 'text');
-    // console.log(locationSubForm, 'subform');
-    // console.log(locationSubForm.classList.contains("hidden"));
-    // if (locationSubForm.classList.contains("hidden")) {
-    //   locationText.classList.remove("hidden")
-    // }
   }
 
   handleClick(subFormId) {
@@ -156,18 +71,11 @@ class TaskDetailsForm extends React.Component {
         return subId !== subFormId
       }).map(subId => document.getElementById(subId))
 
-      // const otherSubFormTexts = subFormIds.filter(subId => {
-      //   return subId !== subFormId
-      // }).map(subId => document.getElementById(`${subId}-text`))
-
       clickedSubForm.classList.remove("hidden");
       if (clickedSubFormText) clickedSubFormText.classList.add("hidden");
       otherSubForms.forEach(subForm => {
         subForm.classList.add("hidden")
       })
-      // otherSubFormTexts.forEach(subForm => {
-      //   subForm.classList.remove("hidden")
-      // })
     }
   }
 
@@ -176,8 +84,6 @@ class TaskDetailsForm extends React.Component {
   }
 
   render() {
-    console.log(this.props.state, 'task details form rendering - taskform state');
-    console.log(this.props.state.location, 'task details form rendering - taskform location');
     const inputProps = {
       value: this.props.state.location || "",
       onChange: this.handleLocationChange
@@ -205,22 +111,14 @@ class TaskDetailsForm extends React.Component {
                 inputProps={inputProps}
                 classNames={googlePlacesClasses}
                />
-              {/* <input
+              {/* <input ### comment this section back in if you'd like to use a normal input field in place of PlacesAutocomplete
                 value={this.props.state.location || ""}
                 onChange={this.props.handleChange('location')}
                 className="location-details-form-input1 Location"
                 type="text"
                 placeholder="Enter street address"
               /> */}
-              {/* <input
-                // value={this.props.unit}
-                // onChange={this.props.handleChange('unit')}
-                className="location-details-form-input2"
-                type="text"
-                placeholder="Unit or Apt #"
-              /> */}
             </div>
-            {/* {this.props.handleErrorInput('Location')} */}
             <div className="save-button-container">
               <button id="details-location-submit" onClick={this.handleSubFormSubmit("location", "vehicle_requirements")} className="btn-green">Save</button>
             </div>
@@ -281,7 +179,6 @@ class TaskDetailsForm extends React.Component {
                 className="description-details-form-textarea Description"
                 placeholder="EXAMPLE: I rented a moving van, but need help moving my stuff in and out of it. I have: queen bed with frame, medium couch, loveseat, entertainment center, large TV, armchair, 2 bookcases, dining room table with 4 chairs, desk and chair, and about 50 boxes.">
               </textarea>
-              {/* {this.props.handleErrorInput('description')} */}
               <p>If you need two or more Taskers, please post additional tasks for each Tasker needed.</p>
               <div className="save-button-container">
                 <button id="details-final-submit" onClick={this.handleLastSubFormSubmit} className="btn-green">See Taskers & Prices</button>
@@ -294,6 +191,4 @@ class TaskDetailsForm extends React.Component {
   }
 }
 
-// disabled={`${ this.props.state.location === "" || this.props.state.description === "" }`}
-// {this.props.state.location !== "" && this.props.state.description !== "" ? "disabled" : "" }
 export default TaskDetailsForm;
