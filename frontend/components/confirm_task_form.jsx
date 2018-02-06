@@ -6,18 +6,11 @@ import moment from 'moment';
 class ConfirmTaskForm extends React.Component {
   constructor(props) {
     super(props);
-    // console.log('confirm task form constructing');
-    // console.log(this.props, 'props confirmtaskform');
-    // console.log(this.props.availableTaskers, 'availableTaskers confirm task form');
-    // this.tasker = this.props.availableTaskers.find(tasker => {
-    //   return tasker.id === this.props.state.tasker_id;
-    // })
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   loaded() {
-    // console.log(this.props.state.tasker, 'tasker in loaded');
     return this.props.state.tasker !== null
   }
 
@@ -33,21 +26,8 @@ class ConfirmTaskForm extends React.Component {
   }
 
   componentDidMount() {
-    // console.log('component will mount in confirm task form');
     this.props.reloadTask();
   }
-
-  // componentWillUnmount() {
-  //   this.props.fetchAllTasks();
-  // }
-
-  // componentDidMount() {
-  //   this.props.fetchAllUsers()
-  //     .then(() => this.tasker = this.props.availableTaskers.find(tasker => {
-  //       return tasker.id === this.props.state.tasker_id;
-  //     }));
-  //     console.log(this.tasker, 'mounted tasker');
-  // }
 
   handleSubmit() {
     this.props.setState({ form_complete: true }, () => {
@@ -55,14 +35,10 @@ class ConfirmTaskForm extends React.Component {
       this.props.updateTask(this.props.state)
         .then(() => this.props.history.push('/dashboard'))
       });
-    // console.log(this.props.state, 'state right before updating in confirm task form');
   }
 
   render() {
     let date = moment(this.props.state.date).format('ddd[,] MMM Do');
-    console.log(this.props.state, 'confirm task form rendering');
-    // console.log(this.props.state.tasker);
-    // console.log(this.loaded(), 'loaded in confirm task render');
     if (this.loaded()) {
       return (
         <div className="confirm-task-form-container">
@@ -70,8 +46,6 @@ class ConfirmTaskForm extends React.Component {
             <div className="confirm-task-form-header">
               <h2 className="task-type-header">{this.props.state.task_type}</h2>
               <h2>${this.props.state.tasker.price_per_hour}/hr</h2>
-              {/* <h2>$50/hr</h2> */}
-              {/* <h2>{this.tasker.first_name} {this.tasker.last_name[0]}</h2> */}
             </div>
             <div className="confirm-task-form-details">
               <div className="date-time-tasker">
@@ -83,7 +57,6 @@ class ConfirmTaskForm extends React.Component {
                   <img className="tasker-mini-profile-photo" src={this.props.state.tasker.image_url}/>
                   <div className="tasker-name">
                     <strong className="mini-header">Tasker</strong>
-                    {/* <strong className="info-text">Semo N.</strong> */}
                     <strong className="info-text">{this.props.state.tasker.first_name} {this.props.state.tasker.last_name[0]}.</strong>
                   </div>
                 </div>
