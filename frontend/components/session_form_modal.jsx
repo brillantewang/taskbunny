@@ -7,8 +7,6 @@ class SessionFormModal extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log(props);
-
     this.state = {
       first_name: "",
       last_name: "",
@@ -26,7 +24,6 @@ class SessionFormModal extends React.Component {
     e.preventDefault();
     this.props.signup(this.state)
       .then(userRes => {
-        console.log(userRes.user.id);
         this.props.setState({ user_id: userRes.user.id }, () => {
           this.props.updateTask(this.props.state)
             .then(() => this.props.history.push('/task-form/confirm'))
@@ -38,7 +35,6 @@ class SessionFormModal extends React.Component {
     e.preventDefault();
     this.props.login({ email: this.state.email, password: this.state.password })
       .then(userRes => {
-        console.log(userRes.user.id);
         this.props.setState({ user_id: userRes.user.id }, () => {
           this.props.updateTask(this.props.state)
             .then(() => this.props.history.push('/task-form/confirm'))
