@@ -31,76 +31,33 @@ class TaskForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleErrorInput = handleErrorInput.bind(this);
     this.reloadTask = this.reloadTask.bind(this);
-    // console.log('task form constructing');
   }
-
-  // componentDidMount() {
-  //   // this.setState({ user_id: this.props.currentUser.id })
-  //   // this.setState({ date: todaysDateString })
-  //   // this.setState({ task_time: "I'm Flexible"})
-  //   // this.setState({ vehicle_requirements: "No vehicle needed"})
-  //   // this.setState({ form_complete: false })
-  //   // console.log('task form mounting');
-  //   // this.props.fetchAllUsers();
-  //   console.log('task form mounting');
-  //   // const sortedTaskIds = this.props.currentUser.tasks.sort();
-  //   // const lastId = sortedTaskIds[sortedTaskIds.length - 1];
-  //   // this.props.fetchLastTaskForCurrentUser(lastId)
-  //   //   .then(taskRes => { // why is taskRes the action POJO dispatched? is taskRes the return value of fetchLastTaskForCurrentUser?
-  //   //     // console.log(taskRes);
-  //   //     const lastTask = taskRes.task;
-  //   //     this.setState(lastTask);
-  //   //   })
-  //   this.reloadTask();
-  //
-  //   // const lastTask = this.props.fetchLastTaskForCurrentUser(lastId);
-  //   // console.log(lastTask, 'lasttask in mounting');
-  //   // this.setState(lastTask);
-  // }
 
   getLastTaskId(user) {
     const sortedTaskIds = user.user_tasks.sort((a,b) => a - b);
     return sortedTaskIds[sortedTaskIds.length - 1];
   }
 
-  reloadTask() { //checks last task for current user and reloads it to state if it's incomplete
-    // console.log(this.state.user_id, 'current user id');
-    // return new Promise((resolve, reject) => {
-    // if (this.state.user_id) {
-    //   this.props.fetchCurrentUser(this.state.user_id)
-    //   .then(userRes => {
-    //     const currentUser = userRes.user;
-    //     const lastId = this.getLastTaskId(currentUser);
+  reloadTask() {
+    // this.props.fetchCurrentUser(this.state.user_id) ### Comment this section back in if you want to fetch last task for current user rather than simply fetching the last task in DB. Note this will break reloading task if there is no current user (if the user is filling out the task form pre login)
+    // .then(userRes => {
+    //   const currentUser = userRes.user;
+    //   const lastId = this.getLastTaskId(currentUser);
     //
-    //     this.props.fetchLastTaskForCurrentUser(lastId)
-    //     .then(taskRes => { // why is taskRes the action POJO dispatched? is taskRes the return value of fetchLastTaskForCurrentUser?
-    //       const lastTask = taskRes.task;
-    //       console.log(lastTask, 'last task');
+    //   this.props.fetchLastTaskForCurrentUser(lastId)
+    //   .then(taskRes => { // why is taskRes the action POJO dispatched? is taskRes the return value of fetchLastTaskForCurrentUser?
+    //     const lastTask = taskRes.task;
     //
-    //       // if (lastTask.form_complete === false) {
-    //       this.setState(lastTask, () => this.props.dispatchCurrentTask(this.state));
-    //       // } else {
-    //       //   console.log(lastTask, 'this is the last task in the else of reload condition');
-    //       //   reject();
-    //       // }
-    //     })
-    //   })
-    // } else {
-      this.props.fetchLastTaskInDB()
+    //   this.setState(lastTask, () => this.props.dispatchCurrentTask(this.state));
+
+    // Comment this section out if you comment in section above. Note the below may not work to reload the correct task if there are multiple users filling out forms at the same time.
+    this.props.fetchLastTaskInDB()
       .then(taskRes => {
         const lastTask = taskRes.task;
 
         this.setState(lastTask, () => this.props.dispatchCurrentTask(this.state));
       })
-    // }
-
-    // })
-    // console.log(this.props.currentUser);
   }
-
-  // componentWillUnmount() {
-  //   this.props.history.push("/dashboard");
-  // }
 
   handleChange(type) {
     return e => {
@@ -114,19 +71,12 @@ class TaskForm extends React.Component {
   }
 
   render() {
-    console.log(this.state);
-    console.log('task form rendering');
-
     const MyTaskDetailsForm = (props) => {
       return (
         <TaskDetailsForm
           state={this.state}
-          // address={this.location.address}
-          // unit={this.location.unit}
-          // selectedTaskType={this.props.currentTask.selected_type}
           location={this.state.location}
           handleChange={this.handleChange}
-          // handleSubmit={this.handleSubmit}
           createTask={this.props.createTask}
           updateTask={this.props.updateTask}
           errors={this.props.errors}
@@ -134,9 +84,6 @@ class TaskForm extends React.Component {
           removeErrors={this.props.removeErrors}
           setState={this.setState.bind(this)}
           reloadTask={this.reloadTask.bind(this)}
-          // setTaskLocation={this.props.setTaskLocation}
-          // setTaskDescription={this.props.setTaskDescription}
-          // setTaskVehicleReq={this.props.setTaskVehicleReq}
           dispatchCurrentTask={this.props.dispatchCurrentTask}
           {...props}
         />
@@ -147,19 +94,14 @@ class TaskForm extends React.Component {
       return (
         <PickTaskerFormContainer
           state={this.state}
-          // address={this.location.address}
-          // unit={this.location.unit}
-          // location={this.state.location}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           errors={this.props.errors}
           handleErrorInput={this.handleErrorInput}
           removeErrors={this.props.removeErrors}
           setState={this.setState.bind(this)}
-          // availableTaskers={this.props.availableTaskers}
           setTaskDate={this.props.setTaskDate}
           setTaskTime={this.props.setTaskTime}
-          // setTaskTaskerId={this.props.setTaskTaskerId}
           fetchAllUsers={this.props.fetchAllUsers}
           updateTask={this.props.updateTask}
           reloadTask={this.reloadTask}
@@ -172,16 +114,12 @@ class TaskForm extends React.Component {
       return (
         <ConfirmTaskFormContainer
           state={this.state}
-          // address={this.location.address}
-          // unit={this.location.unit}
-          // location={this.state.location}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           errors={this.props.errors}
           handleErrorInput={this.handleErrorInput}
           removeErrors={this.props.removeErrors}
           setState={this.setState.bind(this)}
-          // availableTaskers={this.props.availableTaskers}
           setTaskDate={this.props.setTaskDate}
           setTaskTime={this.props.setTaskTime}
           fetchAllUsers={this.props.fetchAllUsers}
