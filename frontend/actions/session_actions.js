@@ -24,7 +24,7 @@ export const removeErrors = () => ({
   type: REMOVE_ERRORS
 });
 
-//thunk
+//thunk action creators
 
 export const login = user => dispatch => (
   sessionAPIUtil.login(user)
