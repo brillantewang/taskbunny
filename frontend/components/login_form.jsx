@@ -66,7 +66,7 @@ class LoginForm extends React.Component {
             </fieldset>
             <button className="btn-green">Log in</button>
             <div className="extras login-extras">
-              <a className="demo-login" onClick={this.handleDemo}>Demo login</a>
+              <a className="demo-login" onClick={this.handleDemo}>Click for demo login!</a>
               <p>Don't have an account? <Link to="/signup">Sign up</Link></p>
             </div>
           </form>
