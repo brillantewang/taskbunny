@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const Auth = ({component: Component, path, loggedIn}) => (
+const Auth = ({component: Component, path, loggedIn}) => ( // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring
   <Route path={path} render={(props) => (
     !loggedIn ? (
       <Component {...props} />
