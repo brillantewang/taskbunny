@@ -45,6 +45,7 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'annotate'
+  gem 'rspec-rails'
 end
 
 group :development do
