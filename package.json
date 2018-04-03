@@ -43,7 +43,7 @@
     "npm": "2.1.x"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "postinstall": "webpack",
     "build": "rimraf dist && cross-env NODE_ENV=production webpack",
     "dev": "cross-env NODE_ENV=development node webpack-dev-server.js"
