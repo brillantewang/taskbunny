@@ -2,7 +2,6 @@
   "name": "taskbunny",
   "private": true,
   "dependencies": {
-    "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "classnames": "^2.2.5",
     "lodash": "^4.17.4",
@@ -26,6 +25,7 @@
   "devDependencies": {
     "css-loader": "^0.28.7",
     "babel-jest": "^22.4.3",
+    "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "jest": "^22.4.3",
